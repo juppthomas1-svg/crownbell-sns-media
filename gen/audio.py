@@ -5,7 +5,8 @@ from scipy.signal import butter, sosfilt, fftconvolve
 from scipy.io import wavfile
 
 SR = 48000
-DUR = 10.0
+import os
+DUR = float(os.environ.get('DUR_S', '10'))
 N = int(SR * DUR)
 
 def t_(d): return np.arange(int(SR * d)) / SR
@@ -58,7 +59,7 @@ def music(kind, seed):
     buf = np.zeros(N)
     if kind == 'quiz':   # D: Dmaj9 Bm7 Gmaj7 Asus-A
         prog = [(50, [62, 66, 69, 73, 76]), (47, [59, 62, 66, 69, 74]), (43, [59, 62, 66, 71, 74]), (45, [57, 62, 64, 69, 73])]
-    else:                # G: Gmaj9 Em9 Cmaj7 D
+    else:                # G: Gmaj9 Em9 Cmaj7 D (promo / ad)
         prog = [(43, [55, 59, 62, 66, 69]), (40, [55, 59, 62, 66, 71]), (48, [55, 59, 64, 67, 71]), (50, [57, 62, 66, 69, 74])]
     seg = DUR / 4; step = seg / 8
     pat = [0, 2, 4, 3, 1, 3, 4, 2]
@@ -115,6 +116,9 @@ def build(kind, seed):
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(1175, 2.2, 0.08), TE + 0.1)
         a, b = int((TQ + 0.4) * SR), int(TA * SR)
         duck[a:b] = 0.55
+    elif kind == 'ad':
+        for t in (3.6, 6.6, 10.6, 14.6): add(fx, whoosh(0.5), t - 0.25)
+        add(fx, bell(1318, 2.6, 0.12), 3.75); add(fx, bell(1568, 2.6, 0.12), 10.9); add(fx, sparkle(1.0, 40, 5), 11.0); add(fx, bell(1760, 2.2, 0.08), 14.75)
     else:
         TS, TE = 3.0, 6.8
         add(fx, whoosh(0.55), TS - 0.25); add(fx, bell(1318, 2.6, 0.13), TS + 0.15); add(fx, sparkle(1.0, 40, 5), TS + 0.18)

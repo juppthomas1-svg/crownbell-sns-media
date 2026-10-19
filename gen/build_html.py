@@ -85,6 +85,36 @@ canvas{position:absolute;inset:0}
 .srch b{color:#e3c47c}
 .fine{margin-top:44px;font-size:26px;line-height:1.75;color:rgba(244,239,226,.62)}
 .foot{position:absolute;left:96px;right:96px;bottom:92px;display:flex;justify-content:space-between;font-family:"Inter";font-size:24px;letter-spacing:.32em;color:rgba(201,168,92,.75);border-top:1px solid rgba(201,168,92,.35);padding-top:24px}
+
+.ad1{position:absolute;left:96px;right:96px;top:520px}
+.ad1 .kicker{margin:56px 0 30px}
+.ad1 h2{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:76px;line-height:1.4;margin-bottom:36px}
+.mid{position:absolute;left:96px;right:96px;top:640px}
+.mid h2{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:88px;line-height:1.42;margin:36px 0 40px}
+.mid h2 em{font-style:normal;color:#e3c47c}
+.mid .sub{font-size:40px;line-height:1.7;color:rgba(244,239,226,.85)}
+.feat{display:flex;gap:34px;align-items:center;border-bottom:1px solid rgba(201,168,92,.35);padding:40px 0}
+.feat .k{font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:64px;color:#e3c47c;min-width:110px}
+.feat .v{font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:54px;line-height:1.35}
+.feat .v small{display:block;font-family:"Noto Sans CJK JP";font-weight:500;font-size:34px;color:rgba(244,239,226,.75);margin-top:8px}
+.cert{position:relative;margin:30px auto 0;width:820px;height:600px;background:linear-gradient(160deg,#fdfaf1,#f3ecd9);color:#0a1a3d;box-shadow:0 40px 90px rgba(0,0,0,.5);padding:38px}
+.cert .b1{position:absolute;inset:22px;border:3px solid #b8954a}
+.cert .b2{position:absolute;inset:32px;border:1px solid #c9a85c}
+.cert .in{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:30px}
+.cert .en{font-family:"Inter";font-size:20px;letter-spacing:.5em;color:#9a7428}
+.cert h4{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:76px;letter-spacing:.4em;margin:14px 0 10px;padding-left:.4em}
+.cert .lv{font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:34px;margin-bottom:20px}
+.cert .nm{font-family:"Noto Serif CJK JP",serif;font-size:30px;border-bottom:1.5px solid #0a1a3d;padding:0 60px 6px;margin-bottom:18px}
+.cert .tx{font-family:"Noto Serif CJK JP",serif;font-size:22px;line-height:1.7;color:#33405e}
+.cert .no{position:absolute;left:30px;bottom:24px;font-family:"Inter";font-size:18px;color:#5a6684;letter-spacing:.06em}
+.cert .org{position:absolute;right:120px;bottom:30px;font-family:"Noto Serif CJK JP",serif;font-size:22px;font-weight:700}
+.cert img{position:absolute;right:16px;bottom:10px;width:96px;height:96px;border-radius:50%}
+.cert .mihon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-18deg);font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:170px;letter-spacing:.2em;color:rgba(160,120,40,.22);border:8px solid rgba(160,120,40,.22);padding:0 30px}
+.ev{position:absolute;left:96px;right:96px;top:330px}
+.ev h2{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:68px;line-height:1.45;margin:30px 0 10px}
+.ev h2 em{font-style:normal;color:#e3c47c}
+.ev .cap{margin-top:40px;font-size:30px;color:rgba(244,239,226,.65);text-align:center}
+.btn2{border:2px solid #e3c47c;padding:30px 60px;font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:48px;background:rgba(227,196,124,.1)}
 '''
 
 JS = r'''
@@ -168,8 +198,46 @@ def promo(v):
            f'<div class="note a" data-in="{T_S+500}">{v["sol_note"]}</div><div class="facts">{facts}</div></div></div>')
     return prob + sol + end_screen(v["platform"], T_E, v.get("end_lead", "あなたのビジネス英語力を、<br>確かな資格に。")), ''
 
+
+def ad(v):
+    T1, T2, T3, T4 = 3600, 6600, 10600, 14600
+    lines = ''.join(f'<div class="pline a" data-in="-1000"><i></i><span>{E(p)}</span></div>' for p in v["problems"])
+    s1 = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="250"><div class="ad1">'
+          f'<div class="a" data-in="-1000">{brand()}</div>'
+          f'<div class="kicker a" data-in="-1000">就職活動中の皆さまへ</div>'
+          f'<h2 class="a" data-in="-1000">こんなお悩みは<br>ありませんか。</h2>{lines}</div></div>')
+    s2 = (f'<div class="sc" data-in="{T1}" data-out="{T2}" data-d="300"><div class="mini"><span>ビジネス英語実務検定</span><b>SOLUTION</b></div><div class="mid" style="top:740px">'
+          f'<div class="kicker a" data-in="{T1+50}">そんな方のための</div>'
+          f'<h2 class="a" data-in="{T1+150}" data-d="600">ビジネス英語<br><em>実務検定。</em></h2>'
+          f'<div class="sub a" data-in="{T1+600}">仕事で使う英語の力を測る、<br>オンラインの検定です。</div></div></div>')
+    feats = [("01","実務の場面から出題","メール・会議・電話"),("02","24時間いつでも受験","PC・スマホでオンライン"),("03","3級・2級・1級","3つのレベル")]
+    fh = ''.join(f'<div class="feat a" data-in="{T2+250+j*450}"><span class="k">{k}</span><span class="v">{a}<small>{b}</small></span></div>' for j,(k,a,b) in enumerate(feats))
+    s3 = (f'<div class="sc" data-in="{T2}" data-out="{T3}" data-d="300"><div class="mini"><span>ビジネス英語実務検定</span><b>FEATURES</b></div><div class="mid" style="top:660px">'
+          f'<div class="kicker a" data-in="{T2+50}">3つの特長</div>{fh}</div></div>')
+    cert = ('<div class="cert"><div class="b1"></div><div class="b2"></div><div class="in">'
+            '<div class="en">CERTIFICATE OF ACHIEVEMENT</div><h4>合格証</h4>'
+            '<div class="lv">ビジネス英語実務検定　3級</div><div class="nm">氏名　○○ ○○</div>'
+            '<div class="tx">あなたは本検定に合格したことを<br>ここに証します</div></div>'
+            '<div class="no">認定番号 No. 000000</div><div class="org">国際ビジネス言語認定協会</div><img src="logo.png">'
+            '<div class="mihon">見本</div></div>')
+    s4 = (f'<div class="sc" data-in="{T3}" data-out="{T4}" data-d="300"><div class="mini"><span>ビジネス英語実務検定</span><b>CERTIFICATE</b></div><div class="ev">'
+          f'<div class="kicker a" data-in="{T3+50}">認定番号つきの合格証</div>'
+          f'<h2 class="a" data-in="{T3+150}">合格すれば、<br><em>最短で受験当日</em>に<br>PDFで発行。</h2>'
+          f'<div class="a" data-in="{T3+500}" data-d="700">{cert}</div>'
+          f'<div class="cap a" data-in="{T3+700}">※画像は見本です</div></div></div>')
+    fine = ('3級 3,500円〜（税込）<br>※お試し問題は本番とは異なり、合格証は発行されません<br>'
+            '※国際ビジネス言語認定協会が認定する民間資格です')
+    s5 = (f'<div class="sc" data-in="{T4}" data-d="350"><div class="end" style="top:330px">'
+          f'<div class="a" data-in="{T4}">{brand()}</div>'
+          f'<div class="now a" data-in="{T4+150}" style="margin-top:30px">FREE TRIAL</div>'
+          f'<h3 class="a" data-in="{T4+250}" style="font-size:104px">まずは、<br><em>無料体験版</em>から。</h3>'
+          f'<div class="chips a" data-in="{T4+400}"><span>登録不要</span><span>10問</span><span>約5分</span><span>スマホでOK</span></div>'
+          f'<div class="btn2 a" data-in="{T4+550}">画面下のボタンから</div>'
+          f'<div class="fine a" data-in="{T4+700}">{fine}</div></div></div>')
+    return s1+s2+s3+s4+s5, ''
+
 def build(v, outdir):
-    body, hooks = quiz(v) if v["kind"] == "quiz" else promo(v)
+    body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
     doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>'
            f'<canvas id="cv"></canvas><div class="vig"></div><div class="frame"></div>{body}'
