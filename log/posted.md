@@ -17,3 +17,4 @@
 - 2026-10-22 21:00｜Instagram｜w1_08_ig_promo_rirekisho
 - 2026-10-19 手動｜X｜x01_elaborate（Could you elaborate?）
 - 2026-10-19 手動｜X｜x02_fyi（FYI）
+- 2026-10-20 手動｜X｜x03_fig_promo（人物入り宣伝）
