@@ -118,6 +118,9 @@ def end_screen(platform, t0, lead):
         how = ('<div class="card a" data-in="%d"><img src="qr.png"><div class="t">無料お試しは<br>'
                '<b>「ビジネス英語実務検定」</b><br>で検索<br><span class="s">またはQRをスクショ → 長押し</span><br>'
                '<span class="url">crownbell-kentei.netlify.app/tiktok</span></div></div>') % (t0 + 450)
+    elif platform == "x":
+        how = ('<div class="a" data-in="%d"><div class="btn">プロフィールのリンクから</div>'
+               '<div class="srch">または <b>この投稿への返信</b> のリンクから</div></div>') % (t0 + 450)
     else:
         how = ('<div class="a" data-in="%d"><div class="btn">プロフィールのリンクから</div>'
                '<div class="srch">または <b>「ビジネス英語実務検定」</b> で検索</div></div>') % (t0 + 450)
