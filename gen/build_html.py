@@ -124,6 +124,11 @@ canvas{position:absolute;inset:0}
 .cert-mini:before{content:"";position:absolute;inset:10px;border:2px solid #b8954a}
 .cert-mini b{position:absolute;left:0;right:0;top:60px;text-align:center;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:44px;letter-spacing:.3em;color:#0a1a3d}
 .cert-mini i{position:absolute;left:40px;right:40px;top:130px;height:2px;background:#c9a85c;box-shadow:0 18px 0 #d8c69a,0 36px 0 #d8c69a}
+
+.story .figwrap{left:220px;right:220px;bottom:345px}
+.story .figp .prob{top:300px}.story .figp .sol{top:300px}.story .sol h2{margin:24px 0 18px;font-size:88px}.story .sol .note{margin-bottom:30px}
+.story .end{top:300px}
+.story .mini{display:none}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -203,6 +208,9 @@ def end_screen(platform, t0, lead):
         how = ('<div class="card a" data-in="%d"><img src="qr.png"><div class="t">無料お試しは<br>'
                '<b>「ビジネス英語実務検定」</b><br>で検索<br><span class="s">またはQRをスクショ → 長押し</span><br>'
                '<span class="url">crownbell-kentei.netlify.app/tiktok</span></div></div>') % (t0 + 450)
+    elif platform == "igad":
+        how = ('<div class="a" data-in="%d"><div class="btn">下の「詳しくはこちら」から</div>'
+               '<div class="srch">または <b>「ビジネス英語実務検定」</b> で検索</div></div>') % (t0 + 450)
     elif platform == "x":
         how = ('<div class="a" data-in="%d"><div class="btn">プロフィールのリンクから</div>'
                '<div class="srch">または <b>この投稿への返信</b> のリンクから</div></div>') % (t0 + 450)
@@ -311,7 +319,7 @@ def ad(v):
 def build(v, outdir):
     body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else ""}">'
            f'<canvas id="cv"></canvas><div class="vig"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')
