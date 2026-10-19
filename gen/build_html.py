@@ -161,11 +161,11 @@ FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="ht
   <ellipse id="el" cx="264" cy="236" rx="7" ry="3" fill="#e9d6a0" stroke="none"/>
   <ellipse id="er" cx="336" cy="236" rx="7" ry="3" fill="#e9d6a0" stroke="none"/>
  </g>
- <g id="cert" opacity="0"><g transform="translate(0 -46)">
+ <g id="cert" opacity="0"><g transform="translate(0 -80) translate(300 527) scale(1.32) translate(-300 -527)">
   <rect x="196" y="452" width="208" height="150" fill="#fbf7ec" stroke="#b8954a" stroke-width="3"/>
   <rect x="206" y="462" width="188" height="130" fill="none" stroke="#c9a85c" stroke-width="1.2"/>
   <text x="300" y="512" text-anchor="middle" font-family="Noto Serif CJK JP" font-weight="900" font-size="34" fill="#0a1a3d" stroke="none" letter-spacing="6">合格証</text>
-  <path d="M232 540 H368 M232 556 H368 M232 572 H330" stroke="#d8c69a" stroke-width="2"/>
+  <text id="ctext" x="300" y="546" text-anchor="middle" font-family="Noto Serif CJK JP" font-weight="700" font-size="17" fill="#0a1a3d" stroke="none" letter-spacing="1"></text><rect id="ccur" x="0" y="531" width="2" height="19" fill="#9a7428" stroke="none" opacity="0"/><path d="M232 564 H368 M232 578 H330" stroke="#d8c69a" stroke-width="2"/>
   <circle cx="372" cy="575" r="12" fill="#c9a85c" stroke="none"/>
   <ellipse cx="200" cy="590" rx="26" ry="20" fill="url(#skin)"/><ellipse cx="400" cy="590" rx="26" ry="20" fill="url(#skin)"/></g>
  </g>
@@ -265,7 +265,8 @@ def promo(v):
                  "$('el').setAttribute('ry',L(2.5,6.5));$('er').setAttribute('ry',L(2.5,6.5));"
                  "const w=Math.sin(t/400);['q1','q2','q3'].forEach((q,i)=>{const e=$(q);e.setAttribute('opacity',(1-p)*(.55+.2*Math.sin(t/300+i)));e.setAttribute('transform',`translate(0 ${Math.sin(t/500+i*2)*8})`)});"
                  "const c=ease(cl((t-%d)/700));$('cert').setAttribute('opacity',c);$('cert').setAttribute('transform',`translate(0 ${(1-c)*260})`);"
-                 "if(t>=%d&&!window.BURST){const r=$('cert').getBoundingClientRect();window.BURST={t:%d,x:r.left+r.width/2,y:r.top+r.height/3};}};") % (T_S+250, T_S, T_S+650, T_S+650)
+                 "const TX='ビジネス英語実務検定',n=Math.max(0,Math.min(TX.length,Math.floor((t-%d)/85)));$('ctext').textContent=TX.slice(0,n);$('ccur').setAttribute('opacity',(t>%d&&n<TX.length&&Math.floor(t/250)%%2)?1:0);if(n>0){const bb=$('ctext').getBBox();$('ccur').setAttribute('x',bb.x+bb.width+2);}"
+                 "if(t>=%d&&!window.BURST){const r=$('cert').getBoundingClientRect();window.BURST={t:%d,x:r.left+r.width/2,y:r.top+r.height/3};}};") % (T_S+250, T_S, T_S+750, T_S+700, T_S+650, T_S+650)
         return '<div class="figp">' + prob + sol + fig + '</div>' + end_screen(v["platform"], T_E, v.get("end_lead", "あなたのビジネス英語力を、<br>確かな資格に。")), hooks
     return prob + sol + end_screen(v["platform"], T_E, v.get("end_lead", "あなたのビジネス英語力を、<br>確かな資格に。")), ''
 
