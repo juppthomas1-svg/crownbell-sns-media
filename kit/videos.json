@@ -1,0 +1,30 @@
+[
+{"file":"01_はじめまして","scenes":[
+ {"type":"hook","tag":"はじめまして","h":"仕事で使う<br>英語の力、<br><em>30分</em>で<br>確かめませんか？"},
+ {"type":"bullets","title":"ビジネス英語実務検定","items":["3級・2級・1級の3レベル","24時間いつでも<br>スマホ・PCで受験","合格証（PDF）は<br>最短で受験当日","履歴書の資格欄に<br>書けます"],"note":"※国際ビジネス言語認定協会が認定する民間資格です"},
+ {"type":"cta","big":"毎日1問、<br>ビジネス英語クイズ<br>出していきます"}]},
+{"file":"02_お先に失礼します","scenes":[
+ {"type":"hook","tag":"ビジネス英語 1問クイズ","h":"「お先に<br>失礼します」<br>って<br><em>英語で言える？</em>"},
+ {"type":"quiz","q":"定時になって、先に帰るとき。<br>いちばん自然なのは？","opts":["I'm heading out. See you tomorrow!","I'm going first. Sorry.","Excuse me, I'm leaving you."],"ans":0,"ex":"<b>head out</b> = 出発する・帰る<br>日本語の「お先に失礼します」は、<br>英語では明るく「また明日！」でOK。"},
+ {"type":"cta"}]},
+{"file":"03_I_want_はキケン","scenes":[
+ {"type":"hook","tag":"その英語、大丈夫？","h":"上司に<br><em>“I want…”</em><br>って<br>言ってない？"},
+ {"type":"ngok","q":"木曜までに報告書がほしいとき","ng":"I want the report by Thursday.","ok":"Could I have the report by Thursday?","ex":"<b>I want</b> は「〜がほしい！」と<br>子どもっぽく強く聞こえることも。<br><b>Could I have…?</b> で丁寧なお願いに。"},
+ {"type":"cta"}]},
+{"file":"04_面接で強みを聞かれたら","scenes":[
+ {"type":"hook","tag":"英語面接 1問クイズ","h":"<em>“What are your<br>strengths?”</em><br>どう答える？"},
+ {"type":"quiz","q":"英語面接で「あなたの強みは？」<br>いちばん良い答え方は？","opts":["I'm good at planning. In my club, I organized a 50-person event.","I don't have any special strengths.","My strengths are many and various."],"ans":0,"ex":"強み＋<b>具体的なエピソード</b>がセット。<br>数字（50人）を入れると<br>ぐっと伝わりやすくなる。"},
+ {"type":"cta"}]},
+{"file":"05_オンライン会議フレーズ3選","scenes":[
+ {"type":"hook","tag":"保存して使える","h":"オンライン会議で<br>使える英語<br><em>3選</em>"},
+ {"type":"list","title":"オンライン会議フレーズ","items":[["Let me share my screen.","画面を共有しますね"],["Just to clarify, ...","確認ですが、…"],["Can I add something?","ひとつ付け加えてもいいですか？"]]},
+ {"type":"cta"}]},
+{"file":"06_look_after_look_up_to","scenes":[
+ {"type":"hook","tag":"ビジネス英語 1問クイズ","h":"<em>look</em> のあとの<br>1語で<br>意味が<br>ぜんぜん違う"},
+ {"type":"quiz","q":"「来週、新人の<b>面倒を見て</b>くれる？」<br>___ に入るのは？<br><span style=\"color:#f3d27a\">Can you look ___ the new staff next week?</span>","opts":["after","up to","for"],"ans":0,"ex":"<b>look after</b> = 面倒を見る<br><b>look up to</b> = 尊敬する<br><b>look for</b> = 探す"},
+ {"type":"cta"}]},
+{"file":"07_あなたは何級","scenes":[
+ {"type":"hook","tag":"ビジネス英語実務検定","h":"あなたに<br>合うのは<br><em>何級？</em>"},
+ {"type":"list","title":"級の目安","items":[["3級　30分・30問","英語の仕事に慣れていない方・社会人1年目まで"],["2級　40分・40問","仕事で英語のメールや資料を扱う方"],["1級　50分・50問","交渉・提案・報告などを英語で担当する方"]]},
+ {"type":"cta","big":"迷ったら<br>3級から<br>はじめよう"}]}
+]
