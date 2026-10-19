@@ -115,7 +115,51 @@ canvas{position:absolute;inset:0}
 .ev h2 em{font-style:normal;color:#e3c47c}
 .ev .cap{margin-top:40px;font-size:30px;color:rgba(244,239,226,.65);text-align:center}
 .btn2{border:2px solid #e3c47c;padding:30px 60px;font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:48px;background:rgba(227,196,124,.1)}
+
+.figwrap{position:absolute;left:170px;right:170px;bottom:150px}
+.figwrap svg{width:100%;display:block}
+.figp .prob{top:250px}.figp .sol{top:250px}
+.figp .prob .pline{font-size:52px;padding:22px 0}
+.cert-mini{position:absolute;right:90px;bottom:330px;width:300px;height:220px;background:linear-gradient(160deg,#fdfaf1,#efe6cf);box-shadow:0 20px 60px rgba(0,0,0,.5);transform:rotate(-6deg)}
+.cert-mini:before{content:"";position:absolute;inset:10px;border:2px solid #b8954a}
+.cert-mini b{position:absolute;left:0;right:0;top:60px;text-align:center;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:44px;letter-spacing:.3em;color:#0a1a3d}
+.cert-mini i{position:absolute;left:40px;right:40px;top:130px;height:2px;background:#c9a85c;box-shadow:0 18px 0 #d8c69a,0 36px 0 #d8c69a}
 '''
+
+FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
+<defs>
+ <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c3768"/><stop offset="1" stop-color="#0a1a3d"/></linearGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b4a80"/><stop offset="1" stop-color="#132b5e"/></linearGradient>
+ <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#e3c47c" stop-opacity=".28"/><stop offset="1" stop-color="#e3c47c" stop-opacity="0"/></radialGradient>
+ <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+ <mask id="m"><rect width="600" height="640" fill="url(#fade)"/></mask>
+</defs>
+<ellipse id="figglow" cx="300" cy="300" rx="420" ry="420" fill="url(#glow)" opacity="0"/>
+<g mask="url(#m)" stroke="#d9b866" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+ <!-- jacket -->
+ <path d="M40 640 C46 520 92 452 190 424 L248 404 L300 470 L352 404 L410 424 C508 452 554 520 560 640 Z" fill="url(#suit)"/>
+ <!-- shirt -->
+ <path d="M248 404 L300 470 L352 404 L340 392 L300 412 L260 392 Z" fill="#e9e1cc" stroke-width="1.6"/>
+ <path d="M262 420 L300 470 L338 420 L320 560 L300 600 L280 560 Z" fill="#e9e1cc" stroke="none"/>
+ <!-- tie -->
+ <path d="M290 418 L310 418 L316 440 L326 580 L300 612 L274 580 L284 440 Z" fill="#0a1a3d" stroke-width="1.8"/>
+ <path d="M290 418 L310 418 L316 440 L284 440 Z" fill="#132b5e" stroke-width="1.8"/>
+ <!-- lapels -->
+ <path d="M248 404 L226 430 L262 470 L238 500 L300 600" fill="none"/>
+ <path d="M352 404 L374 430 L338 470 L362 500 L300 600" fill="none"/>
+ <!-- pocket square -->
+ <path d="M410 505 L452 500 L455 512 L413 517 Z" fill="#c9a85c" stroke-width="1.4"/>
+ <!-- neck -->
+ <path d="M266 330 L266 392 L300 412 L334 392 L334 330" fill="url(#skin)"/>
+ <!-- head -->
+ <path d="M300 92 C356 92 392 136 392 200 C392 270 352 336 300 340 C248 336 208 270 208 200 C208 136 244 92 300 92 Z" fill="url(#skin)"/>
+ <!-- hair -->
+ <path d="M206 206 C196 128 240 70 306 72 C372 74 410 124 398 206 C390 170 372 146 348 136 C320 150 270 152 238 140 C222 156 212 178 206 206 Z" fill="#0a1a3d"/>
+ <!-- ears -->
+ <path d="M210 196 C196 194 194 236 214 240" fill="url(#skin)" stroke-width="1.8"/>
+ <path d="M390 196 C404 194 406 236 386 240" fill="url(#skin)" stroke-width="1.8"/>
+</g>
+</svg>'''
 
 JS = r'''
 const W=1080,H=1920,cv=document.getElementById('cv'),cx=cv.getContext('2d');cv.width=W;cv.height=H;
@@ -196,6 +240,12 @@ def promo(v):
            f'<div class="kicker a" data-in="{T_S+50}">{E(v["sol_kicker"])}</div>'
            f'<h2 class="a" data-in="{T_S+150}" data-d="550">{v["sol"]}</h2>'
            f'<div class="note a" data-in="{T_S+500}">{v["sol_note"]}</div><div class="facts">{facts}</div></div></div>')
+    if v.get("figure"):
+        fig = (f'<div class="figwrap" data-in="-1000" data-out="{T_E}" data-d="300">{FIG}</div>'
+               f'<div class="cert-mini a" data-in="{T_S+700}" data-out="{T_E}"><b>合格証</b><i></i></div>')
+        hooks = (f'window.HOOKS=function(t){{const g=document.getElementById("figglow");if(g)g.setAttribute("opacity",cl((t-{T_S})/700));'
+                 f'const f=document.getElementById("fig");if(f)f.style.filter="brightness("+(0.55+0.45*cl((t-{T_S})/700))+")";}};')
+        return '<div class="figp">' + prob + sol + fig + '</div>' + end_screen(v["platform"], T_E, v.get("end_lead", "あなたのビジネス英語力を、<br>確かな資格に。")), hooks
     return prob + sol + end_screen(v["platform"], T_E, v.get("end_lead", "あなたのビジネス英語力を、<br>確かな資格に。")), ''
 
 
