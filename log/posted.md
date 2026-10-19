@@ -10,11 +10,11 @@
 - 2026-10-19 21:00｜TikTok｜w1_01_tt_on_my_plate
 - 2026-10-19 21:00｜Instagram｜w1_02_ig_otsukare
 - 2026-10-20 07:30｜TikTok｜w1_03_tt_eod
-- 2026-10-20 21:00｜Instagram｜w1_04_ig_otetsudai
+- 2026-10-20 07:50｜Instagram｜w1_04_ig_otetsudai
 - 2026-10-21 07:30｜TikTok｜w1_05_tt_promo_shorui
-- 2026-10-21 21:00｜Instagram｜w1_06_ig_shoshou
+- 2026-10-21 07:30｜Instagram｜w1_06_ig_shoshou
 - 2026-10-22 07:30｜TikTok｜w1_07_tt_circle_back
-- 2026-10-22 21:00｜Instagram｜w1_08_ig_promo_rirekisho
+- 2026-10-22 07:30｜Instagram｜w1_08_ig_promo_rirekisho
 - 2026-10-19 手動｜X｜x01_elaborate（Could you elaborate?）
 - 2026-10-19 手動｜X｜x02_fyi（FYI）
 - 2026-10-20 手動｜X｜x03_fig_promo（人物入り宣伝）
