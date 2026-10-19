@@ -129,35 +129,46 @@ canvas{position:absolute;inset:0}
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
 <defs>
  <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c3768"/><stop offset="1" stop-color="#0a1a3d"/></linearGradient>
- <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b4a80"/><stop offset="1" stop-color="#132b5e"/></linearGradient>
- <radialGradient id="glow" cx=".5" cy=".35" r=".6"><stop offset="0" stop-color="#e3c47c" stop-opacity=".28"/><stop offset="1" stop-color="#e3c47c" stop-opacity="0"/></radialGradient>
- <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".72" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
- <mask id="m"><rect width="600" height="640" fill="url(#fade)"/></mask>
+ <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f5088"/><stop offset="1" stop-color="#16305f"/></linearGradient>
+ <radialGradient id="glow" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#e3c47c" stop-opacity=".34"/><stop offset="1" stop-color="#e3c47c" stop-opacity="0"/></radialGradient>
+ <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".74" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+ <mask id="m" maskUnits="userSpaceOnUse" x="-300" y="-300" width="1200" height="940"><rect x="-300" y="-300" width="1200" height="940" fill="url(#fade)"/></mask>
 </defs>
-<ellipse id="figglow" cx="300" cy="300" rx="420" ry="420" fill="url(#glow)" opacity="0"/>
+<ellipse id="figglow" cx="300" cy="300" rx="430" ry="430" fill="url(#glow)" opacity="0"/>
+<g id="qs" fill="#c9a85c" font-family="Noto Serif CJK JP" font-weight="700">
+ <text id="q1" x="150" y="120" font-size="64">?</text><text id="q2" x="430" y="90" font-size="48">?</text><text id="q3" x="470" y="200" font-size="36">?</text>
+</g>
 <g mask="url(#m)" stroke="#d9b866" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
- <!-- jacket -->
- <path d="M40 640 C46 520 92 452 190 424 L248 404 L300 470 L352 404 L410 424 C508 452 554 520 560 640 Z" fill="url(#suit)"/>
- <!-- shirt -->
- <path d="M248 404 L300 470 L352 404 L340 392 L300 412 L260 392 Z" fill="#e9e1cc" stroke-width="1.6"/>
- <path d="M262 420 L300 470 L338 420 L320 560 L300 600 L280 560 Z" fill="#e9e1cc" stroke="none"/>
- <!-- tie -->
- <path d="M290 418 L310 418 L316 440 L326 580 L300 612 L274 580 L284 440 Z" fill="#0a1a3d" stroke-width="1.8"/>
- <path d="M290 418 L310 418 L316 440 L284 440 Z" fill="#132b5e" stroke-width="1.8"/>
- <!-- lapels -->
- <path d="M248 404 L226 430 L262 470 L238 500 L300 600" fill="none"/>
- <path d="M352 404 L374 430 L338 470 L362 500 L300 600" fill="none"/>
- <!-- pocket square -->
- <path d="M410 505 L452 500 L455 512 L413 517 Z" fill="#c9a85c" stroke-width="1.4"/>
- <!-- neck -->
- <path d="M266 330 L266 392 L300 412 L334 392 L334 330" fill="url(#skin)"/>
- <!-- head -->
- <path d="M300 92 C356 92 392 136 392 200 C392 270 352 336 300 340 C248 336 208 270 208 200 C208 136 244 92 300 92 Z" fill="url(#skin)"/>
- <!-- hair -->
- <path d="M206 206 C196 128 240 70 306 72 C372 74 410 124 398 206 C390 170 372 146 348 136 C320 150 270 152 238 140 C222 156 212 178 206 206 Z" fill="#0a1a3d"/>
- <!-- ears -->
- <path d="M210 196 C196 194 194 236 214 240" fill="url(#skin)" stroke-width="1.8"/>
- <path d="M390 196 C404 194 406 236 386 240" fill="url(#skin)" stroke-width="1.8"/>
+ <g id="body">
+  <path d="M40 640 C46 520 92 452 190 424 L248 404 L300 470 L352 404 L410 424 C508 452 554 520 560 640 Z" fill="url(#suit)"/>
+  <path d="M248 404 L300 470 L352 404 L340 392 L300 412 L260 392 Z" fill="#e9e1cc" stroke-width="1.6"/>
+  <path d="M262 420 L300 470 L338 420 L320 560 L300 600 L280 560 Z" fill="#e9e1cc" stroke="none"/>
+  <path d="M290 418 L310 418 L316 440 L326 580 L300 612 L274 580 L284 440 Z" fill="#0a1a3d" stroke-width="1.8"/>
+  <path d="M290 418 L310 418 L316 440 L284 440 Z" fill="#132b5e" stroke-width="1.8"/>
+  <path d="M248 404 L226 430 L262 470 L238 500 L300 600" fill="none"/>
+  <path d="M352 404 L374 430 L338 470 L362 500 L300 600" fill="none"/>
+  <path d="M410 505 L452 500 L455 512 L413 517 Z" fill="#c9a85c" stroke-width="1.4"/>
+  <path d="M266 330 L266 392 L300 412 L334 392 L334 330" fill="url(#skin)"/>
+ </g>
+ <g id="head">
+  <path d="M300 92 C356 92 392 136 392 200 C392 270 352 336 300 340 C248 336 208 270 208 200 C208 136 244 92 300 92 Z" fill="url(#skin)"/>
+  <path d="M206 206 C196 128 240 70 306 72 C372 74 410 124 398 206 C390 170 372 146 348 136 C320 150 270 152 238 140 C222 156 212 178 206 206 Z" fill="#0a1a3d"/>
+  <path d="M210 196 C196 194 194 236 214 240" fill="url(#skin)" stroke-width="1.8"/>
+  <path d="M390 196 C404 194 406 236 386 240" fill="url(#skin)" stroke-width="1.8"/>
+  <g fill="none" stroke="#e9d6a0" stroke-width="5">
+   <path id="bl"/><path id="br"/><path id="mo" stroke-width="4.5"/>
+  </g>
+  <ellipse id="el" cx="264" cy="236" rx="7" ry="3" fill="#e9d6a0" stroke="none"/>
+  <ellipse id="er" cx="336" cy="236" rx="7" ry="3" fill="#e9d6a0" stroke="none"/>
+ </g>
+ <g id="cert" opacity="0"><g transform="translate(0 -46)">
+  <rect x="196" y="452" width="208" height="150" fill="#fbf7ec" stroke="#b8954a" stroke-width="3"/>
+  <rect x="206" y="462" width="188" height="130" fill="none" stroke="#c9a85c" stroke-width="1.2"/>
+  <text x="300" y="512" text-anchor="middle" font-family="Noto Serif CJK JP" font-weight="900" font-size="34" fill="#0a1a3d" stroke="none" letter-spacing="6">合格証</text>
+  <path d="M232 540 H368 M232 556 H368 M232 572 H330" stroke="#d8c69a" stroke-width="2"/>
+  <circle cx="372" cy="575" r="12" fill="#c9a85c" stroke="none"/>
+  <ellipse cx="200" cy="590" rx="26" ry="20" fill="url(#skin)"/><ellipse cx="400" cy="590" rx="26" ry="20" fill="url(#skin)"/></g>
+ </g>
 </g>
 </svg>'''
 
@@ -242,9 +253,19 @@ def promo(v):
            f'<div class="note a" data-in="{T_S+500}">{v["sol_note"]}</div><div class="facts">{facts}</div></div></div>')
     if v.get("figure"):
         fig = (f'<div class="figwrap" data-in="-1000" data-out="{T_E}" data-d="300">{FIG}</div>'
-               f'<div class="cert-mini a" data-in="{T_S+700}" data-out="{T_E}"><b>合格証</b><i></i></div>')
-        hooks = (f'window.HOOKS=function(t){{const g=document.getElementById("figglow");if(g)g.setAttribute("opacity",cl((t-{T_S})/700));'
-                 f'const f=document.getElementById("fig");if(f)f.style.filter="brightness("+(0.55+0.45*cl((t-{T_S})/700))+")";}};')
+               '')
+        hooks = ("window.HOOKS=function(t){const p=ease(cl((t-%d)/900)),L=(a,b)=>a+(b-a)*p,$=i=>document.getElementById(i);"
+                 "if(!$('fig'))return;"
+                 "$('figglow').setAttribute('opacity',p);$('fig').style.filter='brightness('+L(.55,1.05)+')';"
+                 "$('head').setAttribute('transform',`translate(0 ${L(26,-8)}) rotate(${L(-7,0)} 300 330)`);"
+                 "$('body').setAttribute('transform',`translate(0 ${L(10,-6)}) scale(1 ${L(.975,1.01)})`);"
+                 "$('bl').setAttribute('d',`M246 ${L(212,198)} Q266 ${L(204,186)} 284 ${L(196,196)}`);"
+                 "$('br').setAttribute('d',`M354 ${L(212,198)} Q334 ${L(204,186)} 316 ${L(196,196)}`);"
+                 "$('mo').setAttribute('d',`M280 ${L(292,286)} Q300 ${L(280,304)} 320 ${L(292,286)}`);"
+                 "$('el').setAttribute('ry',L(2.5,6.5));$('er').setAttribute('ry',L(2.5,6.5));"
+                 "const w=Math.sin(t/400);['q1','q2','q3'].forEach((q,i)=>{const e=$(q);e.setAttribute('opacity',(1-p)*(.55+.2*Math.sin(t/300+i)));e.setAttribute('transform',`translate(0 ${Math.sin(t/500+i*2)*8})`)});"
+                 "const c=ease(cl((t-%d)/700));$('cert').setAttribute('opacity',c);$('cert').setAttribute('transform',`translate(0 ${(1-c)*260})`);"
+                 "if(t>=%d&&!window.BURST){const r=$('cert').getBoundingClientRect();window.BURST={t:%d,x:r.left+r.width/2,y:r.top+r.height/3};}};") % (T_S+250, T_S, T_S+650, T_S+650)
         return '<div class="figp">' + prob + sol + fig + '</div>' + end_screen(v["platform"], T_E, v.get("end_lead", "あなたのビジネス英語力を、<br>確かな資格に。")), hooks
     return prob + sol + end_screen(v["platform"], T_E, v.get("end_lead", "あなたのビジネス英語力を、<br>確かな資格に。")), ''
 
