@@ -135,10 +135,10 @@ def end_screen(platform, t0, lead):
 def quiz(v):
     T_Q, T_A, T_E = 2100, 5600, 7700
     L = "ABC"
-    hook = (f'<div class="sc" data-in="0" data-out="{T_Q}" data-d="250"><div class="hook">'
-            f'<div class="a" data-in="0" data-d="300">{brand()}</div>'
-            f'<div class="kicker a" data-in="120">{E(v["kicker"])}</div>'
-            f'<h1 class="a" data-in="220" data-d="500">{v["hook"]}</h1></div></div>')
+    hook = (f'<div class="sc" data-in="-1000" data-out="{T_Q}" data-d="250"><div class="hook">'
+            f'<div class="a" data-in="-1000">{brand()}</div>'
+            f'<div class="kicker a" data-in="-1000">{E(v["kicker"])}</div>'
+            f'<h1 class="a" data-in="-1000">{v["hook"]}</h1></div></div>')
     opts_q = ''.join(f'<div class="opt a" data-in="{T_Q+200+j*110}"><b>{L[j]}</b><span>{E(o)}</span></div>' for j, o in enumerate(v["opts"]))
     q = (f'<div class="sc" data-in="{T_Q}" data-out="{T_E}" data-d="300">'
          f'<div class="mini"><span>ビジネス英語実務検定</span><b>QUESTION</b></div><div class="qwrap">'
@@ -157,10 +157,10 @@ def quiz(v):
 
 def promo(v):
     T_S, T_E = 3000, 6800
-    lines = ''.join(f'<div class="pline a" data-in="{350+j*550}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
-    prob = (f'<div class="sc" data-in="0" data-out="{T_S}" data-d="250"><div class="prob">'
-            f'<div class="a" data-in="0" data-d="300">{brand()}</div>'
-            f'<div class="kicker a" data-in="120">{E(v["kicker"])}</div>{lines}</div></div>')
+    lines = ''.join(f'<div class="pline a" data-in="-1000"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
+    prob = (f'<div class="sc" data-in="-1000" data-out="{T_S}" data-d="250"><div class="prob">'
+            f'<div class="a" data-in="-1000">{brand()}</div>'
+            f'<div class="kicker a" data-in="-1000">{E(v["kicker"])}</div>{lines}</div></div>')
     facts = ''.join(f'<div class="fact a" data-in="{T_S+900+j*150}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
     sol = (f'<div class="sc" data-in="{T_S}" data-out="{T_E}" data-d="300"><div class="mini"><span>ビジネス英語実務検定</span><b>SOLUTION</b></div><div class="sol">'
            f'<div class="kicker a" data-in="{T_S+50}">{E(v["sol_kicker"])}</div>'
