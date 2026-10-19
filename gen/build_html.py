@@ -160,6 +160,9 @@ canvas{position:absolute;inset:0}
 .safe .figwrap{left:130px;right:290px;bottom:470px}
 .safe .figp .prob,.safe .figp .sol{top:230px}
 .safe .foot{display:none}
+.qfig{left:300px;right:300px;bottom:520px}
+.safe .qfig{left:260px;right:340px;bottom:480px}
+.figp .hook{top:300px}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -277,6 +280,15 @@ def quiz(v):
              f'const os=document.querySelectorAll("#opts .opt");os.forEach((o,j)=>{{o.classList.toggle("ok",t>={T_A}&&j=={v["ans"]});o.classList.toggle("ng",t>={T_A}&&j!={v["ans"]});}});'
              f'if(t>={T_A}&&!window.BURST){{const r=os[{v["ans"]}].getBoundingClientRect();window.BURST={{t:{T_A},x:r.left+r.width/2,y:r.top+r.height/2}};}}}};')
     lead = "書類選考で苦戦していませんか？<br>資格欄、空白のままになっていませんか？"
+    if v.get("figure"):
+        fig = f'<div class="figwrap qfig" data-in="-1000" data-out="{T_Q}" data-d="250">{FIG}</div>'
+        hooks += ("(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);const $=i=>document.getElementById(i);if(!$('fig'))return;"
+                  "const sw=Math.sin(t/600);$('fig').style.filter='brightness(.8)';"
+                  "$('head').setAttribute('transform',`translate(0 14) rotate(${-8+sw*3} 300 330)`);"
+                  "$('bl').setAttribute('d','M246 206 Q266 198 284 192');$('br').setAttribute('d','M354 200 Q334 196 316 198');"
+                  "$('mo').setAttribute('d','M284 292 Q300 290 316 288');$('el').setAttribute('ry',5);$('er').setAttribute('ry',5);"
+                  "['q1','q2','q3'].forEach((q,i)=>{const e=$(q);e.setAttribute('opacity',.75);e.setAttribute('transform',`translate(0 ${Math.sin(t/450+i*2)*10})`)});}})();")
+        return '<div class="figp">' + hook + fig + '</div>' + q + end_screen(v["platform"], T_E, lead), hooks
     return hook + q + end_screen(v["platform"], T_E, lead), hooks
 
 def promo(v):
