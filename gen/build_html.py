@@ -129,6 +129,37 @@ canvas{position:absolute;inset:0}
 .story .figp .prob{top:300px}.story .figp .sol{top:300px}.story .sol h2{margin:24px 0 18px;font-size:88px}.story .sol .note{margin-bottom:30px}
 .story .end{top:300px}
 .story .mini{display:none}
+
+/* TikTok/Instagram の画面に重なる場所（上の検索バー・右のボタン・下の投稿文）を避ける */
+.safe .mini{display:none}
+.safe .hook{left:80px;right:190px;top:430px}
+.safe .hook h1{font-size:86px}
+.safe .qwrap{left:70px;right:190px;top:220px}
+.safe .band{font-size:30px;margin-bottom:34px}.safe .band span+span{font-size:26px}
+.safe .qtext{font-size:48px;margin-bottom:30px}.safe .qtext .en{font-size:54px}
+.safe .opt{font-size:40px;padding:24px 28px;margin-bottom:18px;gap:24px}
+.safe .opt b{width:62px;height:62px;font-size:34px}
+.safe .timer{margin-top:22px}.safe .cnum{font-size:96px}
+.safe .ex{margin-top:26px;font-size:36px}
+.safe .prob{left:70px;right:190px;top:300px}
+.safe .pline{font-size:46px;padding:22px 0}
+.safe .pline i{width:48px;height:48px}.safe .pline i:after{left:11px;top:1px;width:15px;height:30px}
+.safe .sol{left:70px;right:190px;top:260px}
+.safe .sol h2{font-size:80px}
+.safe .sol .note{font-size:28px;margin-bottom:30px}
+.safe .facts{gap:12px}.safe .fact{padding:22px 8px}.safe .fact .v{font-size:36px}.safe .fact .v small{font-size:24px}.safe .fact .k{font-size:18px}
+.safe .end{left:60px;right:180px;top:200px}
+.safe .end .brand{margin-bottom:26px}.safe .brand img{width:96px;height:96px}.safe .brand .n{font-size:42px}.safe .brand .n small{font-size:26px}
+.safe .end .lead{font-size:34px;margin-bottom:16px}
+.safe .end h3{font-size:96px;margin:8px 0 20px}
+.safe .chips{gap:10px;margin-bottom:26px}.safe .chips span{font-size:28px;padding:8px 14px}
+.safe .card{padding:24px 26px;gap:24px}.safe .card img{width:220px;height:220px}
+.safe .card .t{font-size:28px}.safe .card .t .s{font-size:24px}.safe .card .t .url{font-size:22px}
+.safe .btn{font-size:42px;padding:24px 40px}.safe .srch{font-size:30px}
+.safe .fine{margin-top:24px;font-size:22px}
+.safe .figwrap{left:130px;right:290px;bottom:470px}
+.safe .figp .prob,.safe .figp .sol{top:230px}
+.safe .foot{display:none}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -319,7 +350,7 @@ def ad(v):
 def build(v, outdir):
     body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else ""}">'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe" if v["platform"] in ("tt","ig") else ""}">'
            f'<canvas id="cv"></canvas><div class="vig"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')

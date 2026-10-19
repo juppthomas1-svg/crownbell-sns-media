@@ -31,6 +31,8 @@
 ## 3. 動画を作る
 - content/ に新しい JSON を作る（形式は content/week1.json と同じ。kind=quiz|promo、platform=tt|ig）。
 - `bash gen/make.sh content/<新しいファイル>.json` → videos/<id>.mp4（10秒・60fps・音あり）と表紙ができる。
+- TikTok・インスタ用（platform が tt / ig）は自動で「safe」配置になる。上160px・右170px・下470px は TikTok/インスタのボタンや投稿文が重なる場所なので、大事な文字・QR・人物の顔や合格証が入っていないか必ず確認する（gen/ttmask.py（使い方: python3 -I gen/ttmask.py 出力.png コマ1.png コマ2.png ...） と同じように赤くぬって確認するとよい）。
+- コマの書き出しは node gen/snap.js <作業フォルダ> <id> 0 1600 4000 6300 9000（gen フォルダの中で実行）
 - 全部の動画で、0秒（表紙。最初から文字が全部見えていること）・1.6秒・4秒・6.3秒・9秒のコマを書き出して目で見る。文字のはみ出し・折り返しの崩れ・重なりがあれば直して作り直す。
 - git add → commit → push（videos/ と content/ と log/）。
 
