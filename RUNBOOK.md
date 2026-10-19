@@ -36,9 +36,9 @@
 ## 4. Metricool に予約する
 - media は `https://raw.githubusercontent.com/juppthomas1-svg/crownbell-sns-media/main/videos/<id>.mp4`
 - TikTok：tiktokData に title（20字以内の見出し）、privacyOption は PUBLIC_TO_EVERYONE、commercialContentOwnBrand は true、isAigc は false。
-  firstCommentText は **URLだけ**：https://crownbell-kentei.netlify.app/tiktok （rules/00 参照。コメントが付けられないとわかった場合は rules/00 の指示に従う）
+  firstCommentText は使わない（TikTok には付かない）。本文の最後の行に URL だけ：https://crownbell-kentei.netlify.app/tiktok
 - インスタ：instagramData の type は REEL、videoCoverMilliseconds は 1600。本文は「プロフィールのリンクから」で締める。
-- 本文 = caption + 改行 + tags（ハッシュタグ3〜5個）。
+- 本文 = caption + 改行 + tags（ハッシュタグ3〜5個）。TikTok はさらに改行 + caption_tail（URLだけの行）。
 - 予約したら log/posted.md に「日付 時刻｜SNS｜id｜ネタ」を1行ずつ足して push。
 
 ## 5. オーナーに報告（SendUserMessage で。短く、関西弁で）

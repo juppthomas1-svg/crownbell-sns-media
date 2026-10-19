@@ -78,6 +78,7 @@ canvas{position:absolute;inset:0}
 .card img{width:300px;height:300px;image-rendering:pixelated}
 .card .t{white-space:nowrap;font-size:34px;line-height:1.6;font-weight:700}
 .card .t b{color:#9a7428}
+.card .t .url{display:inline-block;margin-top:14px;font-family:'Inter';font-weight:700;font-size:30px;color:#0a1a3d;border-top:1.5px solid #c9a85c;padding-top:12px}
 .card .t .s{font-size:30px;font-weight:500;color:#33405e}
 .btn{border:2px solid #e3c47c;padding:30px 70px;font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:52px;letter-spacing:.06em;margin-bottom:28px;background:rgba(227,196,124,.08)}
 .srch{font-size:36px;color:rgba(244,239,226,.85)}
@@ -115,8 +116,8 @@ def end_screen(platform, t0, lead):
             '※国際ビジネス言語認定協会が認定する民間資格です')
     if platform == "tt":
         how = ('<div class="card a" data-in="%d"><img src="qr.png"><div class="t">無料お試しは<br>'
-               '<b>「ビジネス英語実務検定」</b><br>で検索<br><span class="s">またはコメント欄のリンクをコピー<br>'
-               'またはQRをスクショ → 長押し</span></div></div>') % (t0 + 450)
+               '<b>「ビジネス英語実務検定」</b><br>で検索<br><span class="s">またはQRをスクショ → 長押し</span><br>'
+               '<span class="url">crownbell-kentei.netlify.app/tiktok</span></div></div>') % (t0 + 450)
     else:
         how = ('<div class="a" data-in="%d"><div class="btn">プロフィールのリンクから</div>'
                '<div class="srch">または <b>「ビジネス英語実務検定」</b> で検索</div></div>') % (t0 + 450)
