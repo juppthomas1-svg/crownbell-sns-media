@@ -31,11 +31,11 @@
 ## 3. 動画を作る
 - content/ に新しい JSON を作る（形式は content/week1.json と同じ。kind=quiz|promo、platform=tt|ig）。
 - `bash gen/make.sh content/<新しいファイル>.json` → videos/<id>.mp4（10秒・60fps・音あり）と表紙ができる。
-- 全部の動画で、1.6秒・4秒・6.3秒・9秒のコマを書き出して目で見る。文字のはみ出し・折り返しの崩れ・重なりがあれば直して作り直す。
+- 全部の動画で、0秒（表紙。最初から文字が全部見えていること）・1.6秒・4秒・6.3秒・9秒のコマを書き出して目で見る。文字のはみ出し・折り返しの崩れ・重なりがあれば直して作り直す。
 - git add → commit → push（videos/ と content/ と log/）。
 
 ## 4. Metricool に予約する
-- media は `https://raw.githubusercontent.com/juppthomas1-svg/crownbell-sns-media/main/videos/<id>.mp4`
+- media は `https://raw.githubusercontent.com/juppthomas1-svg/crownbell-sns-media/main/videos/<id>.mp4`（作り直した動画は同じ名前だと古いのが使われることがあるので、<id>_v2.mp4 のように新しい名前で置く）
 - TikTok：tiktokData に title（20字以内の見出し）、privacyOption は PUBLIC_TO_EVERYONE、commercialContentOwnBrand は true、isAigc は false。
   firstCommentText は使わない（TikTok には付かない）。本文の最後の行に URL だけ：https://crownbell-kentei.netlify.app/tiktok
 - インスタ：instagramData の type は REEL、videoCoverMilliseconds は 1600。本文は「プロフィールのリンクから」で締める。
