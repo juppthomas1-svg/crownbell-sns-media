@@ -198,6 +198,19 @@ canvas{position:absolute;inset:0}
 .light .foot{color:#a07c34;border-color:rgba(184,149,74,.5)}
 .light .tgt{background:#c8102e;color:#fff}
 .light .band{background:#0f2a5c;color:#f7f1e1}.light .band span+span{border-color:rgba(247,241,225,.3)}
+
+/* リール広告：下のボタン・投稿文（約640px）と右のボタンを避ける。さらに明るく */
+.reelad .figwrap{left:250px;right:400px;bottom:600px}
+.reelad .figp .prob,.reelad .figp .sol{top:170px}
+.reelad .tgt{margin-top:28px;font-size:56px;padding:10px 28px}
+.reelad .tgt+.kicker{margin-top:20px!important;margin-bottom:20px!important}
+.reelad .pline{font-size:42px;padding:13px 0}
+.reelad .sol h2{font-size:76px;margin:24px 0 16px}
+.reelad .end{top:170px}
+.reelad .end h3{font-size:88px}
+.reelad .fine{font-size:20px;margin-top:16px}
+.reelad.light{background:radial-gradient(120% 80% at 70% 15%,#ffffff 0%,#fffdf8 50%,#f7f1e4 100%)}
+.reelad.light .vig{display:none}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -277,7 +290,7 @@ def end_screen(platform, t0, lead):
         how = ('<div class="card a" data-in="%d"><img src="qr.png"><div class="t">無料お試しは<br>'
                '<b>「ビジネス英語実務検定」</b><br>で検索<br><span class="s">またはQRをスクショ → 長押し</span><br>'
                '<span class="url">crownbell-kentei.netlify.app/tiktok</span></div></div>') % (t0 + 450)
-    elif platform == "igad":
+    elif platform in ("igad", "igreel"):
         how = ('<div class="a" data-in="%d"><div class="btn">下の「詳しくはこちら」から</div>'
                '<div class="srch">または <b>「ビジネス英語実務検定」</b> で検索</div></div>') % (t0 + 450)
     elif platform == "x":
@@ -398,7 +411,7 @@ def ad(v):
 def build(v, outdir):
     body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}">'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}">'
            f'<canvas id="cv"></canvas><div class="vig"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')
