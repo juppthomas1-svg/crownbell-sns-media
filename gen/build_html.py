@@ -225,6 +225,20 @@ body{font-weight:700}
 .story .figwrap{left:160px;right:160px;bottom:330px}
 .qfig{left:250px;right:250px;bottom:260px}
 .safe .qfig{left:210px;right:300px;bottom:450px}
+
+/* 焦らせるタイマー */
+.ring{position:relative;width:200px;height:200px;flex:none}
+.ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.ring .rbg{fill:none;stroke:rgba(201,168,92,.22);stroke-width:12}
+.ring #rfg{fill:none;stroke:#e3c47c;stroke-width:12;stroke-linecap:round;stroke-dasharray:540.4;filter:drop-shadow(0 0 10px rgba(227,196,124,.7))}
+.ring .cnum{position:absolute;inset:0;width:auto;display:flex;align-items:center;justify-content:center;text-align:center;font-size:112px}
+.light .ring #rfg{stroke:#b0883a;filter:drop-shadow(0 0 8px rgba(176,136,58,.5))}
+.light .ring .rbg{stroke:rgba(15,42,92,.12)}
+.bignum{position:absolute;left:0;right:0;top:420px;text-align:center;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:1100px;line-height:1;color:rgba(227,196,124,.07);pointer-events:none}
+.light .bignum{color:rgba(15,42,92,.06)}
+.safe .ring{width:160px;height:160px}.safe .ring .cnum{font-size:88px}
+.safe .bignum{font-size:900px;top:360px;left:-90px}
+.timer{gap:30px}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -329,16 +343,16 @@ def quiz(v):
             f'<div class="kicker a" data-in="-1000">{E(v["kicker"])}</div>'
             f'<h1 class="a" data-in="-1000">{v["hook"]}</h1></div></div>')
     opts_q = ''.join(f'<div class="opt a" data-in="{T_Q+200+j*110}"><b>{L[j]}</b><span>{E(o)}</span></div>' for j, o in enumerate(v["opts"]))
-    q = (f'<div class="sc" data-in="{T_Q}" data-out="{T_E}" data-d="300">'
+    q = (f'<div class="sc" data-in="{T_Q}" data-out="{T_E}" data-d="300"><div id="bignum" class="bignum"></div>'
          f'<div class="mini"><span>ビジネス英語実務検定</span><b>QUESTION</b></div><div class="qwrap">'
          f'<div class="band a" data-in="{T_Q}"><span>無料お試し 実施中</span><span>登録なし・10問・約5分</span></div>'
          f'<div class="qtext a" data-in="{T_Q+80}">{v["q"]}</div>'
          f'<div id="opts">{opts_q}</div>'
-         f'<div id="tm" data-in="{T_Q+450}" data-out="{T_A}" data-d="250"><div class="timer"><div class="bar"><i id="bar"></i></div><div class="cnum" id="cn">3</div></div>'
+         f'<div id="tm" data-in="{T_Q+450}" data-out="{T_A}" data-d="250"><div class="timer"><div class="bar"><i id="bar"></i></div><div class="ring"><svg viewBox="0 0 200 200"><circle class="rbg" cx="100" cy="100" r="86"/><circle id="rfg" cx="100" cy="100" r="86"/></svg><div class="cnum" id="cn">3</div></div></div>'
          f'<div class="tlab">TIME LIMIT ― 回答まで</div></div>'
          f'<div class="ex a" data-in="{T_A+350}">{v["ex"]}</div></div></div>')
     hooks = (f'window.HOOKS=function(t){{const tb=document.getElementById("bar");tb.style.width=(100*(1-cl((t-{T_Q+500})/3000)))+"%";'
-             f'document.getElementById("cn").textContent=t<{T_Q+1500}?"3":t<{T_Q+2500}?"2":"1";const tt=t-{T_Q+500},f=((tt%1000)+1000)%1000/1000,on=tt>=0&&t<{T_A},last=tt>=2000;const cn=document.getElementById("cn");cn.style.transform=on?`scale(${{1+(last?.55:.38)*Math.pow(1-f,3)}})`:"none";cn.style.transformOrigin="80% 60%";const qw=document.querySelector(".qwrap");qw.style.transform="none";const pl=document.getElementById("pulse");if(pl)pl.style.opacity=on?(last?.42:.22)*Math.pow(1-f,2):0;tb.style.boxShadow=on?`0 0 ${{14+26*Math.pow(1-f,2)}}px rgba(227,196,124,${{.5+.4*Math.pow(1-f,2)}})`:"none";'
+             f'document.getElementById("cn").textContent=t<{T_Q+1500}?"3":t<{T_Q+2500}?"2":"1";const tt=t-{T_Q+500},f=((tt%1000)+1000)%1000/1000,on=tt>=0&&t<{T_A},last=tt>=2000;const cn=document.getElementById("cn");cn.style.transform=on?`scale(${{1+(last?.55:.38)*Math.pow(1-f,3)}})`:"none";cn.style.transformOrigin="50% 50%";const qw=document.querySelector(".qwrap");qw.style.transform="none";const pl=document.getElementById("pulse");if(pl)pl.style.opacity=on?Math.min(1,.18+.5*cl(tt/3000)+(last?.4:.22)*Math.pow(1-f,2)):0;const rf=document.getElementById("rfg");if(rf){{rf.style.strokeDashoffset=540.4*cl(tt/3000);rf.style.strokeWidth=last?16:12;}}const bn=document.getElementById("bignum");if(bn){{bn.textContent=on?cn.textContent:"";bn.style.transform=on?`scale(${{1.18-.18*ease(f)}})`:"none";bn.style.opacity=on?(last?1.8:1)*(.6+.4*Math.pow(1-f,2)):0;}}tb.style.boxShadow=on?`0 0 ${{14+26*Math.pow(1-f,2)}}px rgba(227,196,124,${{.5+.4*Math.pow(1-f,2)}})`:"none";'
              f'const os=document.querySelectorAll("#opts .opt");os.forEach((o,j)=>{{o.classList.toggle("ok",t>={T_A}&&j=={v["ans"]});o.classList.toggle("ng",t>={T_A}&&j!={v["ans"]});}});'
              f'if(t>={T_A}&&!window.BURST){{const r=os[{v["ans"]}].getBoundingClientRect();window.BURST={{t:{T_A},x:r.left+r.width/2,y:r.top+r.height/2}};}}}};')
     lead = "書類選考で苦戦していませんか？<br>資格欄、空白のままになっていませんか？"
