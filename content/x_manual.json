@@ -92,5 +92,26 @@
   "caption": "上司に仕事を頼まれたときの「I'm on it.」、意味はわかりますか。\n答えは動画の後半で。無料お試し（登録なし・10問・約5分）は返信欄のリンクから。",
   "tags": "#ビジネス英語 #英語クイズ",
   "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x"
+ },
+ {
+  "id": "x06_keep_you_posted",
+  "kind": "quiz",
+  "platform": "x",
+  "figure": true,
+  "theme": "light",
+  "date": "2026-10-21T07:30:00",
+  "kicker": "1日1問ビジネス英語",
+  "hook": "メールの締めの<br>定番フレーズ。<br><em>即答できますか？</em>",
+  "q": "メールの最後のひと言。<span class=\"en\">“I'll keep you posted.”</span>意味として正しいのは？",
+  "opts": [
+   "郵便でお送りします",
+   "進捗を随時お知らせします",
+   "掲示板に貼っておきます"
+  ],
+  "ans": 1,
+  "ex": "<b>keep you posted</b> ＝「随時お知らせします」。<br>進み具合を伝えるときの定番です。",
+  "caption": "メールの締めの定番「I'll keep you posted.」、意味を即答できますか。\n答えは動画の後半で。無料お試し（登録なし・10問・約5分）は返信欄のリンクから。",
+  "tags": "#ビジネス英語 #英語クイズ",
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x"
  }
 ]
