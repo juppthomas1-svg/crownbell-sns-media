@@ -110,9 +110,9 @@ def build(kind, seed):
         t = TQ + 0.5; k = 0
         # 焦らせる：チクタクを速く、最後の1秒はさらに倍速
         while t < TA - 0.02:
-            add(fx, tick(k % 2 == 0) * 1.25, t); k += 1
+            add(fx, tick(k % 2 == 0) * 2.6, t); k += 1
             t += 0.25 if t < TA - 1.0 else 0.125
-        for c in range(3): add(fx, beep(1175 + 220 * c, 0.2) * 1.3, TQ + 0.5 + c * 1.0)
+        for c in range(3): add(fx, beep(1175 + 220 * c, 0.22) * 2.4, TQ + 0.5 + c * 1.0)
         # 心臓の鼓動（ドクン、ドクン）。だんだん速く・強く
         hb = TQ + 0.5; gap = 0.5
         while hb < TA - 0.05:
@@ -128,7 +128,7 @@ def build(kind, seed):
         add(fx, bell(1568), TA); add(fx, bell(2349, 2.0, 0.09), TA + 0.02); add(fx, sparkle(), TA + 0.03)
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(1175, 2.2, 0.08), TE + 0.1)
         a, b = int((TQ + 0.4) * SR), int(TA * SR)
-        duck[a:b] = 0.4
+        duck[a:b] = 0.22
     elif kind == 'ad':
         for t in (3.6, 6.6, 10.6, 14.6): add(fx, whoosh(0.5), t - 0.25)
         add(fx, bell(1318, 2.6, 0.12), 3.75); add(fx, bell(1568, 2.6, 0.12), 10.9); add(fx, sparkle(1.0, 40, 5), 11.0); add(fx, bell(1760, 2.2, 0.08), 14.75)
