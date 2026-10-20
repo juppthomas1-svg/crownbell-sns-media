@@ -71,5 +71,26 @@
   "tags": "#就活 #27卒",
   "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x",
   "target": "就活生必見"
+ },
+ {
+  "id": "x05_im_on_it",
+  "kind": "quiz",
+  "platform": "x",
+  "figure": true,
+  "theme": "light",
+  "date": "2026-10-20T21:30:00",
+  "kicker": "1日1問ビジネス英語",
+  "hook": "上司へのひと言。<br>この意味、<br><em>わかりますか？</em>",
+  "q": "頼まれた仕事への返事。<span class=\"en\">“I'm on it.”</span>意味として正しいのは？",
+  "opts": [
+   "今すぐ取りかかります",
+   "その件には乗り気です",
+   "もう終わっています"
+  ],
+  "ans": 0,
+  "ex": "<b>I'm on it.</b> ＝「すぐ取りかかります」。<br>短くて頼もしい、定番の返事です。",
+  "caption": "上司に仕事を頼まれたときの「I'm on it.」、意味はわかりますか。\n答えは動画の後半で。無料お試し（登録なし・10問・約5分）は返信欄のリンクから。",
+  "tags": "#ビジネス英語 #英語クイズ",
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x"
  }
 ]
