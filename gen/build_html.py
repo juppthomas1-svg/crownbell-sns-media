@@ -160,6 +160,8 @@ canvas{position:absolute;inset:0}
 .safe .figwrap{left:130px;right:290px;bottom:470px}
 .safe .figp .prob,.safe .figp .sol{top:230px}
 .safe .foot{display:none}
+.tgt{display:inline-block;margin-top:44px;background:linear-gradient(90deg,#c9a85c,#ead08f);color:#0a1a3d;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:64px;letter-spacing:.12em;padding:14px 34px}
+.tgt+.kicker{margin-top:30px!important}
 .qfig{left:300px;right:300px;bottom:520px}
 .safe .qfig{left:260px;right:340px;bottom:480px}
 .figp .hook{top:300px}
@@ -296,6 +298,7 @@ def promo(v):
     lines = ''.join(f'<div class="pline a" data-in="-1000"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
     prob = (f'<div class="sc" data-in="-1000" data-out="{T_S}" data-d="250"><div class="prob">'
             f'<div class="a" data-in="-1000">{brand()}</div>'
+            + (f'<div class="tgt a" data-in="-1000">{E(v["target"])}</div>' if v.get("target") else '') +
             f'<div class="kicker a" data-in="-1000">{E(v["kicker"])}</div>{lines}</div></div>')
     facts = ''.join(f'<div class="fact a" data-in="{T_S+900+j*150}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
     sol = (f'<div class="sc" data-in="{T_S}" data-out="{T_E}" data-d="300"><div class="mini"><span>ビジネス英語実務検定</span><b>SOLUTION</b></div><div class="sol">'

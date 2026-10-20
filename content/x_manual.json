@@ -38,12 +38,12 @@
   "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x"
  },
  {
-  "id": "x03_fig_promo",
+  "id": "x04_fig_promo_target",
   "kind": "promo",
   "platform": "x",
   "figure": true,
   "date": "2026-10-20",
-  "kicker": "就職活動中の皆さまへ",
+  "kicker": "27卒・28卒の皆さまへ",
   "problems": [
    "書類選考が、通らない。",
    "資格欄が、空白のまま。",
@@ -67,8 +67,9 @@
    ]
   ],
   "end_lead": "履歴書に、<br>英語の確かな一行を。",
-  "caption": "書類選考が通らない。資格欄が空白のまま。そんな方へ。\nビジネス英語実務検定は、24時間いつでもオンラインで受験でき、合格すれば合格証は最短で受験当日に発行されます（民間資格）。",
+  "caption": "【就活生必見】\n書類選考が通らない。資格欄が空白のまま。そんな方へ。\nビジネス英語実務検定は、24時間いつでもオンラインで受験でき、合格すれば合格証は最短で受験当日に発行されます（民間資格）。",
   "tags": "#就活 #27卒",
-  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x"
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x",
+  "target": "就活生必見"
  }
 ]
