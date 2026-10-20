@@ -211,12 +211,24 @@ canvas{position:absolute;inset:0}
 .reelad .fine{font-size:20px;margin-top:16px}
 .reelad.light{background:radial-gradient(120% 80% at 70% 15%,#ffffff 0%,#fffdf8 50%,#f7f1e4 100%)}
 .reelad.light .vig{display:none}
+
+/* 人物を大きく・文字を太く（2026/10/20） */
+body{font-weight:700}
+.kicker{font-weight:700}
+.fine,.cert .tx{font-weight:600}
+.sol .note,.mid .sub,.ex,.srch,.end .lead,.card .t .s,.fact .v small,.feat .v small{font-weight:700}
+.figwrap{left:110px;right:110px;bottom:120px}
+.safe .figwrap{left:120px;right:295px;bottom:380px}
+.reelad .figwrap{left:200px;right:330px;bottom:560px}
+.story .figwrap{left:160px;right:160px;bottom:330px}
+.qfig{left:250px;right:250px;bottom:260px}
+.safe .qfig{left:210px;right:300px;bottom:450px}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
 <defs>
  <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c3768"/><stop offset="1" stop-color="#0a1a3d"/></linearGradient>
- <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f5088"/><stop offset="1" stop-color="#16305f"/></linearGradient>
+ <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d3b3"/><stop offset="1" stop-color="#e2ad86"/></linearGradient>
  <radialGradient id="glow" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#e3c47c" stop-opacity=".34"/><stop offset="1" stop-color="#e3c47c" stop-opacity="0"/></radialGradient>
  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".74" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
  <mask id="m" maskUnits="userSpaceOnUse" x="-300" y="-300" width="1200" height="940"><rect x="-300" y="-300" width="1200" height="940" fill="url(#fade)"/></mask>
@@ -235,26 +247,26 @@ FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="ht
   <path d="M248 404 L226 430 L262 470 L238 500 L300 600" fill="none"/>
   <path d="M352 404 L374 430 L338 470 L362 500 L300 600" fill="none"/>
   <path d="M410 505 L452 500 L455 512 L413 517 Z" fill="#c9a85c" stroke-width="1.4"/>
-  <path d="M266 330 L266 392 L300 412 L334 392 L334 330" fill="url(#skin)"/>
+  <path d="M266 330 L266 392 L300 412 L334 392 L334 330" fill="url(#skin)" stroke="#b9805c"/>
  </g>
  <g id="head">
-  <path d="M300 92 C356 92 392 136 392 200 C392 270 352 336 300 340 C248 336 208 270 208 200 C208 136 244 92 300 92 Z" fill="url(#skin)"/>
-  <path d="M206 206 C196 128 240 70 306 72 C372 74 410 124 398 206 C390 170 372 146 348 136 C320 150 270 152 238 140 C222 156 212 178 206 206 Z" fill="#0a1a3d"/>
-  <path d="M210 196 C196 194 194 236 214 240" fill="url(#skin)" stroke-width="1.8"/>
-  <path d="M390 196 C404 194 406 236 386 240" fill="url(#skin)" stroke-width="1.8"/>
-  <g fill="none" stroke="#e9d6a0" stroke-width="5">
-   <path id="bl"/><path id="br"/><path id="mo" stroke-width="4.5"/>
+  <path d="M300 92 C356 92 392 136 392 200 C392 270 352 336 300 340 C248 336 208 270 208 200 C208 136 244 92 300 92 Z" fill="url(#skin)" stroke="#b9805c"/>
+  <path d="M206 206 C196 128 240 70 306 72 C372 74 410 124 398 206 C390 170 372 146 348 136 C320 150 270 152 238 140 C222 156 212 178 206 206 Z" fill="#1f1712" stroke="#1f1712"/>
+  <path d="M210 196 C196 194 194 236 214 240" fill="url(#skin)" stroke="#b9805c" stroke-width="1.8"/>
+  <path d="M390 196 C404 194 406 236 386 240" fill="url(#skin)" stroke="#b9805c" stroke-width="1.8"/>
+  <g fill="none" stroke="#4a3022" stroke-width="5">
+   <path id="bl"/><path id="br"/><path id="mo" stroke="#9a4e42" stroke-width="4.5"/>
   </g>
-  <ellipse id="el" cx="264" cy="236" rx="7" ry="3" fill="#e9d6a0" stroke="none"/>
-  <ellipse id="er" cx="336" cy="236" rx="7" ry="3" fill="#e9d6a0" stroke="none"/>
+  <ellipse id="el" cx="264" cy="236" rx="7" ry="3" fill="#2a1a12" stroke="none"/>
+  <ellipse id="er" cx="336" cy="236" rx="7" ry="3" fill="#2a1a12" stroke="none"/>
  </g>
- <g id="cert" opacity="0"><g transform="translate(0 -80) translate(300 527) scale(1.32) translate(-300 -527)">
+ <g id="cert" opacity="0"><g transform="translate(0 -108) translate(300 527) scale(1.32) translate(-300 -527)">
   <rect x="196" y="452" width="208" height="150" fill="#fbf7ec" stroke="#b8954a" stroke-width="3"/>
   <rect x="206" y="462" width="188" height="130" fill="none" stroke="#c9a85c" stroke-width="1.2"/>
   <text x="300" y="512" text-anchor="middle" font-family="Noto Serif CJK JP" font-weight="900" font-size="34" fill="#0a1a3d" stroke="none" letter-spacing="6">合格証</text>
   <text id="ctext" x="300" y="546" text-anchor="middle" font-family="Noto Serif CJK JP" font-weight="700" font-size="17" fill="#0a1a3d" stroke="none" letter-spacing="1"></text><rect id="ccur" x="0" y="531" width="2" height="19" fill="#9a7428" stroke="none" opacity="0"/><path d="M232 564 H368 M232 578 H330" stroke="#d8c69a" stroke-width="2"/>
   <circle cx="372" cy="575" r="12" fill="#c9a85c" stroke="none"/>
-  <ellipse cx="200" cy="590" rx="26" ry="20" fill="url(#skin)"/><ellipse cx="400" cy="590" rx="26" ry="20" fill="url(#skin)"/></g>
+  <ellipse cx="200" cy="590" rx="26" ry="20" fill="url(#skin)" stroke="#b9805c"/><ellipse cx="400" cy="590" rx="26" ry="20" fill="url(#skin)" stroke="#b9805c"/></g>
  </g>
 </g>
 </svg>'''
@@ -331,7 +343,7 @@ def quiz(v):
     if v.get("figure"):
         fig = f'<div class="figwrap qfig" data-in="-1000" data-out="{T_Q}" data-d="250">{FIG}</div>'
         hooks += ("(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);const $=i=>document.getElementById(i);if(!$('fig'))return;"
-                  "const sw=Math.sin(t/600);$('fig').style.filter='brightness(.8)';"
+                  "const sw=Math.sin(t/600);$('fig').style.filter='saturate(.7) brightness(.95)';"
                   "$('head').setAttribute('transform',`translate(0 14) rotate(${-8+sw*3} 300 330)`);"
                   "$('bl').setAttribute('d','M246 206 Q266 198 284 192');$('br').setAttribute('d','M354 200 Q334 196 316 198');"
                   "$('mo').setAttribute('d','M284 292 Q300 290 316 288');$('el').setAttribute('ry',5);$('er').setAttribute('ry',5);"
@@ -356,7 +368,7 @@ def promo(v):
                '')
         hooks = ("window.HOOKS=function(t){const p=ease(cl((t-%d)/900)),L=(a,b)=>a+(b-a)*p,$=i=>document.getElementById(i);"
                  "if(!$('fig'))return;"
-                 "$('figglow').setAttribute('opacity',p);$('fig').style.filter='brightness('+L(.55,1.05)+')';"
+                 "$('figglow').setAttribute('opacity',p);$('fig').style.filter='saturate('+L(.55,1)+') brightness('+L(.9,1.03)+')';"
                  "$('head').setAttribute('transform',`translate(0 ${L(26,-8)}) rotate(${L(-7,0)} 300 330)`);"
                  "$('body').setAttribute('transform',`translate(0 ${L(10,-6)}) scale(1 ${L(.975,1.01)})`);"
                  "$('bl').setAttribute('d',`M246 ${L(212,198)} Q266 ${L(204,186)} 284 ${L(196,196)}`);"
