@@ -82,9 +82,10 @@ def whoosh(d=0.45):
     return y * np.sin(np.pi * t / d) ** 2 * 0.22
 
 def tick(hi=False):
-    t = t_(0.06); f = 2600 if hi else 1900
-    y = np.sin(2 * np.pi * f * t) * np.exp(-t * 120) + hp(np.random.randn(len(t)), 3000) * np.exp(-t * 400) * 0.5
-    return y * 0.16
+    t = t_(0.11); f = 1500 if hi else 1150
+    body = np.sin(2 * np.pi * f * t) * np.exp(-t * 38) + 0.5 * np.sin(2 * np.pi * f * 2 * t) * np.exp(-t * 60)
+    click = hp(np.random.randn(len(t)), 2500) * np.exp(-t * 300) * 0.8
+    return (body + click) * 0.32
 
 def beep(f=1320, d=0.16):
     t = t_(d); return np.sin(2 * np.pi * f * t) * np.minimum(1, t / 0.004) * np.exp(-t * 14) * 0.13
@@ -103,16 +104,16 @@ def sparkle(d=1.2, n=70, seed=3):
 def build(kind, seed):
     np.random.seed(seed)
     m = music(kind, seed)
-    fx = np.zeros(N); duck = np.ones(N)
+    fx = np.zeros(N); dry = np.zeros(N); duck = np.ones(N)
     if kind == 'quiz':
         TQ, TA, TE = 2.1, 5.6, 7.7
         add(fx, whoosh(), TQ - 0.2)
         t = TQ + 0.5; k = 0
         # 焦らせる：チクタクを速く、最後の1秒はさらに倍速
         while t < TA - 0.02:
-            add(fx, tick(k % 2 == 0) * 2.6, t); k += 1
+            add(dry, tick(k % 2 == 0), t); k += 1
             t += 0.25 if t < TA - 1.0 else 0.125
-        for c in range(3): add(fx, beep(1175 + 220 * c, 0.22) * 2.4, TQ + 0.5 + c * 1.0)
+        for c in range(3): add(dry, beep(1175 + 220 * c, 0.3) * 2.2, TQ + 0.5 + c * 1.0)
         # 心臓の鼓動（ドクン、ドクン）。だんだん速く・強く
         hb = TQ + 0.5; gap = 0.5
         while hb < TA - 0.05:
@@ -128,7 +129,7 @@ def build(kind, seed):
         add(fx, bell(1568), TA); add(fx, bell(2349, 2.0, 0.09), TA + 0.02); add(fx, sparkle(), TA + 0.03)
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(1175, 2.2, 0.08), TE + 0.1)
         a, b = int((TQ + 0.4) * SR), int(TA * SR)
-        duck[a:b] = 0.22
+        duck[a:b] = 0.07
     elif kind == 'ad':
         for t in (3.6, 6.6, 10.6, 14.6): add(fx, whoosh(0.5), t - 0.25)
         add(fx, bell(1318, 2.6, 0.12), 3.75); add(fx, bell(1568, 2.6, 0.12), 10.9); add(fx, sparkle(1.0, 40, 5), 11.0); add(fx, bell(1760, 2.2, 0.08), 14.75)
@@ -138,7 +139,7 @@ def build(kind, seed):
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(1760, 2.2, 0.08), TE + 0.15)
     duck = lp(duck, 6)
     mix = m * duck + fx * 0.9
-    st = reverb(mix)
+    st = reverb(mix) + 1.7 * dry[:, None]
     fade = np.ones(N); fade[:int(.02 * SR)] = np.linspace(0, 1, int(.02 * SR)); fade[-int(.5 * SR):] = np.linspace(1, 0, int(.5 * SR))
     st *= fade[:, None]
     st /= np.abs(st).max() / 0.89
