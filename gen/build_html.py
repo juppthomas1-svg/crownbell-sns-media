@@ -160,6 +160,8 @@ canvas{position:absolute;inset:0}
 .safe .figwrap{left:130px;right:290px;bottom:470px}
 .safe .figp .prob,.safe .figp .sol{top:230px}
 .safe .foot{display:none}
+#pulse{position:absolute;inset:0;opacity:0;pointer-events:none;background:radial-gradient(70% 55% at 50% 45%,rgba(227,196,124,.0) 30%,rgba(227,196,124,.55) 100%)}
+.light #pulse{background:radial-gradient(70% 55% at 50% 45%,rgba(15,42,92,0) 35%,rgba(15,42,92,.35) 100%)}
 .tgt{display:inline-block;margin-top:44px;background:linear-gradient(90deg,#c9a85c,#ead08f);color:#0a1a3d;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:64px;letter-spacing:.12em;padding:14px 34px}
 .tgt+.kicker{margin-top:30px!important}
 .qfig{left:320px;right:320px;bottom:330px}
@@ -336,7 +338,7 @@ def quiz(v):
          f'<div class="tlab">TIME LIMIT ― 回答まで</div></div>'
          f'<div class="ex a" data-in="{T_A+350}">{v["ex"]}</div></div></div>')
     hooks = (f'window.HOOKS=function(t){{const tb=document.getElementById("bar");tb.style.width=(100*(1-cl((t-{T_Q+500})/3000)))+"%";'
-             f'document.getElementById("cn").textContent=t<{T_Q+1500}?"3":t<{T_Q+2500}?"2":"1";'
+             f'document.getElementById("cn").textContent=t<{T_Q+1500}?"3":t<{T_Q+2500}?"2":"1";const tt=t-{T_Q+500},f=((tt%1000)+1000)%1000/1000,on=tt>=0&&t<{T_A},last=tt>=2000;const cn=document.getElementById("cn");cn.style.transform=on?`scale(${{1+(last?.55:.38)*Math.pow(1-f,3)}})`:"none";cn.style.transformOrigin="80% 60%";const qw=document.querySelector(".qwrap");qw.style.transform=(on&&last)?`translate(${{Math.sin(t*.11)*5}}px,${{Math.cos(t*.13)*4}}px)`:"none";const pl=document.getElementById("pulse");if(pl)pl.style.opacity=on?(last?.42:.22)*Math.pow(1-f,2):0;tb.style.boxShadow=on?`0 0 ${{14+26*Math.pow(1-f,2)}}px rgba(227,196,124,${{.5+.4*Math.pow(1-f,2)}})`:"none";'
              f'const os=document.querySelectorAll("#opts .opt");os.forEach((o,j)=>{{o.classList.toggle("ok",t>={T_A}&&j=={v["ans"]});o.classList.toggle("ng",t>={T_A}&&j!={v["ans"]});}});'
              f'if(t>={T_A}&&!window.BURST){{const r=os[{v["ans"]}].getBoundingClientRect();window.BURST={{t:{T_A},x:r.left+r.width/2,y:r.top+r.height/2}};}}}};')
     lead = "書類選考で苦戦していませんか？<br>資格欄、空白のままになっていませんか？"
@@ -440,7 +442,7 @@ def build(v, outdir):
     body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
     doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}">'
-           f'<canvas id="cv"></canvas><div class="vig"></div><div class="frame"></div>{body}'
+           f'<canvas id="cv"></canvas><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')
     os.makedirs(outdir, exist_ok=True)
