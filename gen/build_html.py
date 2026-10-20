@@ -341,14 +341,30 @@ def quiz(v):
              f'if(t>={T_A}&&!window.BURST){{const r=os[{v["ans"]}].getBoundingClientRect();window.BURST={{t:{T_A},x:r.left+r.width/2,y:r.top+r.height/2}};}}}};')
     lead = "書類選考で苦戦していませんか？<br>資格欄、空白のままになっていませんか？"
     if v.get("figure"):
-        fig = f'<div class="figwrap qfig" data-in="-1000" data-out="{T_Q}" data-d="250">{FIG}</div>'
+        fig = f'<div class="figwrap qfig" id="qfw">{FIG}</div>'
+        isx = 'true' if v["platform"] == "x" else 'false'
         hooks += ("(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);const $=i=>document.getElementById(i);if(!$('fig'))return;"
-                  "const sw=Math.sin(t/600);$('fig').style.filter='saturate(.7) brightness(.95)';"
-                  "$('head').setAttribute('transform',`translate(0 14) rotate(${-8+sw*3} 300 330)`);"
-                  "$('bl').setAttribute('d','M246 206 Q266 198 284 192');$('br').setAttribute('d','M354 200 Q334 196 316 198');"
-                  "$('mo').setAttribute('d','M284 292 Q300 290 316 288');$('el').setAttribute('ry',5);$('er').setAttribute('ry',5);"
-                  "['q1','q2','q3'].forEach((q,i)=>{const e=$(q);e.setAttribute('opacity',.75);e.setAttribute('transform',`translate(0 ${Math.sin(t/450+i*2)*10})`)});}})();")
-        return '<div class="figp">' + hook + fig + '</div>' + q + end_screen(v["platform"], T_E, lead), hooks
+                  "const TQ=%d,TA=%d,TE=%d,X=%s,w=$('qfw');"
+                  "let op=0,pose=0;if(t<TQ){op=cl((TQ-t)/250);pose=0;}else if(X&&t>=TA+250&&t<TE){op=ease(cl((t-TA-250)/400))*cl((TE-t)/250);pose=1;}"
+                  "w.style.opacity=op;"
+                  "if(pose==1){const k=ease(cl((t-TA-250)/500));w.style.transformOrigin='50%% 100%%';w.style.transform=`translate(270px,${-150+(1-k)*50}px) scale(.42)`;}else{w.style.transform='none';}"
+                  "if(pose==0){const sw=Math.sin(t/330),bob=Math.sin(t/260)*4;"
+                  "$('fig').style.filter='saturate(.75)';$('figglow').setAttribute('opacity',0);"
+                  "$('head').setAttribute('transform',`translate(0 ${12+bob}) rotate(${sw*9} 300 330)`);"
+                  "$('body').setAttribute('transform',`translate(0 ${bob*0.5})`);"
+                  "const up=(Math.sin(t/420)+1)/2;"
+                  "$('bl').setAttribute('d',`M246 ${206-up*6} Q266 ${197-up*8} 284 ${192-up*4}`);$('br').setAttribute('d',`M354 ${200-up*3} Q334 ${196-up*3} 316 ${198-up*2}`);"
+                  "$('mo').setAttribute('d','M284 292 Q300 290 316 288');"
+                  "const bl=((t+500)%%1100)<110?.6:5.5;$('el').setAttribute('ry',bl);$('er').setAttribute('ry',bl);"
+                  "['q1','q2','q3'].forEach((q,i)=>{const e=$(q),st=i==0?-300:120+i*280,k=cl((t-st)/260),sc=k<1?(1-Math.pow(1-k,3))*1.25-(k>.7?(k-.7)*.8:0):1;"
+                  "e.setAttribute('opacity',k>0?.85:0);const bx=[180,445,488][i],by=[100,72,182][i];e.setAttribute('transform',`translate(${bx} ${by+Math.sin(t/450+i*2)*8}) scale(${Math.max(0,sc)}) translate(${-bx} ${-by})`)});}"
+                  "else{$('fig').style.filter='none';$('figglow').setAttribute('opacity',.9);"
+                  "$('head').setAttribute('transform','translate(0 -6) rotate(0 300 330)');$('body').setAttribute('transform','none');"
+                  "$('bl').setAttribute('d','M246 198 Q266 186 284 196');$('br').setAttribute('d','M354 198 Q334 186 316 196');"
+                  "$('mo').setAttribute('d','M280 286 Q300 306 320 286');$('el').setAttribute('ry',6.5);$('er').setAttribute('ry',6.5);"
+                  "['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
+                  "}})();") % (T_Q, T_A, T_E, isx)
+        return '<div class="figp">' + hook + '</div>' + q + fig + end_screen(v["platform"], T_E, lead), hooks
     return hook + q + end_screen(v["platform"], T_E, lead), hooks
 
 def promo(v):
