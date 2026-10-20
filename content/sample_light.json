@@ -1,0 +1,59 @@
+[
+ {
+  "id": "s_light_promo_x",
+  "kind": "promo",
+  "platform": "x",
+  "figure": true,
+  "date": "2026-10-20",
+  "kicker": "27卒・28卒の皆さまへ",
+  "problems": [
+   "書類選考が、通らない。",
+   "資格欄が、空白のまま。",
+   "英語力を示すものがない。"
+  ],
+  "sol_kicker": "履歴書に、確かな一行を",
+  "sol": "今日受けて、<br><em>今日取れる資格。</em>",
+  "sol_note": "※合格した場合。合格証は最短で受験当日に発行されます",
+  "facts": [
+   [
+    "ONLINE",
+    "24時間<small>いつでも受験</small>"
+   ],
+   [
+    "RESULT",
+    "最短当日<small>合格証PDF</small>"
+   ],
+   [
+    "FEE",
+    "3,500円〜<small>3級・税込</small>"
+   ]
+  ],
+  "end_lead": "履歴書に、<br>英語の確かな一行を。",
+  "caption": "【就活生必見】\n書類選考が通らない。資格欄が空白のまま。そんな方へ。\nビジネス英語実務検定は、24時間いつでもオンラインで受験でき、合格すれば合格証は最短で受験当日に発行されます（民間資格）。",
+  "tags": "#就活 #27卒",
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x",
+  "target": "就活生必見",
+  "theme": "light"
+ },
+ {
+  "id": "s_light_quiz_x",
+  "kind": "quiz",
+  "platform": "x",
+  "date": "2026-10-19T21:30:00",
+  "kicker": "1日1問ビジネス英語",
+  "hook": "メールで毎日見る<br>略語。あなたは<br><em>説明できますか？</em>",
+  "q": "メールの冒頭にひと言。<span class=\"en\">“FYI”</span>意味として正しいのは？",
+  "opts": [
+   "至急、対応してください",
+   "確認後、返信してください",
+   "参考までに（お知らせです）"
+  ],
+  "ans": 2,
+  "ex": "<b>FYI</b> ＝ For Your Information。<br>「参考までに」の意味で、<br>返信は不要なことが多いです。",
+  "caption": "メールで毎日見る略語「FYI」。あなたは説明できますか。\n答えは動画の後半で。無料お試し（登録なし・10問・約5分）は返信欄のリンクから。",
+  "tags": "#ビジネス英語 #英語クイズ",
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x",
+  "theme": "light",
+  "figure": true
+ }
+]

@@ -162,9 +162,42 @@ canvas{position:absolute;inset:0}
 .safe .foot{display:none}
 .tgt{display:inline-block;margin-top:44px;background:linear-gradient(90deg,#c9a85c,#ead08f);color:#0a1a3d;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:64px;letter-spacing:.12em;padding:14px 34px}
 .tgt+.kicker{margin-top:30px!important}
-.qfig{left:300px;right:300px;bottom:520px}
+.qfig{left:320px;right:320px;bottom:330px}
 .safe .qfig{left:260px;right:340px;bottom:480px}
 .figp .hook{top:300px}
+
+/* 明るい配色（アイボリー × 紺 × 金） */
+.light{color:#0f2a5c;background:radial-gradient(110% 70% at 70% 20%,#ffffff 0%,#fbf8f1 45%,#f1ead9 100%)}
+.light .vig{background:radial-gradient(120% 80% at 50% 50%,transparent 70%,rgba(150,120,60,.12) 100%)}
+.light .frame{border-color:rgba(184,149,74,.7)}.light .frame:after{border-color:rgba(184,149,74,.35)}
+.light .gold,.light h1 em,.light .sol h2 em,.light .end h3 em,.light .mid h2 em,.light .ev h2 em{color:#b0883a}
+.light .brand .n{color:#0f2a5c}.light .brand .n small{color:#a07c34}
+.light .brand img{box-shadow:0 0 0 3px rgba(184,149,74,.45),0 8px 24px rgba(15,42,92,.18)}
+.light .kicker{color:#a07c34}.light .kicker:before{background:#b8954a}
+.light .hook h1,.light .sol h2,.light .end h3{text-shadow:none}
+.light .mini{color:#a07c34;border-color:rgba(184,149,74,.5)}
+.light .qlabel,.light .anslab,.light .tlab{color:#a07c34}
+.light .qtext .en{color:#b0883a}
+.light .opt{background:#0f2a5c;border-color:#b8954a;color:#f7f1e1;box-shadow:0 8px 20px rgba(15,42,92,.15)}
+.light .opt b{border-color:#c9a85c;color:#e3c47c}
+.light .opt.ok{background:linear-gradient(90deg,#c9a85c,#ead08f);color:#0f2a5c}
+.light .opt.ok b{background:#0f2a5c;color:#e3c47c}
+.light .opt.ng{opacity:.35}
+.light .bar{background:rgba(15,42,92,.12)}.light .cnum{color:#b0883a}
+.light .ex{border-color:#b8954a;color:#0f2a5c}.light .ex b{color:#a07c34}
+.light .pline{border-color:rgba(184,149,74,.45);color:#0f2a5c}
+.light .pline i{background:#0f2a5c;border-color:#0f2a5c}.light .pline i:after{border-color:#e3c47c}
+.light .sol .note,.light .mid .sub{color:rgba(15,42,92,.7)}
+.light .fact{background:#0f2a5c;border-color:#b8954a;color:#f7f1e1}.light .fact .k{color:#c9a85c}.light .fact .v small{color:rgba(247,241,225,.75)}
+.light .end .lead,.light .srch{color:#0f2a5c}.light .srch b{color:#a07c34}
+.light .now{color:#a07c34}
+.light .chips span{background:#0f2a5c;border-color:#0f2a5c;color:#f7f1e1}
+.light .btn,.light .btn2{background:#0f2a5c;border-color:#b8954a;color:#f7f1e1}
+.light .card{background:#ffffff;border:1.5px solid #b8954a;box-shadow:0 14px 40px rgba(15,42,92,.15)}
+.light .fine{color:rgba(15,42,92,.6)}
+.light .foot{color:#a07c34;border-color:rgba(184,149,74,.5)}
+.light .tgt{background:#c8102e;color:#fff}
+.light .band{background:#0f2a5c;color:#f7f1e1}.light .band span+span{border-color:rgba(247,241,225,.3)}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -225,7 +258,7 @@ function vis(el,t){const i=+el.dataset.in,o=el.dataset.out?+el.dataset.out:1e9,d
 window.render=function(ms){const t=ms;document.querySelectorAll('[data-in]').forEach(e=>vis(e,t));
  cx.clearRect(0,0,W,H);
  for(const d of dust){const y=((d.y-t/1000*d.s)%H+H)%H,o=.18+.32*(.5+.5*Math.sin(t/1000*d.f*2+d.p));
-  cx.beginPath();cx.arc(d.x+Math.sin(t/1500+d.p)*8,y,d.r,0,6.283);cx.fillStyle=`rgba(232,205,138,${o})`;cx.fill();}
+  cx.beginPath();cx.arc(d.x+Math.sin(t/1500+d.p)*8,y,d.r,0,6.283);cx.fillStyle=document.body.classList.contains('light')?`rgba(184,149,74,${o*.8})`:`rgba(232,205,138,${o})`;cx.fill();}
  if(window.BURST){const dt=(t-BURST.t)/1000;if(dt>0&&dt<2){for(const p of burst){if(dt>p.l)continue;
   const x=BURST.x+p.vx*dt*Math.exp(-dt*1.6),y=BURST.y+p.vy*dt*Math.exp(-dt*1.6)+260*dt*dt,o=(1-dt/p.l)*(.6+.4*Math.sin(dt*30+p.tw));
   const g=cx.createRadialGradient(x,y,0,x,y,p.r*3);g.addColorStop(0,`rgba(255,240,190,${o})`);g.addColorStop(.4,`rgba(232,200,120,${o*.8})`);g.addColorStop(1,'rgba(232,200,120,0)');
@@ -365,7 +398,7 @@ def ad(v):
 def build(v, outdir):
     body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe" if v["platform"] in ("tt","ig") else ""}">'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}">'
            f'<canvas id="cv"></canvas><div class="vig"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')
