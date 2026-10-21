@@ -1,0 +1,70 @@
+[
+ {
+  "id": "w2_01_tt_no_brainer",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-10-23T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "この英語が<br>分からないなら、<br><em>正直まずいです。</em>",
+  "q": "会議でのひと言。<span class=\"en\">“It's a no-brainer.”</span>意味として正しいのは？",
+  "opts": [
+   "頭を使わない単純作業です",
+   "誰にも答えが分かりません",
+   "考えるまでもなく明らかです"
+  ],
+  "ans": 2,
+  "ex": "<b>no-brainer</b> ＝ 考えるまでもないこと。<br>迷う余地がない判断に使う定番表現です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこの英語が分からないなら、正直まずいです。「It's a no-brainer.」の意味、即答できますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）は、「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #グローバル人材 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ },
+ {
+  "id": "w2_02_ig_otesuki",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-10-24T08:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "「お手すきの<br>際に」英語で<br><em>言えますか？</em>",
+  "q": "急ぎではない頼みごと。<br>いちばん自然なのは？",
+  "opts": [
+   "Whenever you get a chance.",
+   "In your free time.",
+   "At your earliest convenience."
+  ],
+  "ans": 0,
+  "ex": "<b>earliest convenience</b> ＝「なるべく早く」。<br><b>free time</b> は私的な時間に聞こえます。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「お手すきの際に」、英語で言えますか。似た表現でも、相手への伝わり方が大きく変わります。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）はプロフィールのリンクから。\n国際ビジネス言語認定協会",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #グローバル人材 #キャリア"
+ },
+ {
+  "id": "w2_03_tt_reinvent_wheel",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-10-25T08:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "これすら<br>できなければ、<br><em>話にならない。</em>",
+  "q": "会議でのひと言。<span class=\"en\">“Let's not reinvent the wheel.”</span>意味として正しいのは？",
+  "opts": [
+   "同じ失敗を繰り返すのはやめよう",
+   "一から作り直すのはやめよう",
+   "終わった話を蒸し返すのはやめよう"
+  ],
+  "ans": 1,
+  "ex": "<b>reinvent the wheel</b><br>＝ 既にあるものを一から作り直す。<br>「今あるものを活かそう」という提案です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこれすらできなければ、話にならない。「Let's not reinvent the wheel.」の意味、即答できますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）は、「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #グローバル人材 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ }
+]
