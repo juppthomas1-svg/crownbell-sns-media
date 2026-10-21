@@ -9,7 +9,7 @@ mkdir -p "$WORK" "$ROOT/videos"
 python3 -I "$ROOT/gen/build_html.py" "$JSON" "$WORK" > /dev/null
 IDS=${@:-$(python3 -I -c "import json,sys;print(' '.join(v['id'] for v in json.load(open(sys.argv[1]))))" "$JSON")}
 for id in $IDS; do
-  kind=$(python3 -I -c "import json,sys;print([v['kind'] for v in json.load(open(sys.argv[1])) if v['id']==sys.argv[2]][0])" "$JSON" "$id")
+  kind=$(python3 -I -c "import json,sys;print([v.get('audio', v['kind']) for v in json.load(open(sys.argv[1])) if v['id']==sys.argv[2]][0])" "$JSON" "$id")
   seed=$(python3 -I -c "import sys;print(sum(map(ord,sys.argv[1]))%997)" "$id")
   dur=$(python3 -I -c "import json,sys;print([v.get('dur',10000) for v in json.load(open(sys.argv[1])) if v['id']==sys.argv[2]][0])" "$JSON" "$id")
   (cd "$ROOT/gen" && node render.js "$WORK" "$id" 60 $dur)

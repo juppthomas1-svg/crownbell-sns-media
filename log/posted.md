@@ -25,3 +25,4 @@
 - 2026-10-20 手動｜X｜x05_im_on_it（I'm on it・明るい配色・人物入り）
 - 2026-10-21 手動｜X｜x06_keep_you_posted（I'll keep you posted）
 - 2026-10-21 14:30｜TikTok｜r01_tt_rank_v2（今から間に合う資格ランキング）
+- 2026-10-21 手動｜X｜x07_walk_me_through（Walk me through it・燃える系・epic BGM）

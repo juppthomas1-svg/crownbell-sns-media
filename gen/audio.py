@@ -101,9 +101,45 @@ def sparkle(d=1.2, n=70, seed=3):
         add(buf, np.sin(2 * np.pi * f * tt) * np.exp(-tt * 45) * (0.03 + 0.04 * r.rand()) * (1 - at / d), at)
     return buf
 
+
+def epic_music(seed):
+    """気合いが入るBGM：太鼓＋低音のストリングスの刻み＋だんだん盛り上がる（Dm Bb F C, 128BPM）"""
+    rng = np.random.RandomState(seed); buf = np.zeros(N)
+    bpm = 128; beat = 60 / bpm
+    prog = [(38, [62, 65, 69]), (34, [62, 65, 70]), (41, [60, 65, 69]), (36, [60, 64, 67])]
+    bar = beat * 4
+    def kick():
+        t = t_(0.35); return np.sin(2*np.pi*(55 + 90*np.exp(-t*30))*t) * np.exp(-t*9) * 0.9
+    def taiko():
+        t = t_(0.6); return (np.sin(2*np.pi*(70 + 40*np.exp(-t*12))*t) * np.exp(-t*6) + 0.3*lp(np.random.randn(len(t)), 900)*np.exp(-t*20)) * 0.7
+    def snare():
+        t = t_(0.2); return (bp(np.random.randn(len(t)), 1200, 7000) * np.exp(-t*22) * 0.6 + np.sin(2*np.pi*190*t)*np.exp(-t*30)*0.3)
+    def saw(f, d, cut=2200):
+        t = t_(d); y = sum(2*((f*k2*t + rng.rand()) % 1) - 1 for k2 in (1, 1.003, 0.997)) / 3
+        return lp(y, cut) * np.minimum(1, t/0.01) * np.exp(-t*3)
+    t = 0.0; i = 0
+    while t < DUR:
+        root, ch = prog[(i // 4) % 4] if False else prog[int(t // bar) % 4]
+        k = int(round(t / (beat/2)))
+        inten = min(1, 0.45 + t / DUR)
+        if k % 2 == 0: add(buf, kick() * inten, t)
+        if k % 8 == 4: add(buf, snare() * 0.8 * inten, t)
+        if k % 16 == 0: add(buf, taiko() * inten, t)
+        # 低音ストリングスの刻み（8分）
+        add(buf, saw(midi(root + 12), beat/2 * 0.9, 1400) * 0.16 * inten, t)
+        add(buf, saw(midi(root), beat/2 * 0.9, 700) * 0.14 * inten, t)
+        if k % 8 == 0:
+            for n_ in ch: add(buf, pad([n_], bar) * 1.6 * inten, t)
+        t += beat / 2; i += 1
+    # 最後のほうで盛り上がりのシンバル
+    for tc in (0.0, bar*4):
+        tt = t_(1.6); add(buf, hp(np.random.randn(len(tt)), 5000) * np.exp(-tt*2.5) * 0.12, tc)
+    return buf
+
 def build(kind, seed):
     np.random.seed(seed)
-    m = music(kind, seed)
+    epic = kind.endswith('_epic'); kind = kind.replace('_epic', '')
+    m = epic_music(seed) if epic else music(kind, seed)
     fx = np.zeros(N); dry = np.zeros(N); duck = np.ones(N)
     if kind == 'quiz':
         TQ, TA, TE = 2.1, 5.6, 7.7
