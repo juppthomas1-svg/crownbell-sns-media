@@ -355,6 +355,7 @@ SKY = r'''<svg class="sky" viewBox="0 0 1080 760" preserveAspectRatio="xMidYMax 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
 <defs>
  <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c3768"/><stop offset="1" stop-color="#0a1a3d"/></linearGradient>
+ <pattern id="pin" width="22" height="22" patternUnits="userSpaceOnUse"><rect width="22" height="22" fill="#14213f"/><rect x="10" width="1.6" height="22" fill="rgba(255,255,255,.55)"/></pattern>
  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d3b3"/><stop offset="1" stop-color="#e2ad86"/></linearGradient>
  <radialGradient id="glow" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#e3c47c" stop-opacity=".34"/><stop offset="1" stop-color="#e3c47c" stop-opacity="0"/></radialGradient>
  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".74" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
@@ -366,11 +367,11 @@ FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="ht
 </g>
 <g mask="url(#m)" stroke="#d9b866" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
  <g id="body">
-  <path d="M40 640 C46 520 92 452 190 424 L248 404 L300 470 L352 404 L410 424 C508 452 554 520 560 640 Z" fill="url(#suit)"/>
+  <path id="jacket" d="M40 640 C46 520 92 452 190 424 L248 404 L300 470 L352 404 L410 424 C508 452 554 520 560 640 Z" fill="url(#suit)"/>
   <path d="M248 404 L300 470 L352 404 L340 392 L300 412 L260 392 Z" fill="#e9e1cc" stroke-width="1.6"/>
   <path d="M262 420 L300 470 L338 420 L320 560 L300 600 L280 560 Z" fill="#e9e1cc" stroke="none"/>
-  <path d="M290 418 L310 418 L316 440 L326 580 L300 612 L274 580 L284 440 Z" fill="#0a1a3d" stroke-width="1.8"/>
-  <path d="M290 418 L310 418 L316 440 L284 440 Z" fill="#132b5e" stroke-width="1.8"/>
+  <path id="tie" d="M290 418 L310 418 L316 440 L326 580 L300 612 L274 580 L284 440 Z" fill="#0a1a3d" stroke-width="1.8"/>
+  <path id="knot" d="M290 418 L310 418 L316 440 L284 440 Z" fill="#132b5e" stroke-width="1.8"/>
   <path d="M248 404 L226 430 L262 470 L238 500 L300 600" fill="none"/>
   <path d="M352 404 L374 430 L338 470 L362 500 L300 600" fill="none"/>
   <path d="M410 505 L452 500 L455 512 L413 517 Z" fill="#c9a85c" stroke-width="1.4"/><path d="M416 503 L426 486 L436 502 L446 488 L452 500 Z" fill="#f2c14e" stroke-width="1.2"/><circle cx="238" cy="470" r="6" fill="#f2c14e" stroke="#fff3c4" stroke-width="1.5"/>
@@ -480,10 +481,12 @@ def quiz(v):
                   "document.querySelectorAll('.sky .w').forEach(w=>{const p=+w.dataset.p;w.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
                   "if(pose==0&&document.body.classList.contains('power')){$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
                   "const ty=k=>Math.max(0,Math.sin(t/(k)))*10;if($('hl')){$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(41+7)})`);}"
-                  "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(-6 ${-4+bob}) rotate(${-5+Math.sin(t/900)*1} 300 330)`);$('body').setAttribute('transform',`translate(0 ${-4+bob*.5}) scale(1.03 1.02)`);"
-                  "const sh='translate(-16 0)';['bl','br','mo','el','er','gl'].forEach(i=>$(i).setAttribute('transform',sh));"
+                  "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(6 ${-4+bob}) rotate(${5+Math.sin(t/900)*1} 300 330)`);$('body').setAttribute('transform',`translate(0 ${-4+bob*.5}) scale(1.03 1.02)`);"
+                  "const sh='translate(16 0)';['bl','br','mo','el','er','gl'].forEach(i=>$(i).setAttribute('transform',sh));"
+                  "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','#c8102e');$('knot').setAttribute('fill','#a00d25');"
+                  "w.style.transformOrigin='50%% 100%%';w.style.transform='perspective(1400px) rotateY(-16deg)';"
                   "$('bl').setAttribute('d','M240 192 L264 194 L286 202');$('br').setAttribute('d','M360 192 L336 194 L314 202');"
-                  "$('mo').setAttribute('d','M284 292 Q300 296 320 285');$('mo').setAttribute('fill','none');"
+                  "$('mo').setAttribute('d','M280 285 Q300 296 316 292');$('mo').setAttribute('fill','none');"
                   "const bk=((t+500)%%1600)<110?.6:4.2;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);"
                   "['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
                   "else if(pose==0){const sw=Math.sin(t/330),bob=Math.sin(t/260)*4;"
@@ -496,7 +499,7 @@ def quiz(v):
                   "const bl=((t+500)%%1100)<110?.6:5.5;$('el').setAttribute('ry',bl);$('er').setAttribute('ry',bl);"
                   "['q1','q2','q3'].forEach((q,i)=>{const e=$(q),st=i==0?-300:120+i*280,k=cl((t-st)/260),sc=k<1?(1-Math.pow(1-k,3))*1.25-(k>.7?(k-.7)*.8:0):1;"
                   "e.setAttribute('opacity',k>0?.85:0);const bx=[180,445,488][i],by=[100,72,182][i];e.setAttribute('transform',`translate(${bx} ${by+Math.sin(t/450+i*2)*8}) scale(${Math.max(0,sc)}) translate(${-bx} ${-by})`)});}"
-                  "else if(pose==1){$('fig').style.filter='none';$('figglow').setAttribute('opacity',document.body.classList.contains('power')?0:.9);if(document.body.classList.contains('power'))$('gl').style.display='block';if(document.body.classList.contains('power')){['bl','br','mo','el','er','gl'].forEach(i=>$(i).setAttribute('transform','translate(-16 0)'));}"
+                  "else if(pose==1){$('fig').style.filter='none';$('figglow').setAttribute('opacity',document.body.classList.contains('power')?0:.9);if(document.body.classList.contains('power'))$('gl').style.display='block';if(document.body.classList.contains('power')){['bl','br','mo','el','er','gl'].forEach(i=>$(i).setAttribute('transform','translate(16 0)'));$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','#c8102e');$('knot').setAttribute('fill','#a00d25');}"
                   "$('head').setAttribute('transform','translate(0 -6) rotate(0 300 330)');$('body').setAttribute('transform','none');"
                   "$('bl').setAttribute('d','M246 198 Q266 186 284 196');$('br').setAttribute('d','M354 198 Q334 186 316 196');"
                   "$('mo').setAttribute('d','M280 286 Q300 306 320 286');$('el').setAttribute('ry',6.5);$('er').setAttribute('ry',6.5);"
