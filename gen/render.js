@@ -12,11 +12,11 @@ const path = require('path');
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(300);
   const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-pix_fmt', 'yuv420p', '-r', String(fps),
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '12', '-pix_fmt', 'yuv420p', '-r', String(fps),
     path.resolve(dir, id + '_v.mp4')], {stdio: ['pipe', 'inherit', 'inherit']});
   for (let i = 0; i < n; i++) {
     await p.evaluate(ms => window.render(ms), i * 1000 / fps);
-    const buf = await p.screenshot({type: 'jpeg', quality: 93});
+    const buf = await p.screenshot({type: 'jpeg', quality: 98});
     if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
   }
   ff.stdin.end();
