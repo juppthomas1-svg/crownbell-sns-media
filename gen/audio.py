@@ -131,16 +131,18 @@ def build(kind, seed):
         a, b = int((TQ + 0.4) * SR), int(TA * SR)
         duck[a:b] = 0.07
     elif kind == 'rank':
-        for t in (1.2, 3.0, 4.8, 6.6): add(fx, whoosh(0.4), t - 0.15); add(fx, beep(990, 0.15) * 1.2, t + 0.05)
+        RT = os.environ.get('RANK_TIMES', '1.2,3.0,4.8,6.6;8.6;9.5;12.0')
+        a_, b_, c_, e_ = RT.split(';'); steps = [float(x) for x in a_.split(',')]; D0, W1, TEND = float(b_), float(c_), float(e_)
+        for t in steps: add(fx, whoosh(0.4), t - 0.15); add(fx, beep(990, 0.15) * 1.2, t + 0.05)
         # ドラムロール（だんだん速く・大きく）
-        t = 8.6; gap = 0.07
-        while t < 9.45:
+        t = D0; gap = 0.07
+        while t < W1 - 0.05:
             tt = t_(0.05); sn = bp(np.random.randn(len(tt)), 900, 6000) * np.exp(-tt * 60)
-            add(dry, sn * (0.25 + 0.5 * (t - 8.6) / 0.85), t); t += gap; gap = max(0.035, gap * 0.95)
-        tt = t_(0.5); add(dry, np.sin(2*np.pi*55*tt*(1-0.3*tt)) * np.exp(-tt*7) * 0.9, 9.5)
-        add(fx, bell(1568, 2.6, 0.18), 9.5); add(fx, bell(2349, 2.2, 0.08), 9.52); add(fx, sparkle(1.2, 80, 7), 9.53)
-        add(fx, whoosh(0.5), 11.75); add(fx, bell(1175, 2.2, 0.08), 12.1)
-        a, b = int(8.5 * SR), int(9.5 * SR); duck[a:b] = 0.25
+            add(dry, sn * (0.25 + 0.5 * (t - D0) / (W1 - D0)), t); t += gap; gap = max(0.035, gap * 0.95)
+        tt = t_(0.5); add(dry, np.sin(2*np.pi*55*tt*(1-0.3*tt)) * np.exp(-tt*7) * 0.9, W1)
+        add(fx, bell(1568, 2.6, 0.18), W1); add(fx, bell(2349, 2.2, 0.08), W1 + 0.02); add(fx, sparkle(1.2, 80, 7), W1 + 0.03)
+        add(fx, whoosh(0.5), TEND - 0.25); add(fx, bell(1175, 2.2, 0.08), TEND + 0.1)
+        a, b = int((D0 - 0.1) * SR), int(W1 * SR); duck[a:b] = 0.25
     elif kind == 'ad':
         for t in (3.6, 6.6, 10.6, 14.6): add(fx, whoosh(0.5), t - 0.25)
         add(fx, bell(1318, 2.6, 0.12), 3.75); add(fx, bell(1568, 2.6, 0.12), 10.9); add(fx, sparkle(1.0, 40, 5), 11.0); add(fx, bell(1760, 2.2, 0.08), 14.75)

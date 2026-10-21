@@ -261,6 +261,26 @@ body{font-weight:700}
 .rk-desc b{color:#a07c34}
 .rk-fig{position:absolute;left:665px;width:240px;top:1170px}
 .rk-fig svg{width:100%;display:block}
+
+.rk2 .rk-row{height:120px;margin-bottom:12px}
+.rk2 .rk-no{width:120px;height:120px}
+.rk2 .rk-slot{height:120px}
+.rk2 .rk-desc{top:1080px;height:360px;right:150px}
+.rk2 .rk-desc>div{font-size:29px;line-height:1.6}
+.rk2 .rk-desc .g{display:block;color:#a07c34;margin-bottom:6px}
+.rk2 .rk-desc .x{display:block;color:#0f2a5c}
+.rk2 .rk-desc .x i{font-style:normal;display:inline-block;width:34px;height:34px;line-height:34px;text-align:center;background:#0f2a5c;color:#fff;font-size:22px;margin-right:10px;vertical-align:2px}
+.rk2 .rk-desc .g i{font-style:normal;display:inline-block;width:34px;height:34px;line-height:34px;text-align:center;background:linear-gradient(135deg,#c9a85c,#ead08f);color:#0f2a5c;font-size:22px;margin-right:10px;vertical-align:2px}
+.rk2 .rk-fig{display:none}
+.rk-crit{position:absolute;left:130px;right:130px;top:1455px;font-size:19px;line-height:1.5;color:rgba(15,42,92,.55);text-align:center}
+
+.rk2 .rk-head h1{font-size:58px;line-height:1.3;margin-top:14px}
+.rk2 .rk-list{top:530px}
+.rk2 .rk-desc{top:1070px;height:370px}
+.rk2 .rk-desc>div{font-size:37px;line-height:1.55;padding-left:24px}
+.rk2 .rk-desc .x i,.rk2 .rk-desc .g i{width:42px;height:42px;line-height:42px;font-size:26px}
+.rk2 .rk-crit{top:auto;position:static;margin-top:8px;font-size:19px;color:rgba(15,42,92,.55)}
+.rk2 .rk-note{display:none}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -477,7 +497,8 @@ def ad(v):
 def rank(v):
     items = v["items"]            # 下位から順に [(名前, 説明), ...]。最後が1位
     n = len(items)
-    T0, STEP, T1 = 1200, 1800, 8600     # 5位〜2位の出る時刻、1位のドラムロール開始
+    T0, STEP = v.get("t0", 1200), v.get("step", 1800)
+    T1 = T0 + STEP*(n-1) - STEP + v.get("drum_gap", 1800)   # 1位のドラムロール開始
     T1R, T_E = T1 + 900, v.get("end_at", 12000)
     times = [T0 + i*STEP for i in range(n-1)] + [T1R]
     rows = ''
@@ -492,9 +513,9 @@ def rank(v):
     for i, (name, d) in enumerate(items):
         out = times[i+1] if i+1 < n else T_E
         desc += f'<div data-in="{times[i]+150}" data-out="{out}" data-d="300">{d}</div>'
-    body = (f'<div class="sc" data-in="-1000" data-out="{T_E}" data-d="250">'
-            f'<div class="rk-head"><div class="who">{E(v["target"])}</div><h1>{v["title"]}</h1><div class="rk-note">※国際ビジネス言語認定協会の公式アカウントです</div></div>'
-            f'<div class="rk-list">{rows}</div><div class="rk-desc">{desc}</div>'
+    body = (f'<div class="sc {v.get("cls","")}" data-in="-1000" data-out="{T_E}" data-d="250">'
+            f'<div class="rk-head"><div class="who">{E(v["target"])}</div><h1>{v["title"]}</h1><div class="rk-note">※国際ビジネス言語認定協会の公式アカウントです</div>' + (f'<div class="rk-crit">{v["crit"]}</div>' if v.get("crit") else '') + '</div>'
+            f'<div class="rk-list">{rows}</div><div class="rk-desc">{desc}</div>' +
             f'<div class="rk-fig">{FIG}</div></div>')
     js = ("window.HOOKS=function(t){const $=i=>document.getElementById(i);const T=%s,N=%d,T1=%d;"
           "for(let r=1;r<=N;r++){const i=N-r,k=ease(cl((t-T[i])/350)),s=$('rs'+r),q=$('rq'+r);"

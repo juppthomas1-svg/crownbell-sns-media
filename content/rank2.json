@@ -1,0 +1,35 @@
+[
+ {
+  "id": "r02_tt_rank_named",
+  "kind": "rank",
+  "platform": "tt",
+  "theme": "light",
+  "cls": "rk2",
+  "dur": 20000,
+  "end_at": 16500,
+  "t0": 1500,
+  "step": 3300,
+  "drum_gap": 3300,
+  "target": "就活生必見",
+  "title": "今から短期間で取りやすい<br><em>履歴書に書ける資格</em>",
+  "crit": "※国際ビジネス言語認定協会の公式アカウントです。比較の基準：申込から結果までの早さ・受験のしやすさ（2026年10月時点の公開情報。TOEIC受験料は2025年3月時点）",
+  "items": [
+   [
+    "英検（2級）",
+    "<span class=\"g\"><i>◎</i>知名度が高い</span><span class=\"x\"><i>✕</i>試験は年3回だけ・申込締切あり</span><span class=\"x\"><i>✕</i>2級以上は二次試験もある</span><span class=\"x\"><i>✕</i>結果まで数週間かかる</span>"
+   ],
+   [
+    "TOEIC L&R",
+    "<span class=\"g\"><i>◎</i>企業での知名度がとても高い</span><span class=\"x\"><i>✕</i>申込は試験日の約1か月半前に締切</span><span class=\"x\"><i>✕</i>結果は試験の約2〜3週間後</span><span class=\"x\"><i>✕</i>受験料 7,810円</span>"
+   ],
+   [
+    "日商簿記3級",
+    "<span class=\"g\"><i>◎</i>ネット試験は日程を選べて結果もその場で</span><span class=\"x\"><i>✕</i>勉強時間の目安は50〜150時間</span><span class=\"x\"><i>✕</i>テストセンターの予約が必要</span>"
+   ],
+   [
+    "ビジネス英語実務検定",
+    "<span class=\"g\"><i>◎</i>24時間いつでもスマホで受験</span><span class=\"g\"><i>◎</i>合格すれば合格証は最短で当日発行</span><span class=\"g\"><i>◎</i>3級 3,500円（税込）</span>"
+   ]
+  ]
+ }
+]
