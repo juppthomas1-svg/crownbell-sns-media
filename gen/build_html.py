@@ -162,7 +162,7 @@ canvas{position:absolute;inset:0}
 .safe .foot{display:none}
 #pulse{position:absolute;inset:0;opacity:0;pointer-events:none;background:radial-gradient(70% 55% at 50% 45%,rgba(227,196,124,.0) 30%,rgba(227,196,124,.55) 100%)}
 .light #pulse{background:radial-gradient(70% 55% at 50% 45%,rgba(15,42,92,0) 35%,rgba(15,42,92,.35) 100%)}
-.beams{display:none}
+.beams{display:none}.power .beams{display:block}
 .tgt{display:inline-block;margin-top:44px;background:linear-gradient(90deg,#c9a85c,#ead08f);color:#0a1a3d;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:64px;letter-spacing:.12em;padding:14px 34px}
 .tgt+.kicker{margin-top:30px!important}
 .qfig{left:320px;right:320px;bottom:330px}
@@ -309,8 +309,8 @@ body{font-weight:700}
 .power{color:#fff;background:radial-gradient(90% 60% at 50% 30%,#163a86 0%,#0b1f4d 45%,#040b1f 100%)}
 .power .vig{background:radial-gradient(120% 80% at 50% 50%,transparent 55%,rgba(0,0,0,.55) 100%)}
 .power .beams{position:absolute;inset:-200px;pointer-events:none;background:
- linear-gradient(115deg,transparent 38%,rgba(242,193,78,.16) 40%,transparent 44%),
- linear-gradient(115deg,transparent 52%,rgba(242,193,78,.10) 53%,transparent 56%),
+ linear-gradient(115deg,transparent 38%,rgba(227,196,124,.13) 40%,transparent 44%),
+ linear-gradient(115deg,transparent 52%,rgba(227,196,124,.08) 53%,transparent 56%),
  linear-gradient(115deg,transparent 64%,rgba(255,255,255,.06) 65%,transparent 67%)}
 .power .frame{border-color:rgba(242,193,78,.6)}
 .power .brand img{width:78px;height:78px}
