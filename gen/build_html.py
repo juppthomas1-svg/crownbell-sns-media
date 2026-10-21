@@ -344,87 +344,79 @@ body{font-weight:700}
 
 FIG34 = r'''<svg id="fig" viewBox="0 0 600 640" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
 <defs>
- <pattern id="pv" width="15" height="15" patternUnits="userSpaceOnUse"><rect width="15" height="15" fill="#18264d"/><rect x="7" width="1.3" height="15" fill="rgba(255,255,255,.26)"/></pattern>
- <pattern id="ph" width="15" height="15" patternUnits="userSpaceOnUse" patternTransform="rotate(80)"><rect width="15" height="15" fill="#18264d"/><rect x="7" width="1.3" height="15" fill="rgba(255,255,255,.24)"/></pattern>
- <pattern id="pu" width="15" height="15" patternUnits="userSpaceOnUse" patternTransform="rotate(-14)"><rect width="15" height="15" fill="#18264d"/><rect x="7" width="1.3" height="15" fill="rgba(255,255,255,.24)"/></pattern>
- <linearGradient id="shadeT" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
- <linearGradient id="shadeA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
- <linearGradient id="lap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22325f"/><stop offset="1" stop-color="#121d3c"/></linearGradient>
- <linearGradient id="sk2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d4b4"/><stop offset="1" stop-color="#dfa77f"/></linearGradient>
- <linearGradient id="hair2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2e2e33"/><stop offset=".45" stop-color="#0c0c0e"/><stop offset="1" stop-color="#000"/></linearGradient>
- <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f9"/><stop offset="1" stop-color="#c9d0da"/></linearGradient>
- <linearGradient id="mon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#222833"/><stop offset="1" stop-color="#0b0d12"/></linearGradient>
- <clipPath id="cT"><path d="M118 640 L116 432 C116 376 150 340 206 327 L260 318 L322 322 C364 330 390 362 398 412 L408 640 Z"/></clipPath>
+ <pattern id="pv" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#172548"/><rect x="7.5" width="1.1" height="16" fill="rgba(255,255,255,.22)"/></pattern>
+ <radialGradient id="torsoL" cx=".62" cy=".25" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+ <linearGradient id="lapG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#263a6e"/><stop offset="1" stop-color="#101a36"/></linearGradient>
+ <radialGradient id="skinG" cx=".62" cy=".38" r=".75"><stop offset="0" stop-color="#fbe0c6"/><stop offset=".7" stop-color="#efbf98"/><stop offset="1" stop-color="#d79c74"/></radialGradient>
+ <linearGradient id="neckG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c98d66"/><stop offset=".6" stop-color="#e6b38c"/></linearGradient>
+ <linearGradient id="hairG" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#3a3a42"/><stop offset=".35" stop-color="#0d0d10"/><stop offset="1" stop-color="#000"/></linearGradient>
+ <linearGradient id="tieG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9e0b22"/><stop offset=".5" stop-color="#d4152f"/><stop offset="1" stop-color="#a30c24"/></linearGradient>
+ <linearGradient id="lidG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4e8ee"/><stop offset="1" stop-color="#a9b1bd"/></linearGradient>
+ <linearGradient id="deskG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8fb"/><stop offset="1" stop-color="#cdd4de"/></linearGradient>
+ <clipPath id="tc"><path d="M116 640 C112 520 124 430 178 386 C214 356 256 344 300 344 C344 344 386 356 422 386 C476 430 488 520 484 640 Z"/></clipPath>
 </defs>
-<!-- monitor (behind) -->
-<rect x="470" y="255" width="150" height="235" rx="10" fill="url(#mon)"/>
-<rect x="476" y="261" width="138" height="223" rx="6" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2"/>
-<rect x="535" y="490" width="20" height="66" fill="#2b313b"/>
-<rect x="505" y="552" width="80" height="9" rx="4" fill="#2b313b"/>
-<!-- chair -->
-<rect x="78" y="335" width="140" height="300" rx="46" fill="#0d1322"/>
-<!-- far arm (person's right) -->
-<path d="M384 342 C412 356 428 404 432 468 L404 488 C398 446 392 404 380 372 Z" fill="url(#pu)"/>
-<path d="M384 342 C412 356 428 404 432 468 L404 488 C398 446 392 404 380 372 Z" fill="#000" opacity=".28"/>
 <!-- torso -->
-<path d="M118 640 L116 432 C116 376 150 340 206 327 L260 318 L322 322 C364 330 390 362 398 412 L408 640 Z" fill="url(#pv)"/>
-<rect x="100" y="300" width="320" height="340" fill="url(#shadeT)" clip-path="url(#cT)"/>
-<!-- shirt + tie -->
-<path d="M260 318 L322 322 L302 430 Z" fill="#f5f2ec"/>
-<path d="M262 320 L284 314 L300 336 L278 346 Z" fill="#ffffff"/>
-<path d="M322 322 L304 314 L300 336 L316 344 Z" fill="#e9e5dc"/>
-<path d="M291 336 L307 337 L310 352 L296 356 Z" fill="#a50e26"/>
-<path id="tie" d="M296 356 L310 352 L314 452 L302 474 L292 456 Z" fill="#c8102e"/>
-<path d="M300 360 L306 359 L306 450" stroke="rgba(255,255,255,.18)" stroke-width="2" fill="none"/>
-<!-- lapels -->
-<path d="M260 318 L234 356 L258 374 L242 394 L300 488 L302 430 Z" fill="url(#lap)"/>
-<path d="M260 318 L234 356 L258 374 L242 394 L300 488" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.6"/>
-<path d="M322 322 L340 352 L322 370 L334 386 L300 488 L302 430 Z" fill="url(#lap)"/>
-<path d="M322 322 L340 352 L322 370 L334 386 L300 488" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.4"/>
-<path d="M350 398 L376 394 L377 404 L351 408 Z" fill="#f2c14e"/>
-<path d="M353 398 L358 388 L363 397 L368 389 L374 395" fill="#ffe08a"/>
-<circle cx="252" cy="402" r="4" fill="#f2c14e"/>
+<path d="M116 640 C112 520 124 430 178 386 C214 356 256 344 300 344 C344 344 386 356 422 386 C476 430 488 520 484 640 Z" fill="url(#pv)"/>
+<rect x="100" y="330" width="400" height="320" fill="url(#torsoL)" clip-path="url(#tc)"/>
+<!-- sleeve seams -->
+<path d="M190 392 C164 440 158 520 164 600" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="3"/>
+<path d="M410 392 C436 440 442 520 436 600" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="3"/>
 <!-- neck -->
-<path d="M240 266 L238 324 L286 320 L288 276 Z" fill="url(#sk2)"/>
-<path d="M240 300 L288 296 L288 276 L240 266 Z" fill="#000" opacity=".1"/>
+<path d="M268 286 L268 352 L332 352 L332 286 Z" fill="url(#neckG)"/>
+<!-- shirt -->
+<path d="M262 346 L338 346 L300 446 Z" fill="#f7f5f0"/>
+<path d="M262 346 L284 338 L300 362 L274 374 Z" fill="#fff"/>
+<path d="M338 346 L316 338 L300 362 L326 374 Z" fill="#eceae3"/>
+<!-- tie -->
+<path d="M290 362 L310 362 L306 382 L294 382 Z" fill="#a30c24"/>
+<path id="tie" d="M294 382 L306 382 L318 486 L300 508 L282 486 Z" fill="url(#tieG)"/>
+<!-- lapels -->
+<path d="M262 346 L236 384 L258 402 L242 424 L300 516 L300 446 Z" fill="url(#lapG)"/>
+<path d="M338 346 L364 384 L342 402 L358 424 L300 516 L300 446 Z" fill="url(#lapG)"/>
+<path d="M262 346 L236 384 L258 402 L242 424 L300 516 M338 346 L364 384 L342 402 L358 424 L300 516" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+<!-- pocket square & pin -->
+<path d="M372 436 L404 432 L404 444 L372 448 Z" fill="#14213f"/>
+<path d="M376 436 L382 422 L388 434 L394 424 L401 433 Z" fill="#f2c14e"/>
+<circle cx="250" cy="440" r="4.5" fill="#f2c14e"/>
 <!-- head -->
 <g id="h34">
- <path d="M196 196 C194 128 234 96 278 100 C322 104 344 144 342 192 C340 236 326 266 300 284 C282 296 256 296 240 286 C214 270 198 236 196 196 Z" fill="url(#sk2)"/>
- <path d="M202 192 C186 184 180 224 204 234" fill="url(#sk2)"/>
- <path d="M200 206 C204 220 210 228 214 230" stroke="#c98b66" stroke-width="2" fill="none" opacity=".6"/>
- <path d="M192 204 C180 128 226 82 286 88 C338 94 356 138 346 174 C336 148 316 134 292 130 C266 132 240 130 218 126 C208 144 204 168 202 194 Z" fill="url(#hair2)"/>
- <path d="M218 108 C246 94 290 92 326 108" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/>
- <path d="M228 118 C252 108 286 108 312 116" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="3"/>
- <path d="M326 202 L338 232 L324 238" fill="none" stroke="#c98b66" stroke-width="3"/>
- <path id="b1" d="M244 178 L276 181" fill="none" stroke="#141414" stroke-width="6"/>
- <path id="b2" d="M292 179 L322 183" fill="none" stroke="#141414" stroke-width="6"/>
- <ellipse id="e1" cx="266" cy="202" rx="6" ry="4.5" fill="#1d130d"/>
- <ellipse id="e2" cx="310" cy="202" rx="5.5" ry="4.5" fill="#1d130d"/>
- <g fill="rgba(255,255,255,.08)" stroke="#0a0a0a" stroke-width="6">
-  <rect x="240" y="186" width="46" height="34" rx="9"/><rect x="294" y="186" width="38" height="34" rx="9"/>
-  <path d="M286 200 Q290 196 294 200" fill="none" stroke-width="4"/><path d="M240 198 L206 192" fill="none" stroke-width="4"/>
+ <path d="M222 214 C208 210 204 244 224 254 Z" fill="#e7b08a"/>
+ <path d="M300 98 C352 98 388 138 388 196 C388 254 354 300 306 306 C258 304 222 260 220 200 C218 140 250 98 300 98 Z" fill="url(#skinG)"/>
+ <path d="M228 230 C236 270 262 296 296 304 C262 304 232 282 226 240 Z" fill="#000" opacity=".06"/>
+ <!-- glossy black hair with side part -->
+ <path d="M214 214 C204 136 246 84 306 84 C364 84 398 128 392 186 C386 164 374 150 356 142 C330 132 292 130 262 134 C244 138 230 152 226 180 C224 192 222 204 220 216 Z" fill="url(#hairG)"/>
+ <path d="M262 100 C300 88 346 92 374 118" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="5" stroke-linecap="round"/>
+ <path d="M248 116 C280 104 320 104 350 116" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3" stroke-linecap="round"/>
+ <path d="M262 134 C270 122 286 112 300 108" fill="none" stroke="rgba(0,0,0,.5)" stroke-width="2"/>
+ <!-- brows / eyes (looking slightly right) -->
+ <path id="b1" d="M256 186 L292 188" fill="none" stroke="#151515" stroke-width="6.5" stroke-linecap="round"/>
+ <path id="b2" d="M312 188 L350 186" fill="none" stroke="#151515" stroke-width="6.5" stroke-linecap="round"/>
+ <ellipse id="e1" cx="280" cy="210" rx="6" ry="4.6" fill="#1b110b"/>
+ <ellipse id="e2" cx="334" cy="210" rx="6" ry="4.6" fill="#1b110b"/>
+ <!-- glasses -->
+ <g fill="rgba(255,255,255,.07)" stroke="#0a0a0a" stroke-width="6" stroke-linejoin="round">
+  <rect x="250" y="192" width="52" height="38" rx="10"/><rect x="310" y="192" width="52" height="38" rx="10"/>
+  <path d="M302 206 Q306 201 310 206" fill="none" stroke-width="4"/>
+  <path d="M250 204 L224 198" fill="none" stroke-width="4"/>
  </g>
- <path id="m34" d="M280 258 Q298 264 316 254" fill="none" stroke="#8a4a3c" stroke-width="4"/>
+ <path d="M256 198 L270 196" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
+ <path d="M316 198 L330 196" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
+ <!-- nose & mouth -->
+ <path d="M312 230 C318 244 318 252 308 256" fill="none" stroke="#c48661" stroke-width="3" stroke-linecap="round"/>
+ <path id="m34" d="M286 274 Q308 282 330 270" fill="none" stroke="#8a4a3c" stroke-width="4.5" stroke-linecap="round"/>
 </g>
 <!-- desk -->
-<path d="M0 558 L600 558 L600 640 L0 640 Z" fill="url(#desk)"/>
-<path d="M0 558 L600 558" stroke="#fff" stroke-width="3"/>
-<!-- keyboard -->
-<rect x="336" y="546" width="160" height="14" rx="4" fill="#fbfcfd"/>
-<path d="M344 553 H488" stroke="#d5dae1" stroke-width="2" stroke-dasharray="7 3"/>
-<!-- far forearm -->
-<path d="M404 470 L434 466 L470 536 L440 548 Z" fill="url(#ph)"/>
-<path d="M404 470 L434 466 L470 536 L440 548 Z" fill="#000" opacity=".25"/>
-<rect x="440" y="532" width="26" height="12" rx="3" transform="rotate(-25 453 538)" fill="#f5f2ec"/>
-<rect x="436" y="522" width="20" height="13" rx="3" fill="#c9ced6" stroke="#7d848e" stroke-width="2"/>
-<g id="hB"><path d="M450 548 C452 534 476 532 486 540 C492 546 486 554 470 556 C460 557 452 555 450 548 Z" fill="url(#sk2)"/><path d="M472 541 L476 552 M480 540 L484 550" stroke="#c98b66" stroke-width="1.6"/></g>
-<!-- near arm (person's left) -->
-<path d="M120 400 C110 450 118 500 146 530 L196 512 C184 478 176 438 170 396 Z" fill="url(#pv)"/>
-<path d="M120 400 C110 450 118 500 146 530 L196 512 C184 478 176 438 170 396 Z" fill="url(#shadeA)"/><path d="M170 396 C176 438 184 478 196 512" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="3"/>
-<path d="M146 530 C170 552 250 564 352 566 L356 528 C270 524 214 516 194 510 Z" fill="url(#ph)"/>
-<path d="M146 530 C170 552 250 564 352 566 L356 528 C270 524 214 516 194 510 Z" fill="url(#shadeA)"/><path d="M194 510 C214 516 270 524 356 528" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
-<path d="M342 528 L360 528 L358 566 L340 566 Z" fill="#f5f2ec"/>
-<g id="hA"><path d="M356 532 C372 524 400 528 406 540 C410 550 398 560 378 562 C364 563 356 558 354 548 Z" fill="url(#sk2)"/><path d="M386 534 L392 548 M396 536 L400 548" stroke="#c98b66" stroke-width="1.6"/></g>
+<path d="M-40 570 L640 570 L640 660 L-40 660 Z" fill="url(#deskG)"/>
+<path d="M-40 570 L640 570" stroke="#fff" stroke-width="3"/>
+<!-- hands on keyboard edges -->
+<g id="hA"><path d="M150 572 C150 552 178 544 200 548 C216 551 222 562 214 572 Z" fill="url(#skinG)"/><path d="M118 600 C120 572 136 560 160 556 L176 574 L150 600 Z" fill="#14213f"/><rect x="148" y="554" width="18" height="20" rx="4" fill="#f7f5f0" transform="rotate(-35 157 564)"/></g>
+<g id="hB"><path d="M450 572 C450 552 422 544 400 548 C384 551 378 562 386 572 Z" fill="url(#skinG)"/><path d="M482 600 C480 572 464 560 440 556 L424 574 L450 600 Z" fill="#14213f"/><rect x="434" y="554" width="18" height="20" rx="4" fill="#f7f5f0" transform="rotate(35 443 564)"/><rect x="440" y="548" width="22" height="12" rx="3" fill="#c9ced6" stroke="#7d848e" stroke-width="1.5" transform="rotate(35 451 554)"/></g>
+<!-- laptop (back of lid) -->
+<path d="M196 462 L404 462 L416 572 L184 572 Z" fill="url(#lidG)"/>
+<path d="M196 462 L404 462" stroke="#fff" stroke-width="2" opacity=".7"/>
+<path d="M170 572 L430 572 L440 584 L160 584 Z" fill="#8e97a4"/>
+<circle cx="300" cy="518" r="20" fill="none" stroke="#c9a85c" stroke-width="2.5"/>
+<path d="M282 518 H318 M300 500 V536 M288 506 Q300 518 288 530 M312 506 Q300 518 312 530" stroke="#c9a85c" stroke-width="1.8" fill="none"/>
 </svg>
 '''
 
@@ -566,10 +558,10 @@ def quiz(v):
                   "if(pose==1){const k=ease(cl((t-TA-250)/500));w.style.transformOrigin='50%% 100%%';w.style.transform=`translate(270px,${-150+(1-k)*50}px) scale(.42)`;}else{w.style.transform='none';}"
                   "if(document.body.classList.contains('power')){document.querySelectorAll('.sky .w').forEach(x=>{const p=+x.dataset.p;x.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
                   "const g=$('h34');if(pose==0){w.style.transform='none';}else{const k=ease(cl((t-TA-250)/500));w.style.transformOrigin='50%% 100%%';w.style.transform=`translate(330px,${-330+(1-k)*40}px) scale(.36)`;}"
-                  "g.setAttribute('transform',`translate(0 ${Math.sin(t/650)*2.5}) rotate(${Math.sin(t/1100)*1.2} 260 290)`);"
+                  "g.setAttribute('transform',`translate(0 ${Math.sin(t/650)*2}) rotate(${Math.sin(t/1100)*1} 300 300)`);"
                   "const bk=((t+500)%%1700)<110?.6:4.5;$('e1').setAttribute('ry',bk);$('e2').setAttribute('ry',bk);"
-                  "const ty=k=>Math.max(0,Math.sin(t/k))*9;$('hA').setAttribute('transform',`translate(0 ${-ty(47)})`);$('hB').setAttribute('transform',`translate(0 ${-ty(39)})`);"
-                  "$('m34').setAttribute('d',pose==1?'M274 258 Q294 276 314 256':'M276 262 Q294 268 312 258');return;}"
+                  "const ty=k=>Math.max(0,Math.sin(t/k))*6;$('hA').setAttribute('transform',`translate(0 ${-ty(47)})`);$('hB').setAttribute('transform',`translate(0 ${-ty(39)})`);"
+                  "$('m34').setAttribute('d',pose==1?'M282 270 Q308 292 334 268':'M286 274 Q308 282 330 270');return;}"
                   "document.querySelectorAll('.sky .w').forEach(w=>{const p=+w.dataset.p;w.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
                   "if(pose==0&&document.body.classList.contains('power')){$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
                   "const ty=k=>Math.max(0,Math.sin(t/(k)))*10;if($('hl')){$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(41+7)})`);}"
