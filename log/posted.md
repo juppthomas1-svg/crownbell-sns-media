@@ -24,3 +24,4 @@
 - 2026-10-20 手動｜X｜x04_fig_promo_target（就活生必見・人物入り宣伝）
 - 2026-10-20 手動｜X｜x05_im_on_it（I'm on it・明るい配色・人物入り）
 - 2026-10-21 手動｜X｜x06_keep_you_posted（I'll keep you posted）
+- 2026-10-21 14:30｜TikTok｜r01_tt_rank_v2（今から間に合う資格ランキング）

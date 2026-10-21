@@ -241,12 +241,12 @@ body{font-weight:700}
 .timer{gap:30px}
 
 /* ランキング */
-.rk-head{position:absolute;left:70px;right:190px;top:190px}
+.rk-head{position:absolute;left:130px;right:130px;top:190px;text-align:center}
 .rk-head .who{display:inline-block;background:#0f2a5c;color:#f7f1e1;font-weight:900;font-size:40px;padding:8px 22px;letter-spacing:.04em}
 .rk-head h1{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:76px;line-height:1.25;margin-top:16px}
 .rk-head h1 em{font-style:normal;color:#b0883a}
 .rk-note{margin-top:10px;font-size:22px;color:rgba(15,42,92,.6)}
-.rk-list{position:absolute;left:70px;right:200px;top:520px}
+.rk-list{position:absolute;left:130px;right:130px;top:540px}
 .rk-row{display:flex;align-items:center;gap:20px;height:118px;margin-bottom:14px}
 .rk-no{flex:none;width:118px;height:118px;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:54px;color:#fff;background:#0f2a5c}
 .rk-no small{font-size:26px;margin-left:2px}
@@ -256,10 +256,10 @@ body{font-weight:700}
 .rk-slot span{display:block;opacity:0}
 .rk-slot .q{font-family:"Noto Serif CJK JP",serif;font-size:60px;color:rgba(15,42,92,.2)}
 .rk-row.top .rk-slot span.win{font-family:"Noto Serif CJK JP",serif;font-size:48px;color:#0f2a5c}
-.rk-desc{position:absolute;left:70px;right:450px;top:1250px;height:190px}
+.rk-desc{position:absolute;left:130px;right:400px;top:1260px;height:190px}
 .rk-desc>div{position:absolute;inset:0;opacity:0;border-left:6px solid #b8954a;padding:6px 0 6px 22px;font-size:31px;line-height:1.55;font-weight:700;color:#0f2a5c}
 .rk-desc b{color:#a07c34}
-.rk-fig{position:absolute;left:640px;width:250px;top:1150px}
+.rk-fig{position:absolute;left:665px;width:240px;top:1170px}
 .rk-fig svg{width:100%;display:block}
 '''
 
