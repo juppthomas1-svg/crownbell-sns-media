@@ -30,3 +30,4 @@
 - 2026-10-24 08:30｜Instagram｜w2_02_ig_otesuki｜「お手すきの際に」英語で言えますか（Whenever you get a chance）｜型：power クイズ
 - 2026-10-25 07:30｜TikTok｜w2_03_tt_reinvent_wheel｜Let's not reinvent the wheel（power配色・話にならない系フック）｜型：power クイズ
 - 2026-10-22 手動｜X｜x08_get_back_to_you（I'll get back to you・power）
+- 2026-10-22 08:02｜w2_01〜03 を高級感デザイン＋光の3本線で作り直し、Metricool の動画を差し替え（*_lux.mp4）。10/25 分は Metricool が 1時間ずれて 6:30 になったため、送信時刻を調整して 7:30 に修正済み。
