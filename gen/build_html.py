@@ -344,69 +344,87 @@ body{font-weight:700}
 
 FIG34 = r'''<svg id="fig" viewBox="0 0 600 640" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
 <defs>
- <pattern id="pin2" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><rect width="18" height="18" fill="#141f3d"/><rect x="8" width="1.4" height="18" fill="rgba(255,255,255,.5)"/></pattern>
- <linearGradient id="sk2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4cfae"/><stop offset="1" stop-color="#dca37c"/></linearGradient>
- <linearGradient id="hair2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2b2e"/><stop offset=".5" stop-color="#0b0b0c"/><stop offset="1" stop-color="#000"/></linearGradient>
- <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f5f8"/><stop offset="1" stop-color="#cfd5de"/></linearGradient>
- <linearGradient id="mon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1b1f27"/><stop offset="1" stop-color="#0a0c10"/></linearGradient>
+ <pattern id="pv" width="15" height="15" patternUnits="userSpaceOnUse"><rect width="15" height="15" fill="#18264d"/><rect x="7" width="1.3" height="15" fill="rgba(255,255,255,.26)"/></pattern>
+ <pattern id="ph" width="15" height="15" patternUnits="userSpaceOnUse" patternTransform="rotate(80)"><rect width="15" height="15" fill="#18264d"/><rect x="7" width="1.3" height="15" fill="rgba(255,255,255,.24)"/></pattern>
+ <pattern id="pu" width="15" height="15" patternUnits="userSpaceOnUse" patternTransform="rotate(-14)"><rect width="15" height="15" fill="#18264d"/><rect x="7" width="1.3" height="15" fill="rgba(255,255,255,.24)"/></pattern>
+ <linearGradient id="shadeT" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>
+ <linearGradient id="shadeA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".18"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+ <linearGradient id="lap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22325f"/><stop offset="1" stop-color="#121d3c"/></linearGradient>
+ <linearGradient id="sk2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d4b4"/><stop offset="1" stop-color="#dfa77f"/></linearGradient>
+ <linearGradient id="hair2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2e2e33"/><stop offset=".45" stop-color="#0c0c0e"/><stop offset="1" stop-color="#000"/></linearGradient>
+ <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f9"/><stop offset="1" stop-color="#c9d0da"/></linearGradient>
+ <linearGradient id="mon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#222833"/><stop offset="1" stop-color="#0b0d12"/></linearGradient>
+ <clipPath id="cT"><path d="M118 640 L116 432 C116 376 150 340 206 327 L260 318 L322 322 C364 330 390 362 398 412 L408 640 Z"/></clipPath>
 </defs>
-<g stroke-linejoin="round" stroke-linecap="round">
- <!-- chair -->
- <rect x="70" y="300" width="150" height="300" rx="40" fill="#111827"/>
- <!-- torso (3/4, facing right) -->
- <path id="torso" d="M100 640 L96 470 C98 400 130 360 190 345 L300 335 C350 340 372 380 380 430 L392 640 Z" fill="url(#pin2)" stroke="#0b1226" stroke-width="2"/>
- <!-- shirt & tie (front is on the right side) -->
- <path d="M262 338 L300 335 L318 352 L296 440 Z" fill="#f4f1ea"/>
- <path id="tie" d="M286 346 L300 344 L304 360 L300 450 L288 470 L282 452 L290 362 Z" fill="#c8102e"/>
- <path d="M286 346 L300 344 L304 360 L290 362 Z" fill="#9e0c23"/>
- <path d="M262 338 L252 372 L286 400 L270 420 L296 480" fill="none" stroke="#0b1226" stroke-width="3"/>
- <path d="M318 352 L326 384 L304 410" fill="none" stroke="#0b1226" stroke-width="3"/>
- <path d="M334 392 L360 388 L362 398 L336 402 Z" fill="#f2c14e"/>
- <!-- neck -->
- <path d="M226 270 L222 340 L262 346 L276 282 Z" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/>
- <!-- head group -->
- <g id="h34">
-  <path d="M190 200 C188 130 230 98 274 104 C318 110 338 150 336 196 C334 238 322 268 296 288 C278 300 252 300 236 290 C210 274 192 240 190 200 Z" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/>
-  <!-- ear (left side) -->
-  <path d="M196 196 C178 188 172 226 196 236" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/>
-  <!-- hair: glossy black, short sides -->
-  <path d="M186 206 C176 132 222 86 282 92 C334 98 350 140 340 176 C330 150 312 136 288 132 C262 134 236 132 214 128 C204 146 200 170 198 196 Z" fill="url(#hair2)" stroke="#000" stroke-width="2"/>
-  <path d="M214 112 C240 98 284 96 318 112" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="6"/>
-  <path d="M222 122 C248 112 280 112 304 120" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="4"/>
-  <!-- nose on the right edge -->
-  <path d="M322 206 L334 236 L320 242" fill="none" stroke="#b9805c" stroke-width="3"/>
-  <!-- brows -->
-  <path id="b1" d="M240 182 L272 184" fill="none" stroke="#1a1a1a" stroke-width="6"/>
-  <path id="b2" d="M288 182 L318 186" fill="none" stroke="#1a1a1a" stroke-width="6"/>
-  <!-- eyes looking right -->
-  <ellipse id="e1" cx="262" cy="206" rx="6" ry="4.5" fill="#1d130d"/>
-  <ellipse id="e2" cx="306" cy="206" rx="5.5" ry="4.5" fill="#1d130d"/>
-  <!-- glasses -->
-  <g fill="rgba(255,255,255,.08)" stroke="#0a0a0a" stroke-width="6">
-   <rect x="236" y="190" width="46" height="34" rx="9"/>
-   <rect x="290" y="190" width="38" height="34" rx="9"/>
-   <path d="M282 204 Q286 200 290 204" fill="none" stroke-width="4"/>
-   <path d="M236 202 L200 196" fill="none" stroke-width="4"/>
-  </g>
-  <!-- mouth -->
-  <path id="m34" d="M276 262 Q294 268 312 258" fill="none" stroke="#8a4a3c" stroke-width="4"/>
+<!-- monitor (behind) -->
+<rect x="470" y="255" width="150" height="235" rx="10" fill="url(#mon)"/>
+<rect x="476" y="261" width="138" height="223" rx="6" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="2"/>
+<rect x="535" y="490" width="20" height="66" fill="#2b313b"/>
+<rect x="505" y="552" width="80" height="9" rx="4" fill="#2b313b"/>
+<!-- chair -->
+<rect x="78" y="335" width="140" height="300" rx="46" fill="#0d1322"/>
+<!-- far arm (person's right) -->
+<path d="M384 342 C412 356 428 404 432 468 L404 488 C398 446 392 404 380 372 Z" fill="url(#pu)"/>
+<path d="M384 342 C412 356 428 404 432 468 L404 488 C398 446 392 404 380 372 Z" fill="#000" opacity=".28"/>
+<!-- torso -->
+<path d="M118 640 L116 432 C116 376 150 340 206 327 L260 318 L322 322 C364 330 390 362 398 412 L408 640 Z" fill="url(#pv)"/>
+<rect x="100" y="300" width="320" height="340" fill="url(#shadeT)" clip-path="url(#cT)"/>
+<!-- shirt + tie -->
+<path d="M260 318 L322 322 L302 430 Z" fill="#f5f2ec"/>
+<path d="M262 320 L284 314 L300 336 L278 346 Z" fill="#ffffff"/>
+<path d="M322 322 L304 314 L300 336 L316 344 Z" fill="#e9e5dc"/>
+<path d="M291 336 L307 337 L310 352 L296 356 Z" fill="#a50e26"/>
+<path id="tie" d="M296 356 L310 352 L314 452 L302 474 L292 456 Z" fill="#c8102e"/>
+<path d="M300 360 L306 359 L306 450" stroke="rgba(255,255,255,.18)" stroke-width="2" fill="none"/>
+<!-- lapels -->
+<path d="M260 318 L234 356 L258 374 L242 394 L300 488 L302 430 Z" fill="url(#lap)"/>
+<path d="M260 318 L234 356 L258 374 L242 394 L300 488" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.6"/>
+<path d="M322 322 L340 352 L322 370 L334 386 L300 488 L302 430 Z" fill="url(#lap)"/>
+<path d="M322 322 L340 352 L322 370 L334 386 L300 488" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1.4"/>
+<path d="M350 398 L376 394 L377 404 L351 408 Z" fill="#f2c14e"/>
+<path d="M353 398 L358 388 L363 397 L368 389 L374 395" fill="#ffe08a"/>
+<circle cx="252" cy="402" r="4" fill="#f2c14e"/>
+<!-- neck -->
+<path d="M240 266 L238 324 L286 320 L288 276 Z" fill="url(#sk2)"/>
+<path d="M240 300 L288 296 L288 276 L240 266 Z" fill="#000" opacity=".1"/>
+<!-- head -->
+<g id="h34">
+ <path d="M196 196 C194 128 234 96 278 100 C322 104 344 144 342 192 C340 236 326 266 300 284 C282 296 256 296 240 286 C214 270 198 236 196 196 Z" fill="url(#sk2)"/>
+ <path d="M202 192 C186 184 180 224 204 234" fill="url(#sk2)"/>
+ <path d="M200 206 C204 220 210 228 214 230" stroke="#c98b66" stroke-width="2" fill="none" opacity=".6"/>
+ <path d="M192 204 C180 128 226 82 286 88 C338 94 356 138 346 174 C336 148 316 134 292 130 C266 132 240 130 218 126 C208 144 204 168 202 194 Z" fill="url(#hair2)"/>
+ <path d="M218 108 C246 94 290 92 326 108" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/>
+ <path d="M228 118 C252 108 286 108 312 116" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="3"/>
+ <path d="M326 202 L338 232 L324 238" fill="none" stroke="#c98b66" stroke-width="3"/>
+ <path id="b1" d="M244 178 L276 181" fill="none" stroke="#141414" stroke-width="6"/>
+ <path id="b2" d="M292 179 L322 183" fill="none" stroke="#141414" stroke-width="6"/>
+ <ellipse id="e1" cx="266" cy="202" rx="6" ry="4.5" fill="#1d130d"/>
+ <ellipse id="e2" cx="310" cy="202" rx="5.5" ry="4.5" fill="#1d130d"/>
+ <g fill="rgba(255,255,255,.08)" stroke="#0a0a0a" stroke-width="6">
+  <rect x="240" y="186" width="46" height="34" rx="9"/><rect x="294" y="186" width="38" height="34" rx="9"/>
+  <path d="M286 200 Q290 196 294 200" fill="none" stroke-width="4"/><path d="M240 198 L206 192" fill="none" stroke-width="4"/>
  </g>
- <!-- desk -->
- <path d="M0 560 L600 560 L600 640 L0 640 Z" fill="url(#desk)"/>
- <!-- monitor (back, on the right) -->
- <rect x="440" y="240" width="170" height="250" rx="8" fill="url(#mon)"/>
- <rect x="520" y="490" width="22" height="70" fill="#2a2f38"/>
- <rect x="488" y="552" width="90" height="10" rx="4" fill="#2a2f38"/>
- <!-- keyboard -->
- <rect x="330" y="548" width="150" height="16" rx="5" fill="#fbfcfd" stroke="#c9ced6" stroke-width="2"/>
- <!-- back arm -->
- <path d="M140 400 C150 480 230 540 340 552 L350 568 C220 566 120 510 110 420 Z" fill="url(#pin2)" stroke="#0b1226" stroke-width="2"/>
- <g id="hA"><ellipse cx="352" cy="552" rx="26" ry="13" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/></g>
- <!-- front arm -->
- <path d="M330 380 C380 420 400 500 420 540 L398 552 C376 510 350 460 318 430 Z" fill="url(#pin2)" stroke="#0b1226" stroke-width="2"/>
- <rect x="398" y="532" width="22" height="14" rx="3" fill="#cfd3da" stroke="#7d848e" stroke-width="2"/>
- <g id="hB"><ellipse cx="432" cy="550" rx="26" ry="13" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/></g>
+ <path id="m34" d="M280 258 Q298 264 316 254" fill="none" stroke="#8a4a3c" stroke-width="4"/>
 </g>
+<!-- desk -->
+<path d="M0 558 L600 558 L600 640 L0 640 Z" fill="url(#desk)"/>
+<path d="M0 558 L600 558" stroke="#fff" stroke-width="3"/>
+<!-- keyboard -->
+<rect x="336" y="546" width="160" height="14" rx="4" fill="#fbfcfd"/>
+<path d="M344 553 H488" stroke="#d5dae1" stroke-width="2" stroke-dasharray="7 3"/>
+<!-- far forearm -->
+<path d="M404 470 L434 466 L470 536 L440 548 Z" fill="url(#ph)"/>
+<path d="M404 470 L434 466 L470 536 L440 548 Z" fill="#000" opacity=".25"/>
+<rect x="440" y="532" width="26" height="12" rx="3" transform="rotate(-25 453 538)" fill="#f5f2ec"/>
+<rect x="436" y="522" width="20" height="13" rx="3" fill="#c9ced6" stroke="#7d848e" stroke-width="2"/>
+<g id="hB"><path d="M450 548 C452 534 476 532 486 540 C492 546 486 554 470 556 C460 557 452 555 450 548 Z" fill="url(#sk2)"/><path d="M472 541 L476 552 M480 540 L484 550" stroke="#c98b66" stroke-width="1.6"/></g>
+<!-- near arm (person's left) -->
+<path d="M120 400 C110 450 118 500 146 530 L196 512 C184 478 176 438 170 396 Z" fill="url(#pv)"/>
+<path d="M120 400 C110 450 118 500 146 530 L196 512 C184 478 176 438 170 396 Z" fill="url(#shadeA)"/><path d="M170 396 C176 438 184 478 196 512" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="3"/>
+<path d="M146 530 C170 552 250 564 352 566 L356 528 C270 524 214 516 194 510 Z" fill="url(#ph)"/>
+<path d="M146 530 C170 552 250 564 352 566 L356 528 C270 524 214 516 194 510 Z" fill="url(#shadeA)"/><path d="M194 510 C214 516 270 524 356 528" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+<path d="M342 528 L360 528 L358 566 L340 566 Z" fill="#f5f2ec"/>
+<g id="hA"><path d="M356 532 C372 524 400 528 406 540 C410 550 398 560 378 562 C364 563 356 558 354 548 Z" fill="url(#sk2)"/><path d="M386 534 L392 548 M396 536 L400 548" stroke="#c98b66" stroke-width="1.6"/></g>
 </svg>
 '''
 
