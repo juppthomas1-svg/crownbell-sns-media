@@ -334,12 +334,80 @@ body{font-weight:700}
 .power #qfw{filter:drop-shadow(0 0 1.5px rgba(255,255,255,.55))}
 .lap{display:none}.power .lap{display:block}
 .sky .w{fill:#f2c14e}
-.power .qfig{left:250px;right:250px;bottom:150px}
+.power .qfig{left:150px;right:150px;bottom:110px}
 .power .safe .qfig{left:230px;right:300px}
 /* カウントダウン：右下の赤い数字がドクンドクン */
 #pulse,.bignum{display:none!important}
 .cnum{color:#e53935!important;text-shadow:0 0 24px rgba(229,57,53,.45)}
 .ring #rfg{stroke:#e53935!important;filter:drop-shadow(0 0 8px rgba(229,57,53,.5))!important}
+'''
+
+FIG34 = r'''<svg id="fig" viewBox="0 0 600 640" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+<defs>
+ <pattern id="pin2" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(8)"><rect width="18" height="18" fill="#141f3d"/><rect x="8" width="1.4" height="18" fill="rgba(255,255,255,.5)"/></pattern>
+ <linearGradient id="sk2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4cfae"/><stop offset="1" stop-color="#dca37c"/></linearGradient>
+ <linearGradient id="hair2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b2b2e"/><stop offset=".5" stop-color="#0b0b0c"/><stop offset="1" stop-color="#000"/></linearGradient>
+ <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f5f8"/><stop offset="1" stop-color="#cfd5de"/></linearGradient>
+ <linearGradient id="mon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1b1f27"/><stop offset="1" stop-color="#0a0c10"/></linearGradient>
+</defs>
+<g stroke-linejoin="round" stroke-linecap="round">
+ <!-- chair -->
+ <rect x="70" y="300" width="150" height="300" rx="40" fill="#111827"/>
+ <!-- torso (3/4, facing right) -->
+ <path id="torso" d="M100 640 L96 470 C98 400 130 360 190 345 L300 335 C350 340 372 380 380 430 L392 640 Z" fill="url(#pin2)" stroke="#0b1226" stroke-width="2"/>
+ <!-- shirt & tie (front is on the right side) -->
+ <path d="M262 338 L300 335 L318 352 L296 440 Z" fill="#f4f1ea"/>
+ <path id="tie" d="M286 346 L300 344 L304 360 L300 450 L288 470 L282 452 L290 362 Z" fill="#c8102e"/>
+ <path d="M286 346 L300 344 L304 360 L290 362 Z" fill="#9e0c23"/>
+ <path d="M262 338 L252 372 L286 400 L270 420 L296 480" fill="none" stroke="#0b1226" stroke-width="3"/>
+ <path d="M318 352 L326 384 L304 410" fill="none" stroke="#0b1226" stroke-width="3"/>
+ <path d="M334 392 L360 388 L362 398 L336 402 Z" fill="#f2c14e"/>
+ <!-- neck -->
+ <path d="M226 270 L222 340 L262 346 L276 282 Z" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/>
+ <!-- head group -->
+ <g id="h34">
+  <path d="M190 200 C188 130 230 98 274 104 C318 110 338 150 336 196 C334 238 322 268 296 288 C278 300 252 300 236 290 C210 274 192 240 190 200 Z" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/>
+  <!-- ear (left side) -->
+  <path d="M196 196 C178 188 172 226 196 236" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/>
+  <!-- hair: glossy black, short sides -->
+  <path d="M186 206 C176 132 222 86 282 92 C334 98 350 140 340 176 C330 150 312 136 288 132 C262 134 236 132 214 128 C204 146 200 170 198 196 Z" fill="url(#hair2)" stroke="#000" stroke-width="2"/>
+  <path d="M214 112 C240 98 284 96 318 112" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="6"/>
+  <path d="M222 122 C248 112 280 112 304 120" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="4"/>
+  <!-- nose on the right edge -->
+  <path d="M322 206 L334 236 L320 242" fill="none" stroke="#b9805c" stroke-width="3"/>
+  <!-- brows -->
+  <path id="b1" d="M240 182 L272 184" fill="none" stroke="#1a1a1a" stroke-width="6"/>
+  <path id="b2" d="M288 182 L318 186" fill="none" stroke="#1a1a1a" stroke-width="6"/>
+  <!-- eyes looking right -->
+  <ellipse id="e1" cx="262" cy="206" rx="6" ry="4.5" fill="#1d130d"/>
+  <ellipse id="e2" cx="306" cy="206" rx="5.5" ry="4.5" fill="#1d130d"/>
+  <!-- glasses -->
+  <g fill="rgba(255,255,255,.08)" stroke="#0a0a0a" stroke-width="6">
+   <rect x="236" y="190" width="46" height="34" rx="9"/>
+   <rect x="290" y="190" width="38" height="34" rx="9"/>
+   <path d="M282 204 Q286 200 290 204" fill="none" stroke-width="4"/>
+   <path d="M236 202 L200 196" fill="none" stroke-width="4"/>
+  </g>
+  <!-- mouth -->
+  <path id="m34" d="M276 262 Q294 268 312 258" fill="none" stroke="#8a4a3c" stroke-width="4"/>
+ </g>
+ <!-- desk -->
+ <path d="M0 560 L600 560 L600 640 L0 640 Z" fill="url(#desk)"/>
+ <!-- monitor (back, on the right) -->
+ <rect x="440" y="240" width="170" height="250" rx="8" fill="url(#mon)"/>
+ <rect x="520" y="490" width="22" height="70" fill="#2a2f38"/>
+ <rect x="488" y="552" width="90" height="10" rx="4" fill="#2a2f38"/>
+ <!-- keyboard -->
+ <rect x="330" y="548" width="150" height="16" rx="5" fill="#fbfcfd" stroke="#c9ced6" stroke-width="2"/>
+ <!-- back arm -->
+ <path d="M140 400 C150 480 230 540 340 552 L350 568 C220 566 120 510 110 420 Z" fill="url(#pin2)" stroke="#0b1226" stroke-width="2"/>
+ <g id="hA"><ellipse cx="352" cy="552" rx="26" ry="13" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/></g>
+ <!-- front arm -->
+ <path d="M330 380 C380 420 400 500 420 540 L398 552 C376 510 350 460 318 430 Z" fill="url(#pin2)" stroke="#0b1226" stroke-width="2"/>
+ <rect x="398" y="532" width="22" height="14" rx="3" fill="#cfd3da" stroke="#7d848e" stroke-width="2"/>
+ <g id="hB"><ellipse cx="432" cy="550" rx="26" ry="13" fill="url(#sk2)" stroke="#b9805c" stroke-width="2"/></g>
+</g>
+</svg>
 '''
 
 LAP = r'''<svg class="lap" viewBox="0 0 600 640" style="position:absolute;left:0;top:0;width:100%;overflow:visible">
@@ -471,13 +539,19 @@ def quiz(v):
              f'if(t>={T_A}&&!window.BURST){{const r=os[{v["ans"]}].getBoundingClientRect();window.BURST={{t:{T_A},x:r.left+r.width/2,y:r.top+r.height/2}};}}}};')
     lead = "書類選考で苦戦していませんか？<br>資格欄、空白のままになっていませんか？"
     if v.get("figure"):
-        fig = f'<div class="figwrap qfig" id="qfw" style="position:absolute">{FIG}' + (LAP if v.get("theme")=="power" else '') + '</div>'
+        fig = f'<div class="figwrap qfig" id="qfw" style="position:absolute">' + (FIG34 if v.get("theme")=="power" else FIG) + '</div>'
         isx = 'true' if v["platform"] == "x" else 'false'
         hooks += ("(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);const $=i=>document.getElementById(i);if(!$('fig'))return;"
                   "const TQ=%d,TA=%d,TE=%d,X=%s,w=$('qfw');"
                   "let op=0,pose=0;if(t<TQ){op=cl((TQ-t)/250);pose=0;}else if(X&&t>=TA+250&&t<TE){op=ease(cl((t-TA-250)/400))*cl((TE-t)/250);pose=1;}"
                   "w.style.opacity=op;"
                   "if(pose==1){const k=ease(cl((t-TA-250)/500));w.style.transformOrigin='50%% 100%%';w.style.transform=`translate(270px,${-150+(1-k)*50}px) scale(.42)`;}else{w.style.transform='none';}"
+                  "if(document.body.classList.contains('power')){document.querySelectorAll('.sky .w').forEach(x=>{const p=+x.dataset.p;x.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
+                  "const g=$('h34');if(pose==0){w.style.transform='none';}else{const k=ease(cl((t-TA-250)/500));w.style.transformOrigin='50%% 100%%';w.style.transform=`translate(330px,${-330+(1-k)*40}px) scale(.36)`;}"
+                  "g.setAttribute('transform',`translate(0 ${Math.sin(t/650)*2.5}) rotate(${Math.sin(t/1100)*1.2} 260 290)`);"
+                  "const bk=((t+500)%%1700)<110?.6:4.5;$('e1').setAttribute('ry',bk);$('e2').setAttribute('ry',bk);"
+                  "const ty=k=>Math.max(0,Math.sin(t/k))*9;$('hA').setAttribute('transform',`translate(0 ${-ty(47)})`);$('hB').setAttribute('transform',`translate(0 ${-ty(39)})`);"
+                  "$('m34').setAttribute('d',pose==1?'M274 258 Q294 276 314 256':'M276 262 Q294 268 312 258');return;}"
                   "document.querySelectorAll('.sky .w').forEach(w=>{const p=+w.dataset.p;w.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
                   "if(pose==0&&document.body.classList.contains('power')){$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
                   "const ty=k=>Math.max(0,Math.sin(t/(k)))*10;if($('hl')){$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(41+7)})`);}"
