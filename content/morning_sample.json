@@ -1,0 +1,33 @@
+[
+ {
+  "id": "m01_tt_global",
+  "kind": "promo",
+  "platform": "tt",
+  "figure": true,
+  "target": "世界で活躍したい人へ",
+  "kicker": "MORNING ― 今日の一歩",
+  "problems": [
+   "海外とのメールが、読めない。",
+   "英語の会議で、何も言えない。",
+   "英語力を、証明できない。"
+  ],
+  "sol_kicker": "世界に轟く人材を",
+  "sol": "ビジネス英語を、<br><em>確かな力に。</em>",
+  "sol_note": "仕事で使う英語の力を測る、オンラインの検定です",
+  "facts": [
+   [
+    "SCENES",
+    "実務の場面<small>メール・会議・電話</small>"
+   ],
+   [
+    "ONLINE",
+    "24時間<small>いつでも受験</small>"
+   ],
+   [
+    "LEVELS",
+    "3級〜1級<small>段階的に挑戦</small>"
+   ]
+  ],
+  "end_lead": "世界に通用する<br>ビジネスパーソンへの、第一歩を。"
+ }
+]
