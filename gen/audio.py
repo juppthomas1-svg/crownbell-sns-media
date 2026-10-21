@@ -140,6 +140,11 @@ def build(kind, seed):
     np.random.seed(seed)
     epic = kind.endswith('_epic'); kind = kind.replace('_epic', '')
     m = epic_music(seed) if epic else music(kind, seed)
+    if epic and kind == 'quiz':
+        rk = np.random.RandomState(seed + 3); tk = 0.15
+        while tk < 1.85:
+            tt = t_(0.03); clk = hp(rk.randn(len(tt)), 2500) * np.exp(-tt * 260) * (0.18 + 0.1 * rk.rand())
+            add(m, clk * 6, tk); tk += 0.07 + rk.rand() * 0.09
     fx = np.zeros(N); dry = np.zeros(N); duck = np.ones(N)
     if kind == 'quiz':
         TQ, TA, TE = 2.1, 5.6, 7.7
