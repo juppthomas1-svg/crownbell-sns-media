@@ -239,6 +239,28 @@ body{font-weight:700}
 .safe .ring{width:160px;height:160px}.safe .ring .cnum{font-size:88px}
 .safe .bignum{font-size:900px;top:360px;left:-90px}
 .timer{gap:30px}
+
+/* ランキング */
+.rk-head{position:absolute;left:70px;right:190px;top:190px}
+.rk-head .who{display:inline-block;background:#0f2a5c;color:#f7f1e1;font-weight:900;font-size:40px;padding:8px 22px;letter-spacing:.04em}
+.rk-head h1{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:76px;line-height:1.25;margin-top:16px}
+.rk-head h1 em{font-style:normal;color:#b0883a}
+.rk-note{margin-top:10px;font-size:22px;color:rgba(15,42,92,.6)}
+.rk-list{position:absolute;left:70px;right:200px;top:520px}
+.rk-row{display:flex;align-items:center;gap:20px;height:118px;margin-bottom:14px}
+.rk-no{flex:none;width:118px;height:118px;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:54px;color:#fff;background:#0f2a5c}
+.rk-no small{font-size:26px;margin-left:2px}
+.rk-row.top .rk-no{background:linear-gradient(135deg,#c9a85c,#ead08f);color:#0f2a5c;font-size:64px}
+.rk-slot{flex:1;height:118px;background:#fff;border:2px solid rgba(184,149,74,.55);display:flex;align-items:center;padding:0 24px;font-weight:900;font-size:38px;color:#0f2a5c;overflow:hidden;box-shadow:0 6px 18px rgba(15,42,92,.08)}
+.rk-row.top .rk-slot{border:3px solid #c9a85c;background:linear-gradient(90deg,#fffaf0,#fff)}
+.rk-slot span{display:block;opacity:0}
+.rk-slot .q{font-family:"Noto Serif CJK JP",serif;font-size:60px;color:rgba(15,42,92,.2)}
+.rk-row.top .rk-slot span.win{font-family:"Noto Serif CJK JP",serif;font-size:48px;color:#0f2a5c}
+.rk-desc{position:absolute;left:70px;right:450px;top:1250px;height:190px}
+.rk-desc>div{position:absolute;inset:0;opacity:0;border-left:6px solid #b8954a;padding:6px 0 6px 22px;font-size:31px;line-height:1.55;font-weight:700;color:#0f2a5c}
+.rk-desc b{color:#a07c34}
+.rk-fig{position:absolute;left:640px;width:250px;top:1150px}
+.rk-fig svg{width:100%;display:block}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -452,8 +474,47 @@ def ad(v):
           f'<div class="fine a" data-in="{T4+700}">{fine}</div></div></div>')
     return s1+s2+s3+s4+s5, ''
 
+def rank(v):
+    items = v["items"]            # 下位から順に [(名前, 説明), ...]。最後が1位
+    n = len(items)
+    T0, STEP, T1 = 1200, 1800, 8600     # 5位〜2位の出る時刻、1位のドラムロール開始
+    T1R, T_E = T1 + 900, v.get("end_at", 12000)
+    times = [T0 + i*STEP for i in range(n-1)] + [T1R]
+    rows = ''
+    for r in range(1, n+1):           # 1位が上
+        idx = n - r
+        name, _ = items[idx]
+        cls = ' top' if r == 1 else ''
+        win = ' class="win"' if r == 1 else ''
+        rows += (f'<div class="rk-row{cls}"><div class="rk-no">{r}<small>位</small></div>'
+                 f'<div class="rk-slot"><span class="q" id="rq{r}">？</span><span id="rs{r}"{win}>{name}</span></div></div>')
+    desc = ''
+    for i, (name, d) in enumerate(items):
+        out = times[i+1] if i+1 < n else T_E
+        desc += f'<div data-in="{times[i]+150}" data-out="{out}" data-d="300">{d}</div>'
+    body = (f'<div class="sc" data-in="-1000" data-out="{T_E}" data-d="250">'
+            f'<div class="rk-head"><div class="who">{E(v["target"])}</div><h1>{v["title"]}</h1><div class="rk-note">※国際ビジネス言語認定協会の公式アカウントです</div></div>'
+            f'<div class="rk-list">{rows}</div><div class="rk-desc">{desc}</div>'
+            f'<div class="rk-fig">{FIG}</div></div>')
+    js = ("window.HOOKS=function(t){const $=i=>document.getElementById(i);const T=%s,N=%d,T1=%d;"
+          "for(let r=1;r<=N;r++){const i=N-r,k=ease(cl((t-T[i])/350)),s=$('rs'+r),q=$('rq'+r);"
+          "if(r==1&&t>=T1&&t<T[i]){q.style.opacity=.2+.8*Math.abs(Math.sin((t-T1)/70));q.style.display='block';}"
+          "s.style.opacity=k;s.style.transform=`translateX(${(1-k)*60}px) scale(${r==1?1+.25*Math.pow(1-k,2):1})`;"
+          "q.style.display=k>0?'none':'block';if(k<=0)q.style.opacity=1;}"
+          "if(t>=T[N-1]&&!window.BURST){const b=$('rs1').getBoundingClientRect();window.BURST={t:T[N-1],x:b.left+b.width/2,y:b.top+b.height/2};}"
+          "const p=ease(cl((t-T[N-1])/900)),L=(a,b)=>a+(b-a)*p;if(!$('fig'))return;"
+          "$('figglow').setAttribute('opacity',p);$('fig').style.filter='saturate('+L(.7,1)+')';"
+          "const sw=(1-p)*Math.sin(t/330)*8;$('head').setAttribute('transform',`translate(0 ${L(14,-8)}) rotate(${sw} 300 330)`);"
+          "$('bl').setAttribute('d',`M246 ${L(206,198)} Q266 ${L(198,186)} 284 ${L(192,196)}`);$('br').setAttribute('d',`M354 ${L(200,198)} Q334 ${L(196,186)} 316 ${L(198,196)}`);"
+          "$('mo').setAttribute('d',`M280 ${L(292,286)} Q300 ${L(288,306)} 320 ${L(290,286)}`);$('el').setAttribute('ry',L(5,6.5));$('er').setAttribute('ry',L(5,6.5));"
+          "['q1','q2','q3'].forEach((q,i)=>{const e=$(q);e.setAttribute('opacity',(1-p)*.8);e.setAttribute('transform',`translate(0 ${Math.sin(t/450+i*2)*8})`)});"
+          "const c=ease(cl((t-T[N-1]-200)/600));$('cert').setAttribute('opacity',c);$('cert').setAttribute('transform',`translate(0 ${(1-c)*200})`);"
+          "const TX='ビジネス英語実務検定',n=Math.max(0,Math.min(TX.length,Math.floor((t-T[N-1]-700)/70)));$('ctext').textContent=TX.slice(0,n);};") % (times, n, T1)
+    lead = "内定に向けて、<br>まずは資格欄から。"
+    return body + end_screen(v["platform"], T_E, lead), js
+
 def build(v, outdir):
-    body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else promo(v)
+    body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
     doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}">'
            f'<canvas id="cv"></canvas><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'

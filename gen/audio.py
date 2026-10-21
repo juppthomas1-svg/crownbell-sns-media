@@ -57,7 +57,7 @@ def reverb(x, dec=2.4, mix=0.32):
 def music(kind, seed):
     rng = np.random.RandomState(seed); np.random.seed(seed)
     buf = np.zeros(N)
-    if kind == 'quiz':   # D: Dmaj9 Bm7 Gmaj7 Asus-A
+    if kind in ('quiz','rank'):   # D: Dmaj9 Bm7 Gmaj7 Asus-A
         prog = [(50, [62, 66, 69, 73, 76]), (47, [59, 62, 66, 69, 74]), (43, [59, 62, 66, 71, 74]), (45, [57, 62, 64, 69, 73])]
     else:                # G: Gmaj9 Em9 Cmaj7 D (promo / ad)
         prog = [(43, [55, 59, 62, 66, 69]), (40, [55, 59, 62, 66, 71]), (48, [55, 59, 64, 67, 71]), (50, [57, 62, 66, 69, 74])]
@@ -130,6 +130,17 @@ def build(kind, seed):
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(1175, 2.2, 0.08), TE + 0.1)
         a, b = int((TQ + 0.4) * SR), int(TA * SR)
         duck[a:b] = 0.07
+    elif kind == 'rank':
+        for t in (1.2, 3.0, 4.8, 6.6): add(fx, whoosh(0.4), t - 0.15); add(fx, beep(990, 0.15) * 1.2, t + 0.05)
+        # ドラムロール（だんだん速く・大きく）
+        t = 8.6; gap = 0.07
+        while t < 9.45:
+            tt = t_(0.05); sn = bp(np.random.randn(len(tt)), 900, 6000) * np.exp(-tt * 60)
+            add(dry, sn * (0.25 + 0.5 * (t - 8.6) / 0.85), t); t += gap; gap = max(0.035, gap * 0.95)
+        tt = t_(0.5); add(dry, np.sin(2*np.pi*55*tt*(1-0.3*tt)) * np.exp(-tt*7) * 0.9, 9.5)
+        add(fx, bell(1568, 2.6, 0.18), 9.5); add(fx, bell(2349, 2.2, 0.08), 9.52); add(fx, sparkle(1.2, 80, 7), 9.53)
+        add(fx, whoosh(0.5), 11.75); add(fx, bell(1175, 2.2, 0.08), 12.1)
+        a, b = int(8.5 * SR), int(9.5 * SR); duck[a:b] = 0.25
     elif kind == 'ad':
         for t in (3.6, 6.6, 10.6, 14.6): add(fx, whoosh(0.5), t - 0.25)
         add(fx, bell(1318, 2.6, 0.12), 3.75); add(fx, bell(1568, 2.6, 0.12), 10.9); add(fx, sparkle(1.0, 40, 5), 11.0); add(fx, bell(1760, 2.2, 0.08), 14.75)
