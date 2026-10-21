@@ -162,6 +162,7 @@ canvas{position:absolute;inset:0}
 .safe .foot{display:none}
 #pulse{position:absolute;inset:0;opacity:0;pointer-events:none;background:radial-gradient(70% 55% at 50% 45%,rgba(227,196,124,.0) 30%,rgba(227,196,124,.55) 100%)}
 .light #pulse{background:radial-gradient(70% 55% at 50% 45%,rgba(15,42,92,0) 35%,rgba(15,42,92,.35) 100%)}
+.beams{display:none}.power .beams{display:block}
 .tgt{display:inline-block;margin-top:44px;background:linear-gradient(90deg,#c9a85c,#ead08f);color:#0a1a3d;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:64px;letter-spacing:.12em;padding:14px 34px}
 .tgt+.kicker{margin-top:30px!important}
 .qfig{left:320px;right:320px;bottom:330px}
@@ -303,6 +304,30 @@ body{font-weight:700}
 .jk-cap div{position:absolute;left:0;right:0;opacity:0;font-family:"Noto Sans CJK JP";font-weight:900;font-size:50px;line-height:1.3;color:#fff;-webkit-text-stroke:10px #111;paint-order:stroke fill}
 .jk-cap div.y{color:#ffe14d}
 .jk-note{position:absolute;left:60px;right:190px;top:1205px;font-size:19px;line-height:1.45;color:rgba(20,30,50,.6);font-weight:700}
+
+/* 気合いの入る配色（power） */
+.power{color:#fff;background:radial-gradient(90% 60% at 50% 30%,#163a86 0%,#0b1f4d 45%,#040b1f 100%)}
+.power .vig{background:radial-gradient(120% 80% at 50% 50%,transparent 55%,rgba(0,0,0,.55) 100%)}
+.power .beams{position:absolute;inset:-200px;pointer-events:none;background:
+ linear-gradient(115deg,transparent 38%,rgba(242,193,78,.16) 40%,transparent 44%),
+ linear-gradient(115deg,transparent 52%,rgba(242,193,78,.10) 53%,transparent 56%),
+ linear-gradient(115deg,transparent 64%,rgba(255,255,255,.06) 65%,transparent 67%)}
+.power .frame{border-color:rgba(242,193,78,.6)}
+.power .brand img{width:78px;height:78px}
+.power .brand .n{font-size:32px;color:rgba(255,255,255,.85)}
+.power .brand .n small{font-size:20px;color:#f2c14e}
+.power .hook{top:330px}
+.power .hook .kicker{display:block;margin:44px 0 40px;background:linear-gradient(90deg,#f2c14e,#ffe08a);color:#071330;font-family:"Noto Sans CJK JP";font-weight:900;font-size:54px;line-height:1.3;letter-spacing:.02em;padding:18px 28px;box-shadow:0 10px 30px rgba(242,193,78,.35)}
+.power .hook .kicker:before{display:none}
+.power .hook h1{font-family:"Noto Sans CJK JP";font-weight:900;font-size:100px;line-height:1.25;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.power .hook h1 em{color:#f2c14e}
+.power .opt{background:rgba(255,255,255,.06);border-color:#f2c14e}
+.power .opt b{border-color:#f2c14e;color:#f2c14e}
+.power .opt.ok{background:linear-gradient(90deg,#f2c14e,#ffe08a);color:#071330}
+.power .qtext .en,.power .cnum,.power .gold,.power .ex b{color:#f2c14e}
+.power .band{background:linear-gradient(90deg,#f2c14e,#ffe08a)}
+.power .ring #rfg{stroke:#f2c14e}
+.power .end h3 em,.power .sol h2 em{color:#f2c14e}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -404,7 +429,7 @@ def quiz(v):
     L = "ABC"
     hook = (f'<div class="sc" data-in="-1000" data-out="{T_Q}" data-d="250"><div class="hook">'
             f'<div class="a" data-in="-1000">{brand()}</div>'
-            f'<div class="kicker a" data-in="-1000">{E(v["kicker"])}</div>'
+            f'<div class="kicker a" data-in="-1000">{v.get("kicker_html") or E(v["kicker"])}</div>'
             f'<h1 class="a" data-in="-1000">{v["hook"]}</h1></div></div>')
     opts_q = ''.join(f'<div class="opt a" data-in="{T_Q+200+j*110}"><b>{L[j]}</b><span>{E(o)}</span></div>' for j, o in enumerate(v["opts"]))
     q = (f'<div class="sc" data-in="{T_Q}" data-out="{T_E}" data-d="300"><div id="bignum" class="bignum"></div>'
@@ -596,8 +621,8 @@ def rankjk(v):
 def build(v, outdir):
     body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}">'
-           f'<canvas id="cv"></canvas><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}">'
+           f'<canvas id="cv"></canvas><div class="beams"></div><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')
     os.makedirs(outdir, exist_ok=True)

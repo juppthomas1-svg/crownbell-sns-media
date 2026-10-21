@@ -120,7 +120,7 @@
   "audio": "quiz_epic",
   "platform": "x",
   "figure": true,
-  "theme": "light",
+  "theme": "power",
   "date": "2026-10-21T21:30:00",
   "kicker": "世界のビジネスで活躍したいあなたへ",
   "hook": "これすら<br>できなければ、<br><em>話にならない。</em>",
@@ -134,6 +134,7 @@
   "ex": "<b>walk 人 through</b> ＝ 順を追って説明する。<br>世界の会議で飛び交う定番表現です。",
   "caption": "世界のビジネスで活躍したいあなたへ。\nこれすらできなければ、話にならない。「Walk me through it.」の意味、即答できますか。\n答えは動画の後半で。無料お試し（登録なし・10問・約5分）は返信欄のリンクから。",
   "tags": "#ビジネス英語 #英語クイズ",
-  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x"
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x",
+  "kicker_html": "世界のビジネスで<br>活躍したいあなたへ"
  }
 ]
