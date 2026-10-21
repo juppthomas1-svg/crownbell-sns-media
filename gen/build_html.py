@@ -376,12 +376,11 @@ FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="ht
   <path d="M248 404 L226 430 L262 470 L238 500 L300 600" fill="none"/>
   <path d="M352 404 L374 430 L338 470 L362 500 L300 600" fill="none"/>
   <path d="M410 505 L452 500 L455 512 L413 517 Z" fill="#c9a85c" stroke-width="1.4"/><path d="M416 503 L426 486 L436 502 L446 488 L452 500 Z" fill="#f2c14e" stroke-width="1.2"/><circle cx="238" cy="470" r="6" fill="#f2c14e" stroke="#fff3c4" stroke-width="1.5"/>
-  <path d="M266 330 L266 392 L300 412 L334 392 L334 330" fill="url(#skin)" stroke="#b9805c"/>
+  <path d="M268 300 L268 392 L300 412 L332 392 L332 300 Z" fill="url(#skin)" stroke="none"/><path d="M268 340 L268 392 M332 340 L332 392" stroke="#b9805c" stroke-width="2.4"/>
  </g>
  <g id="head">
   <path d="M300 92 C356 92 392 136 392 200 C392 270 352 336 300 340 C248 336 208 270 208 200 C208 136 244 92 300 92 Z" fill="url(#skin)" stroke="#b9805c"/>
-  <path d="M206 206 C196 128 240 70 306 72 C372 74 410 124 398 206 C390 170 372 146 348 136 C320 150 270 152 238 140 C222 156 212 178 206 206 Z" fill="#1f1712" stroke="#1f1712"/>
-  <path d="M250 110 C290 86 350 92 384 140" fill="none" stroke="#5a4a3e" stroke-width="5" opacity=".7"/>
+  <path d="M206 206 C196 128 240 70 306 72 C372 74 410 124 398 206 C390 170 372 146 348 136 C320 150 270 152 238 140 C222 156 212 178 206 206 Z" fill="#050505" stroke="#050505"/>
   <path d="M210 196 C196 194 194 236 214 240" fill="url(#skin)" stroke="#b9805c" stroke-width="1.8"/>
   <path d="M390 196 C404 194 406 236 386 240" fill="url(#skin)" stroke="#b9805c" stroke-width="1.8"/>
   <g fill="none" stroke="#4a3022" stroke-width="5">
@@ -483,7 +482,7 @@ def quiz(v):
                   "if(document.body.classList.contains('power')){$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');}"
                   "if(pose==0&&document.body.classList.contains('power')){$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
                   "const ty=k=>Math.max(0,Math.sin(t/(k)))*10;if($('hl')){$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(41+7)})`);}"
-                  "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(0 ${-4+bob}) rotate(${Math.sin(t/900)*1.5} 300 330)`);$('body').setAttribute('transform',`translate(0 ${-4+bob*.5}) scale(1.03 1.02)`);"
+                  "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(0 ${2+bob}) rotate(${Math.sin(t/900)*1.5} 300 330)`);$('body').setAttribute('transform',`translate(0 ${bob*.5}) scale(1.03 1.02)`);"
                   "$('bl').setAttribute('d','M242 190 L266 193 L288 201');$('br').setAttribute('d','M358 190 L334 193 L312 201');"
                   "$('mo').setAttribute('d','M282 290 Q300 292 318 290');$('mo').setAttribute('fill','none');"
                   "const bk=((t+500)%%1600)<110?.6:4.2;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);"
@@ -499,7 +498,7 @@ def quiz(v):
                   "['q1','q2','q3'].forEach((q,i)=>{const e=$(q),st=i==0?-300:120+i*280,k=cl((t-st)/260),sc=k<1?(1-Math.pow(1-k,3))*1.25-(k>.7?(k-.7)*.8:0):1;"
                   "e.setAttribute('opacity',k>0?.85:0);const bx=[180,445,488][i],by=[100,72,182][i];e.setAttribute('transform',`translate(${bx} ${by+Math.sin(t/450+i*2)*8}) scale(${Math.max(0,sc)}) translate(${-bx} ${-by})`)});}"
                   "else if(pose==1){$('fig').style.filter='none';$('figglow').setAttribute('opacity',document.body.classList.contains('power')?0:.9);if(document.body.classList.contains('power'))$('gl').style.display='block';"
-                  "$('head').setAttribute('transform','translate(0 -6) rotate(0 300 330)');$('body').setAttribute('transform','none');"
+                  "$('head').setAttribute('transform','translate(0 0) rotate(0 300 330)');$('body').setAttribute('transform','none');"
                   "$('bl').setAttribute('d','M246 198 Q266 186 284 196');$('br').setAttribute('d','M354 198 Q334 186 316 196');"
                   "$('mo').setAttribute('d','M280 286 Q300 306 320 286');$('el').setAttribute('ry',6.5);$('er').setAttribute('ry',6.5);"
                   "['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
