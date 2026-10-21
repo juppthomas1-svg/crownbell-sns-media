@@ -366,6 +366,27 @@ body{font-weight:700}
 .power .sky .w{fill:#e3c47c}
 .power .cnum{color:#b4233a!important;text-shadow:0 0 14px rgba(180,35,58,.3)!important}
 .power .ring #rfg{stroke:#b4233a!important;filter:drop-shadow(0 0 6px rgba(180,35,58,.35))!important}
+
+/* power：高級感・品（引き算）（2026/10/22） */
+.power .hook .kicker{background:none!important;color:#e3c47c!important;font-family:"Noto Serif CJK JP",serif!important;font-weight:600!important;font-size:46px!important;line-height:1.55!important;letter-spacing:.12em!important;padding:22px 0 24px!important;border-top:1px solid rgba(227,196,124,.7)!important;border-bottom:1px solid rgba(227,196,124,.7)!important;margin:40px 0 46px!important}
+.power .hook .kicker .rd{color:#e3c47c!important}
+.power .hook h1{font-weight:700!important;font-size:94px!important;line-height:1.42!important;letter-spacing:.05em!important;text-shadow:0 2px 20px rgba(0,0,0,.35)!important}
+.power .hook h1 em{color:#d9bd78!important}
+.power .brand .n{font-family:"Noto Serif CJK JP",serif;font-weight:600;letter-spacing:.14em}
+.power .brand .n small{letter-spacing:.2em;font-weight:500}
+.power .sky{opacity:.42!important}
+.power .opt{border-width:1px!important;border-color:rgba(201,168,92,.45)!important;font-weight:600!important}
+.power .opt b{border-width:1px!important}
+.power .opt.ok{background:linear-gradient(90deg,rgba(201,168,92,.95),rgba(226,201,140,.95))!important;box-shadow:none!important}
+.power .band{background:none!important;color:#e3c47c!important;border:1px solid rgba(227,196,124,.7)}
+.power .band span+span{border-color:rgba(227,196,124,.4)!important}
+.power .qtext{font-weight:600}
+.power .ring .rbg{stroke-width:6!important}.power .ring #rfg{stroke-width:6!important}
+.power .cnum{font-family:"Noto Serif CJK JP",serif!important;font-weight:600!important}
+.power .end h3{font-weight:700!important;letter-spacing:.06em!important}
+.power .chips span{border-width:1px;font-weight:500;letter-spacing:.08em}
+.power .btn{border-width:1px!important;font-weight:600!important;letter-spacing:.14em!important;background:none!important}
+.power .now{letter-spacing:.6em!important}
 '''
 
 LAP = r'''<svg class="lap" viewBox="0 0 600 640" style="position:absolute;left:0;top:0;width:100%;overflow:visible">
