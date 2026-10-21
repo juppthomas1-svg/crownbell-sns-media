@@ -346,6 +346,11 @@ body{font-weight:700}
 .power.safe .hook h1{font-size:92px}
 .power.safe .hook .kicker{font-size:52px;padding:14px 26px 16px}
 .power.safe .qfig{left:250px;right:370px;bottom:470px}
+
+/* power：見出しを昔の明朝体に（2026/10/22） */
+.power .hook h1{font-family:"Noto Serif CJK JP",serif!important;font-weight:900!important;letter-spacing:.01em}
+.power .hook .kicker{font-family:"Noto Serif CJK JP",serif!important;font-weight:900!important}
+.power .end h3,.power .sol h2{font-family:"Noto Serif CJK JP",serif!important;font-weight:900!important}
 '''
 
 LAP = r'''<svg class="lap" viewBox="0 0 600 640" style="position:absolute;left:0;top:0;width:100%;overflow:visible">
