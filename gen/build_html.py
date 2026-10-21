@@ -162,7 +162,7 @@ canvas{position:absolute;inset:0}
 .safe .foot{display:none}
 #pulse{position:absolute;inset:0;opacity:0;pointer-events:none;background:radial-gradient(70% 55% at 50% 45%,rgba(227,196,124,.0) 30%,rgba(227,196,124,.55) 100%)}
 .light #pulse{background:radial-gradient(70% 55% at 50% 45%,rgba(15,42,92,0) 35%,rgba(15,42,92,.35) 100%)}
-.beams{display:none}.power .beams{display:block}
+.beams{display:none}
 .tgt{display:inline-block;margin-top:44px;background:linear-gradient(90deg,#c9a85c,#ead08f);color:#0a1a3d;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:64px;letter-spacing:.12em;padding:14px 34px}
 .tgt+.kicker{margin-top:30px!important}
 .qfig{left:320px;right:320px;bottom:330px}
