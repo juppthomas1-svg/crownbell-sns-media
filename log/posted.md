@@ -26,3 +26,6 @@
 - 2026-10-21 手動｜X｜x06_keep_you_posted（I'll keep you posted）
 - 2026-10-21 14:30｜TikTok｜r01_tt_rank_v2（今から間に合う資格ランキング）
 - 2026-10-21 手動｜X｜x07_walk_me_through（Walk me through it・燃える系・epic BGM）
+- 2026-10-23 07:30｜TikTok｜w2_01_tt_no_brainer｜It's a no-brainer（power配色・正直まずい系フック）｜型：power クイズ
+- 2026-10-24 08:30｜Instagram｜w2_02_ig_otesuki｜「お手すきの際に」英語で言えますか（Whenever you get a chance）｜型：power クイズ
+- 2026-10-25 07:30｜TikTok｜w2_03_tt_reinvent_wheel｜Let's not reinvent the wheel（power配色・話にならない系フック）｜型：power クイズ
