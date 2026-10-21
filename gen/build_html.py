@@ -341,32 +341,11 @@ body{font-weight:700}
 #pulse,.bignum{display:none!important}
 .cnum{color:#e53935!important;text-shadow:0 0 24px rgba(229,57,53,.45)}
 .ring #rfg{stroke:#e53935!important;filter:drop-shadow(0 0 8px rgba(229,57,53,.5))!important}
-/* === power：プロの文字組み === */
 .power .frame{display:none}
 .power.safe .hook{left:70px;right:180px;top:250px}
 .power.safe .hook h1{font-size:92px}
 .power.safe .hook .kicker{font-size:52px;padding:14px 26px 16px}
 .power.safe .qfig{left:250px;right:370px;bottom:470px}
-.power,.power *{font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
-.power .hook h1{font-family:"Noto Sans CJK JP";font-weight:900;font-size:104px;line-height:1.16;letter-spacing:-.01em;text-shadow:0 4px 18px rgba(0,0,0,.45)}
-.power .hook .kicker{font-size:60px;line-height:1.24;letter-spacing:.01em;padding:16px 32px 18px;border-left:10px solid #c8102e}
-.power .brand .n{font-family:"Noto Sans CJK JP";font-weight:700;font-size:30px;letter-spacing:.06em}
-.power .brand .n small{font-family:"Inter","Noto Sans CJK JP";font-weight:600;font-size:19px;letter-spacing:.12em;margin-top:6px}
-.power .mini,.power .mini b,.power .tlab,.power .foot{font-family:"Inter","Noto Sans CJK JP";font-weight:600;letter-spacing:.32em}
-.power .band{font-family:"Noto Sans CJK JP";font-weight:900;letter-spacing:.02em}
-.power .band span+span{font-weight:700}
-.power .qtext{font-family:"Noto Sans CJK JP";font-weight:700;font-size:54px;line-height:1.42;letter-spacing:0}
-.power .qtext .en{font-family:"Inter";font-weight:800;font-size:68px;letter-spacing:-.015em;line-height:1.2;margin:14px 0 10px}
-.power .opt{font-family:"Noto Sans CJK JP";font-weight:700;font-size:46px;letter-spacing:.01em;padding:34px 36px}
-.power .opt b{font-family:"Inter";font-weight:800;font-size:38px}
-.power .cnum{font-family:"Inter";font-weight:900}
-.power .ex{font-family:"Noto Sans CJK JP";font-weight:700;font-size:40px;line-height:1.55;letter-spacing:.01em}
-.power .ex b{font-family:"Inter","Noto Sans CJK JP";font-weight:800}
-.power .end .lead{font-family:"Noto Sans CJK JP";font-weight:700;letter-spacing:.02em}
-.power .end h3{font-family:"Noto Sans CJK JP";font-weight:900;letter-spacing:-.01em;line-height:1.14}
-.power .now{font-family:"Inter";font-weight:700;letter-spacing:.5em}
-.power .btn{font-family:"Noto Sans CJK JP";font-weight:900;letter-spacing:.04em}
-.power .fine{font-weight:500;letter-spacing:.02em}
 '''
 
 LAP = r'''<svg class="lap" viewBox="0 0 600 640" style="position:absolute;left:0;top:0;width:100%;overflow:visible">
