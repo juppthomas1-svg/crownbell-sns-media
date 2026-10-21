@@ -281,6 +281,28 @@ body{font-weight:700}
 .rk2 .rk-desc .x i,.rk2 .rk-desc .g i{width:42px;height:42px;line-height:42px;font-size:26px}
 .rk2 .rk-crit{top:auto;position:static;margin-top:8px;font-size:19px;color:rgba(15,42,92,.55)}
 .rk2 .rk-note{display:none}
+
+/* 就活系TikTok風（今回だけの特別デザイン） */
+.jk{background:linear-gradient(180deg,#dfe8f1 0%,#eef2f6 40%,#d9dee5 100%)}
+.jk .vig,.jk .frame,.jk .foot,.jk #pulse{display:none}
+.jk-bg{position:absolute;inset:0;overflow:hidden}
+.jk-bg i{position:absolute;top:0;bottom:900px;width:150px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.55));filter:blur(18px)}
+.jk-bg b{position:absolute;left:0;right:0;top:1020px;bottom:0;background:linear-gradient(180deg,#c8cfd8,#b9c1cc);filter:blur(2px)}
+.jk-bg u{position:absolute;left:-40px;right:-40px;top:980px;height:70px;background:#9aa6b4;filter:blur(14px);opacity:.6}
+.jk-title{position:absolute;left:60px;top:175px;background:#1d6fd1;color:#fff;font-family:"Noto Sans CJK JP";font-weight:900;font-size:66px;letter-spacing:.02em;padding:10px 26px;box-shadow:0 8px 0 #0f4c97}
+.jk-sub{position:absolute;left:60px;top:300px;background:#fff;color:#1d3557;font-weight:900;font-size:34px;padding:6px 18px}
+.jk-list{position:absolute;left:40px;top:400px;width:330px}
+.jk-row{display:flex;align-items:center;gap:10px;height:122px;margin-bottom:12px}
+.jk-no{width:64px;text-align:center;font-family:"Noto Sans CJK JP";font-weight:900;font-size:76px;-webkit-text-stroke:5px #fff;paint-order:stroke fill}
+.jk-slot{flex:1;height:122px;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:30px;line-height:1.2;color:#1d3557;padding:0 10px}
+.jk-slot span{opacity:0}
+.jk-fig{position:absolute;left:330px;width:560px;top:520px}
+.jk-fig svg{width:100%;display:block;overflow:visible}
+.jk-pop{position:absolute;left:400px;width:440px;top:900px;height:190px;background:#fff;box-shadow:0 14px 34px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:50px;line-height:1.2;color:#1d3557;opacity:0}
+.jk-cap{position:absolute;left:60px;right:190px;top:1300px;height:140px;text-align:center}
+.jk-cap div{position:absolute;left:0;right:0;opacity:0;font-family:"Noto Sans CJK JP";font-weight:900;font-size:50px;line-height:1.3;color:#fff;-webkit-text-stroke:10px #111;paint-order:stroke fill}
+.jk-cap div.y{color:#ffe14d}
+.jk-note{position:absolute;left:60px;right:190px;top:1205px;font-size:19px;line-height:1.45;color:rgba(20,30,50,.6);font-weight:700}
 '''
 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
@@ -534,10 +556,47 @@ def rank(v):
     lead = "内定に向けて、<br>まずは資格欄から。"
     return body + end_screen(v["platform"], T_E, lead), js
 
+def rankjk(v):
+    items = v["items"]; n = len(items)
+    T0, STEP = v.get("t0", 1500), v.get("step", 3300)
+    T1 = T0 + STEP*(n-1); T1R = T1 + 900; T_E = v.get("end_at", 16500)
+    times = [T0 + i*STEP for i in range(n-1)] + [T1R]
+    cols = ['#e53935', '#1d6fd1', '#f5a623', '#2e9e5b', '#7e57c2']
+    rows = ''.join(f'<div class="jk-row"><div class="jk-no" style="color:{cols[r-1]}">{r}</div><div class="jk-slot"><span id="js{r}">{items[n-r][0]}</span></div></div>' for r in range(1, n+1))
+    caps = ''; pops = ''
+    for i, (name, pts) in enumerate(items):
+        end = times[i+1] if i+1 < n else T_E
+        pops += f'<div class="jk-pop" id="jp{i}">{name}</div>'
+        seg = (end - times[i] - 300) / max(1, len(pts))
+        for j, (kind, txt) in enumerate(pts):
+            a = int(times[i] + 300 + j*seg); b = int(a + seg)
+            caps += f'<div class="{"y" if kind=="g" else ""}" data-in="{a}" data-out="{b}" data-d="120">{txt}</div>'
+    if n:
+        caps += f'<div class="y" data-in="{T1}" data-out="{T1R}" data-d="120">そして第1位は…</div>'
+    body = (f'<div class="sc" data-in="-1000" data-out="{T_E}" data-d="250"><div class="jk-bg">'
+            + ''.join(f'<i style="left:{x}px"></i>' for x in (40, 260, 480, 700, 920)) + '<u></u><b></b></div>'
+            f'<div class="jk-fig">{FIG}</div>'
+            f'<div class="jk-title">{E(v["title"])}</div><div class="jk-sub">{E(v["sub"])}</div>'
+            f'<div class="jk-list">{rows}</div>{pops}'
+            f'<div class="jk-note">{v["crit"]}</div><div class="jk-cap">{caps}</div></div>')
+    js = ("window.HOOKS=function(t){const $=i=>document.getElementById(i);const T=%s,N=%d,T1=%d,TE=%d;"
+          "for(let i=0;i<N;i++){const r=N-i,k=ease(cl((t-T[i]-650)/350));$('js'+r).style.opacity=k;"
+          "const p=$('jp'+i),a=cl((t-T[i])/220),b=cl((t-T[i]-500)/250);p.style.opacity=a*(1-b);p.style.transform=`scale(${.6+.5*ease(a)-.4*b}) translate(${-b*260}px,${-b*300}px)`;}"
+          "if(t>=T[N-1]&&!window.BURST){const b=$('js1').getBoundingClientRect();window.BURST={t:T[N-1]+650,x:b.left+b.width/2,y:b.top+b.height/2};}"
+          "if(!$('fig'))return;const talk=t>T[0]&&t<TE&&!(t>T1-100&&t<T[N-1]);const m=talk?(Math.abs(Math.sin(t/95))*.7+Math.abs(Math.sin(t/57))*.3):0;"
+          "$('mo').setAttribute('d',`M284 290 Q300 ${292+m*16} 316 290`);$('mo').setAttribute('fill',m>.15?'#7a2e2a':'none');"
+          "$('bl').setAttribute('d','M246 200 Q266 190 284 194');$('br').setAttribute('d','M354 200 Q334 190 316 194');"
+          "const bl=((t+300)%%2300)<120?.6:6;$('el').setAttribute('ry',bl);$('er').setAttribute('ry',bl);"
+          "$('head').setAttribute('transform',`translate(0 ${Math.sin(t/700)*3}) rotate(${Math.sin(t/900)*2.5} 300 330)`);"
+          "['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));$('figglow').setAttribute('opacity',0);"
+          "const c=ease(cl((t-T[N-1]-300)/600));$('cert').setAttribute('opacity',c);$('cert').setAttribute('transform',`translate(0 ${(1-c)*200})`);"
+          "const TX='ビジネス英語実務検定',n=Math.max(0,Math.min(TX.length,Math.floor((t-T[N-1]-800)/70)));$('ctext').textContent=TX.slice(0,n);};") % (times, n, T1, T_E)
+    return body + end_screen(v["platform"], T_E, "まずは、無料お試しから。"), js
+
 def build(v, outdir):
-    body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else promo(v)
+    body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}">'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}">'
            f'<canvas id="cv"></canvas><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')

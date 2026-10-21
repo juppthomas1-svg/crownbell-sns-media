@@ -57,7 +57,7 @@ def reverb(x, dec=2.4, mix=0.32):
 def music(kind, seed):
     rng = np.random.RandomState(seed); np.random.seed(seed)
     buf = np.zeros(N)
-    if kind in ('quiz','rank'):   # D: Dmaj9 Bm7 Gmaj7 Asus-A
+    if kind in ('quiz','rank','rankjk'):   # D: Dmaj9 Bm7 Gmaj7 Asus-A
         prog = [(50, [62, 66, 69, 73, 76]), (47, [59, 62, 66, 69, 74]), (43, [59, 62, 66, 71, 74]), (45, [57, 62, 64, 69, 73])]
     else:                # G: Gmaj9 Em9 Cmaj7 D (promo / ad)
         prog = [(43, [55, 59, 62, 66, 69]), (40, [55, 59, 62, 66, 71]), (48, [55, 59, 64, 67, 71]), (50, [57, 62, 66, 69, 74])]
@@ -130,7 +130,7 @@ def build(kind, seed):
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(1175, 2.2, 0.08), TE + 0.1)
         a, b = int((TQ + 0.4) * SR), int(TA * SR)
         duck[a:b] = 0.07
-    elif kind == 'rank':
+    elif kind in ('rank','rankjk'):
         RT = os.environ.get('RANK_TIMES', '1.2,3.0,4.8,6.6;8.6;9.5;12.0')
         a_, b_, c_, e_ = RT.split(';'); steps = [float(x) for x in a_.split(',')]; D0, W1, TEND = float(b_), float(c_), float(e_)
         for t in steps: add(fx, whoosh(0.4), t - 0.15); add(fx, beep(990, 0.15) * 1.2, t + 0.05)
