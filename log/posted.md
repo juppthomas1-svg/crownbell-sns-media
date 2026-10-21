@@ -29,3 +29,4 @@
 - 2026-10-23 07:30｜TikTok｜w2_01_tt_no_brainer｜It's a no-brainer（power配色・正直まずい系フック）｜型：power クイズ
 - 2026-10-24 08:30｜Instagram｜w2_02_ig_otesuki｜「お手すきの際に」英語で言えますか（Whenever you get a chance）｜型：power クイズ
 - 2026-10-25 07:30｜TikTok｜w2_03_tt_reinvent_wheel｜Let's not reinvent the wheel（power配色・話にならない系フック）｜型：power クイズ
+- 2026-10-22 手動｜X｜x08_get_back_to_you（I'll get back to you・power）
