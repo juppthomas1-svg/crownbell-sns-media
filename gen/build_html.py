@@ -334,90 +334,12 @@ body{font-weight:700}
 .power #qfw{filter:drop-shadow(0 0 1.5px rgba(255,255,255,.55))}
 .lap{display:none}.power .lap{display:block}
 .sky .w{fill:#f2c14e}
-.power .qfig{left:150px;right:150px;bottom:110px}
+.power .qfig{left:250px;right:250px;bottom:150px}
 .power .safe .qfig{left:230px;right:300px}
 /* カウントダウン：右下の赤い数字がドクンドクン */
 #pulse,.bignum{display:none!important}
 .cnum{color:#e53935!important;text-shadow:0 0 24px rgba(229,57,53,.45)}
 .ring #rfg{stroke:#e53935!important;filter:drop-shadow(0 0 8px rgba(229,57,53,.5))!important}
-'''
-
-FIG34 = r'''<svg id="fig" viewBox="0 0 600 640" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
-<defs>
- <pattern id="pv" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#172548"/><rect x="7.5" width="1.1" height="16" fill="rgba(255,255,255,.22)"/></pattern>
- <radialGradient id="torsoL" cx=".62" cy=".25" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
- <linearGradient id="lapG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#263a6e"/><stop offset="1" stop-color="#101a36"/></linearGradient>
- <radialGradient id="skinG" cx=".62" cy=".38" r=".75"><stop offset="0" stop-color="#fbe0c6"/><stop offset=".7" stop-color="#efbf98"/><stop offset="1" stop-color="#d79c74"/></radialGradient>
- <linearGradient id="neckG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c98d66"/><stop offset=".6" stop-color="#e6b38c"/></linearGradient>
- <linearGradient id="hairG" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#3a3a42"/><stop offset=".35" stop-color="#0d0d10"/><stop offset="1" stop-color="#000"/></linearGradient>
- <linearGradient id="tieG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9e0b22"/><stop offset=".5" stop-color="#d4152f"/><stop offset="1" stop-color="#a30c24"/></linearGradient>
- <linearGradient id="lidG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4e8ee"/><stop offset="1" stop-color="#a9b1bd"/></linearGradient>
- <linearGradient id="deskG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f8fb"/><stop offset="1" stop-color="#cdd4de"/></linearGradient>
- <clipPath id="tc"><path d="M116 640 C112 520 124 430 178 386 C214 356 256 344 300 344 C344 344 386 356 422 386 C476 430 488 520 484 640 Z"/></clipPath>
-</defs>
-<!-- torso -->
-<path d="M116 640 C112 520 124 430 178 386 C214 356 256 344 300 344 C344 344 386 356 422 386 C476 430 488 520 484 640 Z" fill="url(#pv)"/>
-<rect x="100" y="330" width="400" height="320" fill="url(#torsoL)" clip-path="url(#tc)"/>
-<!-- sleeve seams -->
-<path d="M190 392 C164 440 158 520 164 600" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="3"/>
-<path d="M410 392 C436 440 442 520 436 600" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="3"/>
-<!-- neck -->
-<path d="M268 286 L268 352 L332 352 L332 286 Z" fill="url(#neckG)"/>
-<!-- shirt -->
-<path d="M262 346 L338 346 L300 446 Z" fill="#f7f5f0"/>
-<path d="M262 346 L284 338 L300 362 L274 374 Z" fill="#fff"/>
-<path d="M338 346 L316 338 L300 362 L326 374 Z" fill="#eceae3"/>
-<!-- tie -->
-<path d="M290 362 L310 362 L306 382 L294 382 Z" fill="#a30c24"/>
-<path id="tie" d="M294 382 L306 382 L318 486 L300 508 L282 486 Z" fill="url(#tieG)"/>
-<!-- lapels -->
-<path d="M262 346 L236 384 L258 402 L242 424 L300 516 L300 446 Z" fill="url(#lapG)"/>
-<path d="M338 346 L364 384 L342 402 L358 424 L300 516 L300 446 Z" fill="url(#lapG)"/>
-<path d="M262 346 L236 384 L258 402 L242 424 L300 516 M338 346 L364 384 L342 402 L358 424 L300 516" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-<!-- pocket square & pin -->
-<path d="M372 436 L404 432 L404 444 L372 448 Z" fill="#14213f"/>
-<path d="M376 436 L382 422 L388 434 L394 424 L401 433 Z" fill="#f2c14e"/>
-<circle cx="250" cy="440" r="4.5" fill="#f2c14e"/>
-<!-- head -->
-<g id="h34">
- <path d="M222 214 C208 210 204 244 224 254 Z" fill="#e7b08a"/>
- <path d="M300 98 C352 98 388 138 388 196 C388 254 354 300 306 306 C258 304 222 260 220 200 C218 140 250 98 300 98 Z" fill="url(#skinG)"/>
- <path d="M228 230 C236 270 262 296 296 304 C262 304 232 282 226 240 Z" fill="#000" opacity=".06"/>
- <!-- glossy black hair with side part -->
- <path d="M214 214 C204 136 246 84 306 84 C364 84 398 128 392 186 C386 164 374 150 356 142 C330 132 292 130 262 134 C244 138 230 152 226 180 C224 192 222 204 220 216 Z" fill="url(#hairG)"/>
- <path d="M262 100 C300 88 346 92 374 118" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="5" stroke-linecap="round"/>
- <path d="M248 116 C280 104 320 104 350 116" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3" stroke-linecap="round"/>
- <path d="M262 134 C270 122 286 112 300 108" fill="none" stroke="rgba(0,0,0,.5)" stroke-width="2"/>
- <!-- brows / eyes (looking slightly right) -->
- <path id="b1" d="M256 186 L292 188" fill="none" stroke="#151515" stroke-width="6.5" stroke-linecap="round"/>
- <path id="b2" d="M312 188 L350 186" fill="none" stroke="#151515" stroke-width="6.5" stroke-linecap="round"/>
- <ellipse id="e1" cx="280" cy="210" rx="6" ry="4.6" fill="#1b110b"/>
- <ellipse id="e2" cx="334" cy="210" rx="6" ry="4.6" fill="#1b110b"/>
- <!-- glasses -->
- <g fill="rgba(255,255,255,.07)" stroke="#0a0a0a" stroke-width="6" stroke-linejoin="round">
-  <rect x="250" y="192" width="52" height="38" rx="10"/><rect x="310" y="192" width="52" height="38" rx="10"/>
-  <path d="M302 206 Q306 201 310 206" fill="none" stroke-width="4"/>
-  <path d="M250 204 L224 198" fill="none" stroke-width="4"/>
- </g>
- <path d="M256 198 L270 196" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
- <path d="M316 198 L330 196" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
- <!-- nose & mouth -->
- <path d="M312 230 C318 244 318 252 308 256" fill="none" stroke="#c48661" stroke-width="3" stroke-linecap="round"/>
- <path id="m34" d="M286 274 Q308 282 330 270" fill="none" stroke="#8a4a3c" stroke-width="4.5" stroke-linecap="round"/>
-</g>
-<!-- desk -->
-<path d="M-40 570 L640 570 L640 660 L-40 660 Z" fill="url(#deskG)"/>
-<path d="M-40 570 L640 570" stroke="#fff" stroke-width="3"/>
-<!-- hands on keyboard edges -->
-<g id="hA"><path d="M150 572 C150 552 178 544 200 548 C216 551 222 562 214 572 Z" fill="url(#skinG)"/><path d="M118 600 C120 572 136 560 160 556 L176 574 L150 600 Z" fill="#14213f"/><rect x="148" y="554" width="18" height="20" rx="4" fill="#f7f5f0" transform="rotate(-35 157 564)"/></g>
-<g id="hB"><path d="M450 572 C450 552 422 544 400 548 C384 551 378 562 386 572 Z" fill="url(#skinG)"/><path d="M482 600 C480 572 464 560 440 556 L424 574 L450 600 Z" fill="#14213f"/><rect x="434" y="554" width="18" height="20" rx="4" fill="#f7f5f0" transform="rotate(35 443 564)"/><rect x="440" y="548" width="22" height="12" rx="3" fill="#c9ced6" stroke="#7d848e" stroke-width="1.5" transform="rotate(35 451 554)"/></g>
-<!-- laptop (back of lid) -->
-<path d="M196 462 L404 462 L416 572 L184 572 Z" fill="url(#lidG)"/>
-<path d="M196 462 L404 462" stroke="#fff" stroke-width="2" opacity=".7"/>
-<path d="M170 572 L430 572 L440 584 L160 584 Z" fill="#8e97a4"/>
-<circle cx="300" cy="518" r="20" fill="none" stroke="#c9a85c" stroke-width="2.5"/>
-<path d="M282 518 H318 M300 500 V536 M288 506 Q300 518 288 530 M312 506 Q300 518 312 530" stroke="#c9a85c" stroke-width="1.8" fill="none"/>
-</svg>
 '''
 
 LAP = r'''<svg class="lap" viewBox="0 0 600 640" style="position:absolute;left:0;top:0;width:100%;overflow:visible">
@@ -433,7 +355,8 @@ SKY = r'''<svg class="sky" viewBox="0 0 1080 760" preserveAspectRatio="xMidYMax 
 FIG = r'''<svg id="fig" viewBox="0 0 600 640" style="overflow:visible" xmlns="http://www.w3.org/2000/svg">
 <defs>
  <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c3768"/><stop offset="1" stop-color="#0a1a3d"/></linearGradient>
- <pattern id="pin" width="22" height="22" patternUnits="userSpaceOnUse"><rect width="22" height="22" fill="#14213f"/><rect x="10" width="1.6" height="22" fill="rgba(255,255,255,.55)"/></pattern>
+ <pattern id="pin" width="16" height="16" patternUnits="userSpaceOnUse"><rect width="16" height="16" fill="#172548"/><rect x="7.5" width="1.2" height="16" fill="rgba(255,255,255,.3)"/></pattern>
+ <linearGradient id="tieR" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9e0b22"/><stop offset=".5" stop-color="#d4152f"/><stop offset="1" stop-color="#a30c24"/></linearGradient>
  <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d3b3"/><stop offset="1" stop-color="#e2ad86"/></linearGradient>
  <radialGradient id="glow" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#e3c47c" stop-opacity=".34"/><stop offset="1" stop-color="#e3c47c" stop-opacity="0"/></radialGradient>
  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset=".74" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
@@ -549,29 +472,21 @@ def quiz(v):
              f'if(t>={T_A}&&!window.BURST){{const r=os[{v["ans"]}].getBoundingClientRect();window.BURST={{t:{T_A},x:r.left+r.width/2,y:r.top+r.height/2}};}}}};')
     lead = "書類選考で苦戦していませんか？<br>資格欄、空白のままになっていませんか？"
     if v.get("figure"):
-        fig = f'<div class="figwrap qfig" id="qfw" style="position:absolute">' + (FIG34 if v.get("theme")=="power" else FIG) + '</div>'
+        fig = f'<div class="figwrap qfig" id="qfw" style="position:absolute">{FIG}' + (LAP if v.get("theme")=="power" else '') + '</div>'
         isx = 'true' if v["platform"] == "x" else 'false'
         hooks += ("(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);const $=i=>document.getElementById(i);if(!$('fig'))return;"
                   "const TQ=%d,TA=%d,TE=%d,X=%s,w=$('qfw');"
                   "let op=0,pose=0;if(t<TQ){op=cl((TQ-t)/250);pose=0;}else if(X&&t>=TA+250&&t<TE){op=ease(cl((t-TA-250)/400))*cl((TE-t)/250);pose=1;}"
                   "w.style.opacity=op;"
                   "if(pose==1){const k=ease(cl((t-TA-250)/500));w.style.transformOrigin='50%% 100%%';w.style.transform=`translate(270px,${-150+(1-k)*50}px) scale(.42)`;}else{w.style.transform='none';}"
-                  "if(document.body.classList.contains('power')){document.querySelectorAll('.sky .w').forEach(x=>{const p=+x.dataset.p;x.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
-                  "const g=$('h34');if(pose==0){w.style.transform='none';}else{const k=ease(cl((t-TA-250)/500));w.style.transformOrigin='50%% 100%%';w.style.transform=`translate(330px,${-330+(1-k)*40}px) scale(.36)`;}"
-                  "g.setAttribute('transform',`translate(0 ${Math.sin(t/650)*2}) rotate(${Math.sin(t/1100)*1} 300 300)`);"
-                  "const bk=((t+500)%%1700)<110?.6:4.5;$('e1').setAttribute('ry',bk);$('e2').setAttribute('ry',bk);"
-                  "const ty=k=>Math.max(0,Math.sin(t/k))*6;$('hA').setAttribute('transform',`translate(0 ${-ty(47)})`);$('hB').setAttribute('transform',`translate(0 ${-ty(39)})`);"
-                  "$('m34').setAttribute('d',pose==1?'M282 270 Q308 292 334 268':'M286 274 Q308 282 330 270');return;}"
                   "document.querySelectorAll('.sky .w').forEach(w=>{const p=+w.dataset.p;w.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
+                  "if(document.body.classList.contains('power')){$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');}"
                   "if(pose==0&&document.body.classList.contains('power')){$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
                   "const ty=k=>Math.max(0,Math.sin(t/(k)))*10;if($('hl')){$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(41+7)})`);}"
-                  "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(6 ${-4+bob}) rotate(${5+Math.sin(t/900)*1} 300 330)`);$('body').setAttribute('transform',`translate(0 ${-4+bob*.5}) scale(1.03 1.02)`);"
-                  "const sh='translate(16 0)';['bl','br','mo','el','er','gl'].forEach(i=>$(i).setAttribute('transform',sh));"
-                  "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','#c8102e');$('knot').setAttribute('fill','#a00d25');"
-                  "w.style.transformOrigin='50%% 100%%';w.style.transform='perspective(1400px) rotateY(-16deg)';"
-                  "$('bl').setAttribute('d','M240 192 L264 194 L286 202');$('br').setAttribute('d','M360 192 L336 194 L314 202');"
-                  "$('mo').setAttribute('d','M280 285 Q300 296 316 292');$('mo').setAttribute('fill','none');"
-                  "const bk=((t+500)%%1600)<110?.6:4.2;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);"
+                  "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(0 ${-4+bob}) rotate(${Math.sin(t/900)*1.5} 300 330)`);$('body').setAttribute('transform',`translate(0 ${-4+bob*.5}) scale(1.03 1.02)`);"
+                  "$('bl').setAttribute('d','M244 196 Q266 182 286 190');$('br').setAttribute('d','M356 196 Q334 182 314 190');"
+                  "$('mo').setAttribute('d','M278 284 Q300 306 322 284');$('mo').setAttribute('fill','none');"
+                  "const bk=((t+500)%%1600)<110?.6:6.5;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);"
                   "['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
                   "else if(pose==0){const sw=Math.sin(t/330),bob=Math.sin(t/260)*4;"
                   "$('fig').style.filter='saturate(.75)';$('figglow').setAttribute('opacity',0);"
@@ -583,7 +498,7 @@ def quiz(v):
                   "const bl=((t+500)%%1100)<110?.6:5.5;$('el').setAttribute('ry',bl);$('er').setAttribute('ry',bl);"
                   "['q1','q2','q3'].forEach((q,i)=>{const e=$(q),st=i==0?-300:120+i*280,k=cl((t-st)/260),sc=k<1?(1-Math.pow(1-k,3))*1.25-(k>.7?(k-.7)*.8:0):1;"
                   "e.setAttribute('opacity',k>0?.85:0);const bx=[180,445,488][i],by=[100,72,182][i];e.setAttribute('transform',`translate(${bx} ${by+Math.sin(t/450+i*2)*8}) scale(${Math.max(0,sc)}) translate(${-bx} ${-by})`)});}"
-                  "else if(pose==1){$('fig').style.filter='none';$('figglow').setAttribute('opacity',document.body.classList.contains('power')?0:.9);if(document.body.classList.contains('power'))$('gl').style.display='block';if(document.body.classList.contains('power')){['bl','br','mo','el','er','gl'].forEach(i=>$(i).setAttribute('transform','translate(16 0)'));$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','#c8102e');$('knot').setAttribute('fill','#a00d25');}"
+                  "else if(pose==1){$('fig').style.filter='none';$('figglow').setAttribute('opacity',document.body.classList.contains('power')?0:.9);if(document.body.classList.contains('power'))$('gl').style.display='block';"
                   "$('head').setAttribute('transform','translate(0 -6) rotate(0 300 330)');$('body').setAttribute('transform','none');"
                   "$('bl').setAttribute('d','M246 198 Q266 186 284 196');$('br').setAttribute('d','M354 198 Q334 186 316 196');"
                   "$('mo').setAttribute('d','M280 286 Q300 306 320 286');$('el').setAttribute('ry',6.5);$('er').setAttribute('ry',6.5);"
