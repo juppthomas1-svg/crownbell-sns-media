@@ -351,6 +351,21 @@ body{font-weight:700}
 .power .hook h1{font-family:"Noto Serif CJK JP",serif!important;font-weight:900!important;letter-spacing:.01em}
 .power .hook .kicker{font-family:"Noto Serif CJK JP",serif!important;font-weight:900!important}
 .power .end h3,.power .sol h2{font-family:"Noto Serif CJK JP",serif!important;font-weight:900!important}
+
+/* power：初心の色（紺×アイボリー×落ち着いた金）に戻す（2026/10/22） */
+.power{color:#f4efe2!important;background:radial-gradient(90% 55% at 50% 8%,#2a4a86 0%,#132b5e 38%,#091a3d 70%,#050d22 100%)!important}
+.power .hook .kicker{background:linear-gradient(90deg,#c9a85c,#e8cd8a)!important;color:#0a1a3d!important;box-shadow:none!important;border-left:none!important}
+.power .hook .kicker .rd{color:#0a1a3d!important}
+.power .hook h1{color:#f4efe2!important;text-shadow:0 4px 18px rgba(0,0,0,.35)!important}
+.power .hook h1 em,.power .qtext .en,.power .ex b,.power .end h3 em,.power .sol h2 em,.power .gold{color:#e3c47c!important}
+.power .opt{border-color:rgba(201,168,92,.55)!important;background:rgba(255,255,255,.045)!important}
+.power .opt b{border-color:#c9a85c!important;color:#e3c47c!important}
+.power .opt.ok{background:linear-gradient(90deg,#c9a85c,#ead08f)!important;color:#0a1a3d!important;box-shadow:0 0 40px rgba(227,196,124,.3)!important}
+.power .band{background:linear-gradient(90deg,#c9a85c,#e8cd8a)!important}
+.power .brand .n small,.power .now,.power .mini,.power .foot{color:#c9a85c!important}
+.power .sky .w{fill:#e3c47c}
+.power .cnum{color:#b4233a!important;text-shadow:0 0 14px rgba(180,35,58,.3)!important}
+.power .ring #rfg{stroke:#b4233a!important;filter:drop-shadow(0 0 6px rgba(180,35,58,.35))!important}
 '''
 
 LAP = r'''<svg class="lap" viewBox="0 0 600 640" style="position:absolute;left:0;top:0;width:100%;overflow:visible">
