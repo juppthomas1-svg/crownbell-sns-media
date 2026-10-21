@@ -342,6 +342,11 @@ body{font-weight:700}
 .cnum{color:#e53935!important;text-shadow:0 0 24px rgba(229,57,53,.45)}
 .ring #rfg{stroke:#e53935!important;filter:drop-shadow(0 0 8px rgba(229,57,53,.5))!important}
 /* === power：プロの文字組み === */
+.power .frame{display:none}
+.power.safe .hook{left:70px;right:180px;top:250px}
+.power.safe .hook h1{font-size:92px}
+.power.safe .hook .kicker{font-size:52px;padding:14px 26px 16px}
+.power.safe .qfig{left:250px;right:370px;bottom:470px}
 .power,.power *{font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
 .power .hook h1{font-family:"Noto Sans CJK JP";font-weight:900;font-size:104px;line-height:1.16;letter-spacing:-.01em;text-shadow:0 4px 18px rgba(0,0,0,.45)}
 .power .hook .kicker{font-size:60px;line-height:1.24;letter-spacing:.01em;padding:16px 32px 18px;border-left:10px solid #c8102e}

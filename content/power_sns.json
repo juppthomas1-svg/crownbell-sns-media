@@ -1,0 +1,49 @@
+[
+ {
+  "id": "p01_tt_walk_me_through",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "hook": "これすら<br>できなければ、<br><em>話にならない。</em>",
+  "q": "会議でのひと言。<span class=\"en\">“Walk me through it.”</span>意味として正しいのは？",
+  "opts": [
+   "歩きながら話しましょう",
+   "順を追って説明してもらえますか",
+   "一緒に案内してもらえますか"
+  ],
+  "ans": 1,
+  "ex": "<b>walk 人 through</b> ＝ 順を追って説明する。<br>世界の会議で飛び交う定番表現です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこれすらできなければ、話にならない。\n「Walk me through it.」の意味、即答できますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）は「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #グローバル人材 #就活",
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ },
+ {
+  "id": "p01_ig_walk_me_through",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "hook": "これすら<br>できなければ、<br><em>話にならない。</em>",
+  "q": "会議でのひと言。<span class=\"en\">“Walk me through it.”</span>意味として正しいのは？",
+  "opts": [
+   "歩きながら話しましょう",
+   "順を追って説明してもらえますか",
+   "一緒に案内してもらえますか"
+  ],
+  "ans": 1,
+  "ex": "<b>walk 人 through</b> ＝ 順を追って説明する。<br>世界の会議で飛び交う定番表現です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこれすらできなければ、話にならない。\n「Walk me through it.」の意味、即答できますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）はプロフィールのリンクから。\n国際ビジネス言語認定協会",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #グローバル人材 #キャリア",
+  "reply": "無料お試し（登録なし・10問・約5分）はこちらから。\nhttps://crownbell-kentei.netlify.app/x",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ"
+ }
+]
