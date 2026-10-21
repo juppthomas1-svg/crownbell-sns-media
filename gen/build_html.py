@@ -317,7 +317,7 @@ body{font-weight:700}
 .power .brand .n{font-size:32px;color:rgba(255,255,255,.85)}
 .power .brand .n small{font-size:20px;color:#f2c14e}
 .power .hook{top:330px}
-.power .hook .kicker{display:block;margin:44px 0 40px;background:linear-gradient(90deg,#f2c14e,#ffe08a);color:#071330;font-family:"Noto Sans CJK JP";font-weight:900;font-size:54px;line-height:1.3;letter-spacing:.02em;padding:18px 28px;box-shadow:0 10px 30px rgba(242,193,78,.35)}
+.power .hook .kicker{display:inline-block;margin:44px 0 40px;background:linear-gradient(90deg,#f2c14e,#ffe08a);color:#071330;font-family:"Noto Sans CJK JP";font-weight:900;font-size:62px;line-height:1.3;letter-spacing:.02em;padding:18px 34px;box-shadow:0 10px 30px rgba(242,193,78,.35)}
 .power .hook .kicker:before{display:none}
 .power .hook .kicker .rd{color:#c8102e}
 .power .hook h1{font-family:"Noto Sans CJK JP";font-weight:900;font-size:100px;line-height:1.25;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.5)}
