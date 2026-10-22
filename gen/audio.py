@@ -139,6 +139,25 @@ def epic_music(seed):
 def build(kind, seed):
     np.random.seed(seed)
     epic = kind.endswith('_epic'); kind = kind.replace('_epic', '')
+    if kind == 'dream2':
+        T1, T2, T3 = 3.8, 7.4, 11.3
+        soft = music('promo', seed); big = epic_music(seed); tt = np.arange(N) / SR
+        dark = lp(soft, 800) * 0.5
+        eb = np.clip((T1 + 0.05 - tt) / 0.25, 0, 1)                 # 未来：最初から盛り上がる→現実で切れる
+        ed = np.clip((tt - T1) / 0.4, 0, 1) * np.clip((T2 + 0.1 - tt) / 0.3, 0, 1)
+        es = np.clip((tt - (T2 - 0.15)) / 0.3, 0, 1)
+        m = big * eb * 1.15 + dark * ed + soft * es
+        fx = np.zeros(N); dry = np.zeros(N)
+        tc = t_(2.0); add(fx, hp(np.random.randn(len(tc)), 4500) * np.exp(-tc*1.8) * 0.12, 0.0)
+        for k, d in enumerate((0.3, 0.95, 1.6)): add(fx, bell(1568 + 196 * k, 1.6, 0.06), d)
+        add(fx, bell(1760, 2.0, 0.1), 1.9)
+        t0 = t_(1.0); add(dry, (np.sin(2*np.pi*(42 + 30*np.exp(-t0*8))*t0) * np.exp(-t0*3.5)) * 0.8, T1)   # 現実：低い「ドン」
+        add(fx, whoosh(0.55), T2 - 0.25); add(fx, bell(1318, 2.6, 0.14), T2 + 0.15); add(fx, sparkle(1.0, 40, 5), T2 + 0.18)
+        add(fx, whoosh(0.5), T3 - 0.25); add(fx, bell(2093, 2.2, 0.09), T3 + 0.15)
+        st = reverb(m + fx * 0.9) + 1.5 * dry[:, None]
+        fade = np.ones(N); fade[:int(.02 * SR)] = np.linspace(0, 1, int(.02 * SR)); fade[-int(.6 * SR):] = np.linspace(1, 0, int(.6 * SR))
+        st *= fade[:, None]; st /= np.abs(st).max() / 0.89
+        return st
     if kind == 'dream':
         TS, TD, TE = 3.4, 7.0, 11.8
         soft = music('promo', seed); big = epic_music(seed)

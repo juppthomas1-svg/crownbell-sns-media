@@ -231,6 +231,7 @@ canvas{position:absolute;inset:0}
 .dreamad .dream h2{font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:84px;line-height:1.3;margin:36px 0 10px;letter-spacing:.05em}
 .dreamad .dream h2 em{font-style:normal;color:#e3c47c}
 .dreamad .dream .sub{font-size:34px;letter-spacing:.12em;color:rgba(244,239,226,.85)}
+.dreamad .dream .teaser{margin-top:22px}
 .dreamad .dream .cap{margin-top:14px;font-size:20px;color:rgba(244,239,226,.5)}
 .dreamad .figwrap{left:245px!important;right:245px!important;bottom:335px!important}
 .dreamad .figp .prob .pline{font-size:40px!important;padding:12px 0!important}
@@ -765,10 +766,54 @@ def dream(v):
       "}})();") % (T_S, T_D, T_E)
     return chap + '<div class="figp">' + prob + sol + drm + fig + '</div>' + end_screen("igad", T_E, v.get("end_lead", "まずは、無料お試しから。")), hooks
 
+def dream2(v):
+    """未来 → 現実（悩み） → 答え → 無料お試し"""
+    T1, T2, T3 = 3800, 7400, 11300
+    chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["未来","現実","答え","無料お試し"])) + '</div>')
+    dl = ''.join(f'<div class="dline a" data-in="{-1000 if j==0 else 300+j*650}" data-d="500"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
+    fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="dream">'
+           f'<div class="a" data-in="-1000">{brand()}</div>'
+           f'<div class="kicker a" data-in="-1000" style="margin-top:26px">{E(v["dream_kicker"])}</div>{dl}'
+           f'<h2 class="a" data-in="1900" data-d="600">{v["dream_h"]}</h2>'
+           f'<div class="teaser a" data-in="2500">{E(v["teaser"])}</div>'
+           f'<div class="cap a" data-in="2500">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
+    lines = ''.join(f'<div class="pline a" data-in="{T1+500+j*450}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
+    prob = (f'<div class="sc" data-in="{T1}" data-out="{T2}" data-d="300"><div class="prob">'
+            f'<div class="tgt a" data-in="{T1+50}">{E(v["target"])}</div>'
+            f'<h2 class="a" data-in="{T1+150}" data-d="500">{v["prob_h"]}</h2>{lines}</div></div>')
+    facts = ''.join(f'<div class="fact a" data-in="{T2+900+j*150}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
+    sol = (f'<div class="sc" data-in="{T2}" data-out="{T3}" data-d="300"><div class="sol">'
+           f'<div class="kicker a" data-in="{T2+50}">{E(v["sol_kicker"])}</div>'
+           f'<h2 class="a" data-in="{T2+150}" data-d="550">{v["sol"]}</h2>'
+           f'<div class="note a" data-in="{T2+500}">{v["sol_note"]}</div><div class="facts">{facts}</div></div></div>')
+    fig = f'<div class="figwrap" id="dfw">{FIG}<div id="lapw" style="position:absolute;inset:0;opacity:0">{LAP}</div></div>'
+    _, ph = promo(dict(v, figure=True, t_s=T2, t_e=T3, kicker=v.get("kicker", "")))
+    hooks = ph + (
+      "(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);const $=i=>document.getElementById(i);if(!$('fig'))return;"
+      "const T1=%d,T2=%d,T3=%d,w=$('dfw');"
+      "const c=t<T1?0:t<T2?1:t<T3?2:3;document.querySelectorAll('#chap span').forEach(s=>s.classList.toggle('on',+s.dataset.c==c));"
+      "let op=1;if(t>T1-260&&t<T1)op=(T1-t)/260;else if(t>=T1&&t<T1+150)op=0;else if(t>=T1+150)op=ease(cl((t-T1-150)/450));if(t>T3-280)op=Math.min(op,cl((T3-t)/280));w.style.opacity=op;"
+      "document.querySelectorAll('.sky .w').forEach(e=>{const p=+e.dataset.p;e.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
+      "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale(.8)';"
+      "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
+      "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"
+      "$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
+      "const ty=q=>Math.max(0,Math.sin(t/q))*10;$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(48)})`);"
+      "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(0 ${2+bob}) rotate(${Math.sin(t/900)*1.5} 300 330)`);$('body').setAttribute('transform',`translate(0 ${bob*.5}) scale(1.03 1.02)`);"
+      "$('bl').setAttribute('d','M242 190 L266 193 L288 201');$('br').setAttribute('d','M358 190 L334 193 L312 201');"
+      "$('mo').setAttribute('d','M282 290 Q300 292 318 290');$('mo').setAttribute('fill','none');"
+      "const bk=((t+500)%%1600)<110?.6:4.2;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
+      "else{w.style.transform='none';$('lapw').style.opacity=0;$('gl').style.display='none';"
+      "if(!window._J){window._J={j:$('jacket').getAttribute('data-f0')};}"
+      "['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e.dataset.f0!==undefined)e.setAttribute('fill',e.dataset.f0);});if($('tie').dataset.s0!==undefined)$('tie').setAttribute('stroke',$('tie').dataset.s0);$('mo').removeAttribute('fill');}"
+      "}})();"
+      "(function(){const $=i=>document.getElementById(i);['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e)e.dataset.f0=e.getAttribute('fill')||'';});const tt=$('tie');if(tt)tt.dataset.s0=tt.getAttribute('stroke')||'';})();") % (T1, T2, T3)
+    return chap + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen("igad", T3, v.get("end_lead", "まずは、無料お試しから。")), hooks
+
 def build(v, outdir):
-    body, hooks = dream(v) if v["kind"] == "dream" else quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
+    body, hooks = dream2(v) if v["kind"] == "dream2" else dream(v) if v["kind"] == "dream" else quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}{" dreamad" if v["kind"]=="dream" else ""}">'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}{" dreamad" if v["kind"] in ("dream","dream2") else ""}">'
            f'<canvas id="cv"></canvas><div class="beams"></div><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')
