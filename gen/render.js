@@ -7,16 +7,20 @@ const path = require('path');
   const [dir, id, fpsS, msS] = process.argv.slice(2);
   const fps = +(fpsS || 60), total = +(msS || 10000), n = Math.round(total / 1000 * fps);
   const b = await chromium.launch({executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'}).catch(() => chromium.launch());
-  const p = await b.newPage({viewport: {width: 1080, height: 1920}});
+  const HQ = !!process.env.HQ;
+  const p = await b.newPage({viewport: {width: 1080, height: 1920}, deviceScaleFactor: HQ ? 2 : 1});
   await p.goto('file://' + path.resolve(dir, id + '.html'));
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(300);
+  const enc = HQ
+    ? ['-vf', 'scale=1080:1920:flags=lanczos', '-c:v', 'libx264', '-preset', 'medium', '-crf', '8', '-profile:v', 'high', '-level', '4.2', '-maxrate', '40M', '-bufsize', '80M']
+    : ['-c:v', 'libx264', '-preset', 'medium', '-crf', '12'];
   const ff = spawn('ffmpeg', ['-v', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '12', '-pix_fmt', 'yuv420p', '-r', String(fps),
+    ...enc, '-pix_fmt', 'yuv420p', '-r', String(fps),
     path.resolve(dir, id + '_v.mp4')], {stdio: ['pipe', 'inherit', 'inherit']});
   for (let i = 0; i < n; i++) {
     await p.evaluate(ms => window.render(ms), i * 1000 / fps);
-    const buf = await p.screenshot({type: 'jpeg', quality: 98});
+    const buf = HQ ? await p.screenshot({type: 'jpeg', quality: 100}) : await p.screenshot({type: 'jpeg', quality: 98});
     if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
   }
   ff.stdin.end();
