@@ -232,6 +232,10 @@ canvas{position:absolute;inset:0}
 .dreamad .dream h2 em{font-style:normal;color:#e3c47c}
 .dreamad .dream .sub{font-size:34px;letter-spacing:.12em;color:rgba(244,239,226,.85)}
 .dreamad .dream .teaser{margin-top:22px}
+.safe.dreamad .dream{left:70px;right:190px}
+.safe.dreamad .figwrap{left:190px!important;right:310px!important;bottom:480px!important}
+.safe.dreamad .dline{font-size:40px}
+.safe.dreamad .dream h2{font-size:76px}
 .stks{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .stk{position:absolute;left:0;height:3px;border-radius:3px;background:linear-gradient(90deg,rgba(255,236,190,0),rgba(255,236,190,.9));filter:blur(.6px);box-shadow:0 0 10px rgba(255,220,160,.6)}
 .dreamad .nyen{font-family:"Noto Serif CJK JP",serif;font-size:22px;letter-spacing:.42em;color:rgba(227,196,124,.75);margin:6px 0 8px}
@@ -806,7 +810,7 @@ def dream2(v):
       "let op=1;if(t>T1-260&&t<T1)op=(T1-t)/260;else if(t>=T1&&t<T1+150)op=0;else if(t>=T1+150)op=ease(cl((t-T1-150)/450));if(t>T3-280)op=Math.min(op,cl((T3-t)/280));w.style.opacity=op;"
       "const NY=document.querySelector('.stks .stk')!=null;document.querySelectorAll('.sky .w').forEach(e=>{const p=+e.dataset.p;e.style.opacity=NY?(.3+.7*(.5+.5*Math.sin(t/260+p*3.1))):(.35+.6*(.5+.5*Math.sin(t/700+p)));});"
       "document.querySelectorAll('.stks .stk').forEach(e=>{const k=+e.dataset.k,sp=900+(k*173)%%700,L=1400,x=((t*sp/1000+k*311)%%L)-300;e.style.transform=(k%%2?`translateX(${x}px)`:`translateX(${1080-x}px) scaleX(-1)`);});"
-      "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale(.88)';"
+      "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale('+(window.FSCALE||.88)+')';"
       "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
       "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"
       "$('fig').style.filter='none';$('figglow').setAttribute('opacity',(window.HALO||0)*(.85+.15*Math.sin(t/900)));$('gl').style.display='block';"
@@ -820,7 +824,7 @@ def dream2(v):
       "['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e.dataset.f0!==undefined)e.setAttribute('fill',e.dataset.f0);});if($('tie').dataset.s0!==undefined)$('tie').setAttribute('stroke',$('tie').dataset.s0);$('mo').removeAttribute('fill');}"
       "}})();"
       "(function(){const $=i=>document.getElementById(i);['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e)e.dataset.f0=e.getAttribute('fill')||'';});const tt=$('tie');if(tt)tt.dataset.s0=tt.getAttribute('stroke')||'';})();") % (T1, T2, T3)
-    return (chap if v.get("chap", True) else '') + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen("igad", T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
+    return (chap if v.get("chap", True) else '') + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen(v["platform"], T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
 def build(v, outdir):
     body, hooks = dream2(v) if v["kind"] == "dream2" else dream(v) if v["kind"] == "dream" else quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
@@ -828,7 +832,7 @@ def build(v, outdir):
     doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}{" dreamad" if v["kind"] in ("dream","dream2") else ""}">'
            f'<canvas id="cv"></canvas><div class="beams"></div><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
-           f'<script>const SEED={seed};window.HALO={v.get("halo",0)};{JS}{hooks}</script></body></html>')
+           f'<script>const SEED={seed};window.HALO={v.get("halo",0)};window.FSCALE={v.get("fscale",0.88)};{JS}{hooks}</script></body></html>')
     os.makedirs(outdir, exist_ok=True)
     p = os.path.join(outdir, v["id"] + ".html")
     open(p, "w").write(doc)

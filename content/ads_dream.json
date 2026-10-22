@@ -317,5 +317,104 @@
   "halo": 1.0,
   "chap": false,
   "nyc": true
+ },
+ {
+  "id": "tt_nyc_15s",
+  "kind": "dream2",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "audio": "dream2_party",
+  "dur": 15000,
+  "target": "27卒・28卒の就活生へ",
+  "prob_h": "でも、現実は——",
+  "problems": [
+   "書類選考が、通らない。",
+   "資格欄が、空白のまま。",
+   "英語力を、示せない。"
+  ],
+  "teaser": "▶ 最後に、無料で今の実力がわかります",
+  "sol_kicker": "その差を埋める、確かな一行を",
+  "sol": "今日受けて、<br><em>今日取れる資格。</em>",
+  "sol_note": "※合格した場合。合格証は最短で受験当日に発行されます",
+  "facts": [
+   [
+    "ONLINE",
+    "24時間<small>いつでも受験</small>"
+   ],
+   [
+    "RESULT",
+    "最短当日<small>合格証PDF</small>"
+   ],
+   [
+    "FEE",
+    "3,500円〜<small>3級・税込</small>"
+   ]
+  ],
+  "dream_kicker": "眠らない街、ニューヨーク。",
+  "dreams": [
+   "海外の取引先と、英語で商談する。",
+   "世界の会議で、堂々と意見を伝える。"
+  ],
+  "dream_h": "世界で活躍する、<br><em>未来の自分。</em>",
+  "dream_sub": "その最初の一歩を、今日。",
+  "end_lead": "未来への一歩は、<br>無料お試しから。",
+  "dg": 1000,
+  "hd": 1900,
+  "td": 2600,
+  "now": false,
+  "halo": 1.0,
+  "chap": false,
+  "nyc": true,
+  "fscale": 0.74
+ },
+ {
+  "id": "x_nyc_15s",
+  "kind": "dream2",
+  "platform": "x",
+  "figure": true,
+  "theme": "power",
+  "audio": "dream2_party",
+  "dur": 15000,
+  "target": "27卒・28卒の就活生へ",
+  "prob_h": "でも、現実は——",
+  "problems": [
+   "書類選考が、通らない。",
+   "資格欄が、空白のまま。",
+   "英語力を、示せない。"
+  ],
+  "teaser": "▶ 最後に、無料で今の実力がわかります",
+  "sol_kicker": "その差を埋める、確かな一行を",
+  "sol": "今日受けて、<br><em>今日取れる資格。</em>",
+  "sol_note": "※合格した場合。合格証は最短で受験当日に発行されます",
+  "facts": [
+   [
+    "ONLINE",
+    "24時間<small>いつでも受験</small>"
+   ],
+   [
+    "RESULT",
+    "最短当日<small>合格証PDF</small>"
+   ],
+   [
+    "FEE",
+    "3,500円〜<small>3級・税込</small>"
+   ]
+  ],
+  "dream_kicker": "眠らない街、ニューヨーク。",
+  "dreams": [
+   "海外の取引先と、英語で商談する。",
+   "世界の会議で、堂々と意見を伝える。"
+  ],
+  "dream_h": "世界で活躍する、<br><em>未来の自分。</em>",
+  "dream_sub": "その最初の一歩を、今日。",
+  "end_lead": "未来への一歩は、<br>無料お試しから。",
+  "dg": 1000,
+  "hd": 1900,
+  "td": 2600,
+  "now": false,
+  "halo": 1.0,
+  "chap": false,
+  "nyc": true
  }
 ]
