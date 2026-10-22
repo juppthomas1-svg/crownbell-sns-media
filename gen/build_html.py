@@ -497,7 +497,7 @@ window.render=function(ms){const t=ms;document.querySelectorAll('[data-in]').for
 def brand(sub="24時間いつでもオンライン受験"):
     return f'<div class="brand"><img src="logo.png"><div class="n">ビジネス英語実務検定<small>{E(sub)}</small></div></div>'
 
-def end_screen(platform, t0, lead):
+def end_screen(platform, t0, lead, now=True):
     fine = ('本番は合格すれば合格証を最短で受験当日に発行｜3級 3,500円〜（税込）<br>'
             '※お試し問題は本番とは異なり、合格証は発行されません<br>'
             '※国際ビジネス言語認定協会が認定する民間資格です')
@@ -517,7 +517,7 @@ def end_screen(platform, t0, lead):
     return (f'<div class="sc" data-in="{t0}" data-d="350"><div class="end">'
             f'<div class="a" data-in="{t0}">{brand()}</div>'
             f'<div class="lead a" data-in="{t0+100}">{lead}</div>'
-            f'<div class="now a" data-in="{t0+200}">NOW OPEN</div>'
+            + (f'<div class="now a" data-in="{t0+200}">NOW OPEN</div>' if now else '<div style="height:26px"></div>') +
             f'<h3 class="a" data-in="{t0+250}">無料お試し<br><em>実施中</em></h3>'
             f'<div class="chips a" data-in="{t0+350}"><span>登録なし</span><span>10問</span><span>約5分</span><span>スマホでOK</span></div>'
             f'{how}<div class="fine a" data-in="{t0+600}">{fine}</div></div></div>')
@@ -726,25 +726,27 @@ def rankjk(v):
     return body + end_screen(v["platform"], T_E, "まずは、無料お試しから。"), js
 
 def dream(v):
-    T_S, T_D, T_E = 3400, 7000, 11800
+    SH = v.get("dur", 15000) <= 10000
+    T_S, T_D, T_E = (2300, 4900, 8000) if SH else (3400, 7000, 11800)
+    LG, DG, HD, SD, FD = (330, 430, 1650, 2050, 650) if SH else (450, 750, 2850, 3400, 900)
     chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["悩み","答え","未来","無料お試し"])) + '</div>')
-    lines = ''.join(f'<div class="pline a" data-in="{-1000 if j==0 else 250+j*450}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
+    lines = ''.join(f'<div class="pline a" data-in="{-1000 if j==0 else 150+j*LG}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
     prob = (f'<div class="sc" data-in="-1000" data-out="{T_S}" data-d="250"><div class="prob">'
             f'<div class="a" data-in="-1000">{brand()}</div>'
             f'<div class="tgt a" data-in="-1000">{E(v["target"])}</div>'
             f'<h2 class="a" data-in="-1000">{v["prob_h"]}</h2>{lines}'
             f'<div class="teaser a" data-in="-1000">{E(v["teaser"])}</div></div></div>')
-    facts = ''.join(f'<div class="fact a" data-in="{T_S+900+j*150}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
+    facts = ''.join(f'<div class="fact a" data-in="{T_S+FD+j*130}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
     sol = (f'<div class="sc" data-in="{T_S}" data-out="{T_D}" data-d="300"><div class="sol">'
            f'<div class="kicker a" data-in="{T_S+50}">{E(v["sol_kicker"])}</div>'
            f'<h2 class="a" data-in="{T_S+150}" data-d="550">{v["sol"]}</h2>'
            f'<div class="note a" data-in="{T_S+500}">{v["sol_note"]}</div><div class="facts">{facts}</div></div></div>')
-    dl = ''.join(f'<div class="dline a" data-in="{T_D+450+j*750}" data-d="500"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
+    dl = ''.join(f'<div class="dline a" data-in="{T_D+300+j*DG}" data-d="450"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
     drm = (f'<div class="sc" data-in="{T_D}" data-out="{T_E}" data-d="500">{SKY}<div class="dream">'
            f'<div class="kicker a" data-in="{T_D+100}">{E(v["dream_kicker"])}</div>{dl}'
-           f'<h2 class="a" data-in="{T_D+2850}" data-d="650">{v["dream_h"]}</h2>'
-           f'<div class="sub a" data-in="{T_D+3400}">{E(v["dream_sub"])}</div>'
-           f'<div class="cap a" data-in="{T_D+3400}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
+           f'<h2 class="a" data-in="{T_D+HD}" data-d="550">{v["dream_h"]}</h2>'
+           f'<div class="sub a" data-in="{T_D+SD}">{E(v["dream_sub"])}</div>'
+           f'<div class="cap a" data-in="{T_D+SD}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
     fig = f'<div class="figwrap" id="dfw">{FIG}<div id="lapw" style="position:absolute;inset:0;opacity:0">{LAP}</div></div>'
     _, ph = promo(dict(v, figure=True, t_s=T_S, t_e=T_D, kicker=v.get("kicker", "")))
     hooks = ph + (
@@ -764,24 +766,26 @@ def dream(v):
       "const bk=((t+500)%%1600)<110?.6:4.2;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
       "else{w.style.transform='none';$('lapw').style.opacity=0;$('gl').style.display='none';}"
       "}})();") % (T_S, T_D, T_E)
-    return chap + '<div class="figp">' + prob + sol + drm + fig + '</div>' + end_screen("igad", T_E, v.get("end_lead", "まずは、無料お試しから。")), hooks
+    return chap + '<div class="figp">' + prob + sol + drm + fig + '</div>' + end_screen("igad", T_E, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
 def dream2(v):
     """未来 → 現実（悩み） → 答え → 無料お試し"""
-    T1, T2, T3 = 3800, 7400, 11300
+    SH = v.get("dur", 15000) <= 10000
+    T1, T2, T3 = (2700, 5200, 8000) if SH else (3800, 7400, 11300)
+    DG, HD, TD_, LG, FD = (420, 1350, 1800, 330, 650) if SH else (650, 1900, 2500, 450, 900)
     chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["未来","現実","答え","無料お試し"])) + '</div>')
-    dl = ''.join(f'<div class="dline a" data-in="{-1000 if j==0 else 300+j*650}" data-d="500"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
+    dl = ''.join(f'<div class="dline a" data-in="{-1000 if j==0 else 200+j*DG}" data-d="450"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
     fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="dream">'
            f'<div class="a" data-in="-1000">{brand()}</div>'
            f'<div class="kicker a" data-in="-1000" style="margin-top:26px">{E(v["dream_kicker"])}</div>{dl}'
-           f'<h2 class="a" data-in="1900" data-d="600">{v["dream_h"]}</h2>'
-           f'<div class="teaser a" data-in="2500">{E(v["teaser"])}</div>'
-           f'<div class="cap a" data-in="2500">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
-    lines = ''.join(f'<div class="pline a" data-in="{T1+500+j*450}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
+           f'<h2 class="a" data-in="{HD}" data-d="550">{v["dream_h"]}</h2>'
+           f'<div class="teaser a" data-in="{TD_}">{E(v["teaser"])}</div>'
+           f'<div class="cap a" data-in="{TD_}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
+    lines = ''.join(f'<div class="pline a" data-in="{T1+350+j*LG}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
     prob = (f'<div class="sc" data-in="{T1}" data-out="{T2}" data-d="300"><div class="prob">'
             f'<div class="tgt a" data-in="{T1+50}">{E(v["target"])}</div>'
             f'<h2 class="a" data-in="{T1+150}" data-d="500">{v["prob_h"]}</h2>{lines}</div></div>')
-    facts = ''.join(f'<div class="fact a" data-in="{T2+900+j*150}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
+    facts = ''.join(f'<div class="fact a" data-in="{T2+FD+j*130}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
     sol = (f'<div class="sc" data-in="{T2}" data-out="{T3}" data-d="300"><div class="sol">'
            f'<div class="kicker a" data-in="{T2+50}">{E(v["sol_kicker"])}</div>'
            f'<h2 class="a" data-in="{T2+150}" data-d="550">{v["sol"]}</h2>'
@@ -808,7 +812,7 @@ def dream2(v):
       "['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e.dataset.f0!==undefined)e.setAttribute('fill',e.dataset.f0);});if($('tie').dataset.s0!==undefined)$('tie').setAttribute('stroke',$('tie').dataset.s0);$('mo').removeAttribute('fill');}"
       "}})();"
       "(function(){const $=i=>document.getElementById(i);['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e)e.dataset.f0=e.getAttribute('fill')||'';});const tt=$('tie');if(tt)tt.dataset.s0=tt.getAttribute('stroke')||'';})();") % (T1, T2, T3)
-    return chap + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen("igad", T3, v.get("end_lead", "まずは、無料お試しから。")), hooks
+    return chap + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen("igad", T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
 def build(v, outdir):
     body, hooks = dream2(v) if v["kind"] == "dream2" else dream(v) if v["kind"] == "dream" else quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)

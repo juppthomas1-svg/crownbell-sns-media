@@ -140,7 +140,7 @@ def build(kind, seed):
     np.random.seed(seed)
     epic = kind.endswith('_epic'); kind = kind.replace('_epic', '')
     if kind == 'dream2':
-        T1, T2, T3 = 3.8, 7.4, 11.3
+        T1, T2, T3 = (2.7, 5.2, 8.0) if DUR <= 10.5 else (3.8, 7.4, 11.3)
         soft = music('promo', seed); big = epic_music(seed); tt = np.arange(N) / SR
         dark = lp(soft, 800) * 0.5
         eb = np.clip((T1 + 0.05 - tt) / 0.25, 0, 1)                 # 未来：最初から盛り上がる→現実で切れる
@@ -149,8 +149,9 @@ def build(kind, seed):
         m = big * eb * 1.15 + dark * ed + soft * es
         fx = np.zeros(N); dry = np.zeros(N)
         tc = t_(2.0); add(fx, hp(np.random.randn(len(tc)), 4500) * np.exp(-tc*1.8) * 0.12, 0.0)
-        for k, d in enumerate((0.3, 0.95, 1.6)): add(fx, bell(1568 + 196 * k, 1.6, 0.06), d)
-        add(fx, bell(1760, 2.0, 0.1), 1.9)
+        G = (0.2, 0.62, 1.04, 1.35) if DUR <= 10.5 else (0.3, 0.95, 1.6, 1.9)
+        for k, d in enumerate(G[:3]): add(fx, bell(1568 + 196 * k, 1.6, 0.06), d)
+        add(fx, bell(1760, 2.0, 0.1), G[3])
         t0 = t_(1.0); add(dry, (np.sin(2*np.pi*(42 + 30*np.exp(-t0*8))*t0) * np.exp(-t0*3.5)) * 0.8, T1)   # 現実：低い「ドン」
         add(fx, whoosh(0.55), T2 - 0.25); add(fx, bell(1318, 2.6, 0.14), T2 + 0.15); add(fx, sparkle(1.0, 40, 5), T2 + 0.18)
         add(fx, whoosh(0.5), T3 - 0.25); add(fx, bell(2093, 2.2, 0.09), T3 + 0.15)
@@ -159,7 +160,7 @@ def build(kind, seed):
         st *= fade[:, None]; st /= np.abs(st).max() / 0.89
         return st
     if kind == 'dream':
-        TS, TD, TE = 3.4, 7.0, 11.8
+        TS, TD, TE = (2.3, 4.9, 8.0) if DUR <= 10.5 else (3.4, 7.0, 11.8)
         soft = music('promo', seed); big = epic_music(seed)
         tt = np.arange(N) / SR
         dark = lp(soft, 900) * 0.55                      # 悩み：こもった暗い音
@@ -171,8 +172,9 @@ def build(kind, seed):
         add(fx, whoosh(0.7), TD - 0.35)
         t0 = t_(0.9); add(dry, (np.sin(2*np.pi*(48 + 50*np.exp(-t0*10))*t0) * np.exp(-t0*4.5)) * 0.9, TD)
         tc = t_(2.2); add(fx, hp(np.random.randn(len(tc)), 4500) * np.exp(-tc*1.8) * 0.16, TD)
-        for k, d in enumerate((0.45, 1.2, 1.95)): add(fx, bell(1568 + 196 * k, 1.6, 0.06), TD + d)
-        add(fx, bell(1760, 2.4, 0.12), TD + 2.85); add(fx, sparkle(1.2, 60, 9), TD + 2.9)
+        G = (0.3, 0.73, 1.16, 1.65) if DUR <= 10.5 else (0.45, 1.2, 1.95, 2.85)
+        for k, d in enumerate(G[:3]): add(fx, bell(1568 + 196 * k, 1.6, 0.06), TD + d)
+        add(fx, bell(1760, 2.4, 0.12), TD + G[3]); add(fx, sparkle(1.2, 60, 9), TD + G[3] + 0.05)
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(2093, 2.2, 0.09), TE + 0.15)
         mix = m + fx * 0.9
         st = reverb(mix) + 1.5 * dry[:, None]
