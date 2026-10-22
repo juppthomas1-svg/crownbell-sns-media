@@ -214,6 +214,28 @@ canvas{position:absolute;inset:0}
 .reelad .fine{font-size:20px;margin-top:16px}
 .reelad.light{background:radial-gradient(120% 80% at 70% 15%,#ffffff 0%,#fffdf8 50%,#f7f1e4 100%)}
 .reelad.light .vig{display:none}
+.dreamad .chap{position:absolute;left:70px;right:70px;top:250px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:"Noto Serif CJK JP",serif;font-size:24px;letter-spacing:.14em;color:rgba(244,239,226,.38);z-index:5}
+.dreamad .chap span{display:flex;align-items:center;gap:8px;transition:none}
+.dreamad .chap span b{font-family:"Noto Sans CJK JP",sans-serif;font-weight:400;font-size:18px;letter-spacing:.1em}
+.dreamad .chap span.on{color:#e3c47c}
+.dreamad .chap i{flex:1;height:1px;background:rgba(227,196,124,.28)}
+.dreamad .teaser{margin-top:26px;font-size:30px;letter-spacing:.08em;color:#e3c47c}
+.dreamad .figp .prob,.dreamad .figp .sol{top:330px!important}
+.dreamad .end{top:330px!important}
+.dreamad .tgt{font-size:50px!important;padding:10px 26px!important;margin-top:22px!important}
+.dreamad .prob h2{font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:64px;line-height:1.35;margin:18px 0 10px;letter-spacing:.04em}
+.dreamad .dream{position:absolute;left:84px;right:84px;top:330px}
+.dreamad .dream .kicker{font-family:"Noto Serif CJK JP",serif;color:#e3c47c;font-size:32px;letter-spacing:.3em}
+.dreamad .dline{display:flex;align-items:center;gap:22px;font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:44px;line-height:1.3;padding:16px 0;border-bottom:1px solid rgba(227,196,124,.22)}
+.dreamad .dline i{flex:none;width:14px;height:14px;transform:rotate(45deg);border:1.5px solid #e3c47c}
+.dreamad .dream h2{font-family:"Noto Serif CJK JP",serif;font-weight:700;font-size:84px;line-height:1.3;margin:36px 0 10px;letter-spacing:.05em}
+.dreamad .dream h2 em{font-style:normal;color:#e3c47c}
+.dreamad .dream .sub{font-size:34px;letter-spacing:.12em;color:rgba(244,239,226,.85)}
+.dreamad .dream .cap{margin-top:14px;font-size:20px;color:rgba(244,239,226,.5)}
+.dreamad .figwrap{left:245px!important;right:245px!important;bottom:335px!important}
+.dreamad .figp .prob .pline{font-size:40px!important;padding:12px 0!important}
+.dreamad .chap{font-size:27px!important;top:232px!important}
+.dreamad .chap span b{font-size:20px!important}
 .power.reelad .figwrap{left:110px!important;right:230px!important;bottom:420px!important}
 .power .tgt{background:transparent!important;color:#e3c47c!important;border:1.5px solid #c9a85c!important;font-weight:700!important;letter-spacing:.2em!important}
 
@@ -557,7 +579,7 @@ def quiz(v):
     return hook + q + end_screen(v["platform"], T_E, lead), hooks
 
 def promo(v):
-    T_S, T_E = 3000, 6800
+    T_S, T_E = v.get("t_s", 3000), v.get("t_e", 6800)
     lines = ''.join(f'<div class="pline a" data-in="-1000"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
     prob = (f'<div class="sc" data-in="-1000" data-out="{T_S}" data-d="250"><div class="prob">'
             f'<div class="a" data-in="-1000">{brand()}</div>'
@@ -702,10 +724,51 @@ def rankjk(v):
           "const TX='ビジネス英語実務検定',n=Math.max(0,Math.min(TX.length,Math.floor((t-T[N-1]-800)/70)));$('ctext').textContent=TX.slice(0,n);};") % (times, n, T1, T_E)
     return body + end_screen(v["platform"], T_E, "まずは、無料お試しから。"), js
 
+def dream(v):
+    T_S, T_D, T_E = 3400, 7000, 11800
+    chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["悩み","答え","未来","無料お試し"])) + '</div>')
+    lines = ''.join(f'<div class="pline a" data-in="{-1000 if j==0 else 250+j*450}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
+    prob = (f'<div class="sc" data-in="-1000" data-out="{T_S}" data-d="250"><div class="prob">'
+            f'<div class="a" data-in="-1000">{brand()}</div>'
+            f'<div class="tgt a" data-in="-1000">{E(v["target"])}</div>'
+            f'<h2 class="a" data-in="-1000">{v["prob_h"]}</h2>{lines}'
+            f'<div class="teaser a" data-in="-1000">{E(v["teaser"])}</div></div></div>')
+    facts = ''.join(f'<div class="fact a" data-in="{T_S+900+j*150}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
+    sol = (f'<div class="sc" data-in="{T_S}" data-out="{T_D}" data-d="300"><div class="sol">'
+           f'<div class="kicker a" data-in="{T_S+50}">{E(v["sol_kicker"])}</div>'
+           f'<h2 class="a" data-in="{T_S+150}" data-d="550">{v["sol"]}</h2>'
+           f'<div class="note a" data-in="{T_S+500}">{v["sol_note"]}</div><div class="facts">{facts}</div></div></div>')
+    dl = ''.join(f'<div class="dline a" data-in="{T_D+450+j*750}" data-d="500"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
+    drm = (f'<div class="sc" data-in="{T_D}" data-out="{T_E}" data-d="500">{SKY}<div class="dream">'
+           f'<div class="kicker a" data-in="{T_D+100}">{E(v["dream_kicker"])}</div>{dl}'
+           f'<h2 class="a" data-in="{T_D+2850}" data-d="650">{v["dream_h"]}</h2>'
+           f'<div class="sub a" data-in="{T_D+3400}">{E(v["dream_sub"])}</div>'
+           f'<div class="cap a" data-in="{T_D+3400}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
+    fig = f'<div class="figwrap" id="dfw">{FIG}<div id="lapw" style="position:absolute;inset:0;opacity:0">{LAP}</div></div>'
+    _, ph = promo(dict(v, figure=True, t_s=T_S, t_e=T_D, kicker=v.get("kicker", "")))
+    hooks = ph + (
+      "(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);const $=i=>document.getElementById(i);if(!$('fig'))return;"
+      "const TS=%d,TD=%d,TE=%d,w=$('dfw');"
+      "const c=t<TS?0:t<TD?1:t<TE?2:3;document.querySelectorAll('#chap span').forEach(s=>s.classList.toggle('on',+s.dataset.c==c));"
+      "let op=1;if(t>TD-260&&t<TD)op=(TD-t)/260;else if(t>=TD&&t<TD+120)op=0;else if(t>=TD+120)op=ease(cl((t-TD-120)/500));if(t>TE-280)op=Math.min(op,cl((TE-t)/280));w.style.opacity=op;"
+      "document.querySelectorAll('.sky .w').forEach(e=>{const p=+e.dataset.p;e.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
+      "if(t>=TD){const k=ease(cl((t-TD-120)/700));w.style.transformOrigin='50%% 100%%';w.style.transform=`translateY(${(1-k)*40}px)`;"
+      "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
+      "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"
+      "$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
+      "const ty=q=>Math.max(0,Math.sin(t/q))*10;$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(48)})`);"
+      "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(0 ${2+bob}) rotate(${Math.sin(t/900)*1.5} 300 330)`);$('body').setAttribute('transform',`translate(0 ${bob*.5}) scale(1.03 1.02)`);"
+      "$('bl').setAttribute('d','M242 190 L266 193 L288 201');$('br').setAttribute('d','M358 190 L334 193 L312 201');"
+      "$('mo').setAttribute('d','M282 290 Q300 292 318 290');$('mo').setAttribute('fill','none');"
+      "const bk=((t+500)%%1600)<110?.6:4.2;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
+      "else{w.style.transform='none';$('lapw').style.opacity=0;$('gl').style.display='none';}"
+      "}})();") % (T_S, T_D, T_E)
+    return chap + '<div class="figp">' + prob + sol + drm + fig + '</div>' + end_screen("igad", T_E, v.get("end_lead", "まずは、無料お試しから。")), hooks
+
 def build(v, outdir):
-    body, hooks = quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
+    body, hooks = dream(v) if v["kind"] == "dream" else quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
-    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}">'
+    doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}{" dreamad" if v["kind"]=="dream" else ""}">'
            f'<canvas id="cv"></canvas><div class="beams"></div><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
            f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')

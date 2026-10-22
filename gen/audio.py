@@ -139,6 +139,27 @@ def epic_music(seed):
 def build(kind, seed):
     np.random.seed(seed)
     epic = kind.endswith('_epic'); kind = kind.replace('_epic', '')
+    if kind == 'dream':
+        TS, TD, TE = 3.4, 7.0, 11.8
+        soft = music('promo', seed); big = epic_music(seed)
+        tt = np.arange(N) / SR
+        dark = lp(soft, 900) * 0.55                      # 悩み：こもった暗い音
+        e1 = np.clip((tt - (TS - 0.15)) / 0.3, 0, 1)      # 答え：ひらける
+        e2 = np.clip((tt - (TD - 0.1)) / 0.25, 0, 1)      # 未来：太鼓とストリングス
+        m = dark * (1 - e1) + soft * e1 * (1 - 0.75 * e2) + big * e2 * 1.15
+        fx = np.zeros(N); dry = np.zeros(N)
+        add(fx, whoosh(0.55), TS - 0.25); add(fx, bell(1318, 2.6, 0.14), TS + 0.15); add(fx, sparkle(1.0, 40, 5), TS + 0.18)
+        add(fx, whoosh(0.7), TD - 0.35)
+        t0 = t_(0.9); add(dry, (np.sin(2*np.pi*(48 + 50*np.exp(-t0*10))*t0) * np.exp(-t0*4.5)) * 0.9, TD)
+        tc = t_(2.2); add(fx, hp(np.random.randn(len(tc)), 4500) * np.exp(-tc*1.8) * 0.16, TD)
+        for k, d in enumerate((0.45, 1.2, 1.95)): add(fx, bell(1568 + 196 * k, 1.6, 0.06), TD + d)
+        add(fx, bell(1760, 2.4, 0.12), TD + 2.85); add(fx, sparkle(1.2, 60, 9), TD + 2.9)
+        add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(2093, 2.2, 0.09), TE + 0.15)
+        mix = m + fx * 0.9
+        st = reverb(mix) + 1.5 * dry[:, None]
+        fade = np.ones(N); fade[:int(.02 * SR)] = np.linspace(0, 1, int(.02 * SR)); fade[-int(.6 * SR):] = np.linspace(1, 0, int(.6 * SR))
+        st *= fade[:, None]; st /= np.abs(st).max() / 0.89
+        return st
     m = epic_music(seed) if epic else music(kind, seed)
     if epic and kind == 'quiz':
         rk = np.random.RandomState(seed + 3); tk = 0.15
