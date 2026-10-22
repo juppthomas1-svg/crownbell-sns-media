@@ -214,6 +214,8 @@ canvas{position:absolute;inset:0}
 .reelad .fine{font-size:20px;margin-top:16px}
 .reelad.light{background:radial-gradient(120% 80% at 70% 15%,#ffffff 0%,#fffdf8 50%,#f7f1e4 100%)}
 .reelad.light .vig{display:none}
+.power.reelad .figwrap{left:110px!important;right:230px!important;bottom:420px!important}
+.power .tgt{background:transparent!important;color:#e3c47c!important;border:1.5px solid #c9a85c!important;font-weight:700!important;letter-spacing:.2em!important}
 
 /* 人物を大きく・文字を太く（2026/10/20） */
 body{font-weight:700}
