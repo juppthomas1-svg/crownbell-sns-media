@@ -232,6 +232,9 @@ canvas{position:absolute;inset:0}
 .dreamad .dream h2 em{font-style:normal;color:#e3c47c}
 .dreamad .dream .sub{font-size:34px;letter-spacing:.12em;color:rgba(244,239,226,.85)}
 .dreamad .dream .teaser{margin-top:22px}
+.stks{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.stk{position:absolute;left:0;height:3px;border-radius:3px;background:linear-gradient(90deg,rgba(255,236,190,0),rgba(255,236,190,.9));filter:blur(.6px);box-shadow:0 0 10px rgba(255,220,160,.6)}
+.dreamad .nyen{font-family:"Noto Serif CJK JP",serif;font-size:22px;letter-spacing:.42em;color:rgba(227,196,124,.75);margin:6px 0 8px}
 .dreamad .dream .cap{margin-top:14px;font-size:20px;color:rgba(244,239,226,.5)}
 .dreamad .figwrap{left:245px!important;right:245px!important;bottom:335px!important}
 .dreamad .figp .prob .pline{font-size:40px!important;padding:12px 0!important}
@@ -777,9 +780,11 @@ def dream2(v):
     DG = v.get("dg", DG); HD = v.get("hd", HD); TD_ = v.get("td", TD_)
     chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["未来","現実","答え","無料お試し"])) + '</div>')
     dl = ''.join(f'<div class="dline a" data-in="{-1000 if j==0 else 200+j*DG}" data-d="450"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
-    fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="dream">'
+    streaks = ''.join(f'<i class="stk" data-k="{k}" style="top:{1612+(k%4)*38}px;width:{180+(k*37)%160}px;{"background:linear-gradient(90deg,rgba(255,90,70,0),rgba(255,120,90,.85))" if k%3==0 else ""}"></i>' for k in range(10)) if v.get('nyc') else ''
+    nyc = '<div class="nyen a" data-in="-1000">THE CITY THAT NEVER SLEEPS</div>' if v.get('nyc') else ''
+    fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="stks">{streaks}</div><div class="dream">'
            f'<div class="a" data-in="-1000">{brand()}</div>'
-           f'<div class="kicker a" data-in="-1000" style="margin-top:26px">{E(v["dream_kicker"])}</div>{dl}'
+           f'<div class="kicker a" data-in="-1000" style="margin-top:26px">{E(v["dream_kicker"])}</div>{nyc}{dl}'
            f'<h2 class="a" data-in="{HD}" data-d="550">{v["dream_h"]}</h2>'
            f'<div class="teaser a" data-in="{TD_}">{E(v["teaser"])}</div>'
            f'<div class="cap a" data-in="{TD_}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
@@ -799,7 +804,8 @@ def dream2(v):
       "const T1=%d,T2=%d,T3=%d,w=$('dfw');"
       "const c=t<T1?0:t<T2?1:t<T3?2:3;document.querySelectorAll('#chap span').forEach(s=>s.classList.toggle('on',+s.dataset.c==c));"
       "let op=1;if(t>T1-260&&t<T1)op=(T1-t)/260;else if(t>=T1&&t<T1+150)op=0;else if(t>=T1+150)op=ease(cl((t-T1-150)/450));if(t>T3-280)op=Math.min(op,cl((T3-t)/280));w.style.opacity=op;"
-      "document.querySelectorAll('.sky .w').forEach(e=>{const p=+e.dataset.p;e.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
+      "const NY=document.querySelector('.stks .stk')!=null;document.querySelectorAll('.sky .w').forEach(e=>{const p=+e.dataset.p;e.style.opacity=NY?(.3+.7*(.5+.5*Math.sin(t/260+p*3.1))):(.35+.6*(.5+.5*Math.sin(t/700+p)));});"
+      "document.querySelectorAll('.stks .stk').forEach(e=>{const k=+e.dataset.k,sp=900+(k*173)%%700,L=1400,x=((t*sp/1000+k*311)%%L)-300;e.style.transform=(k%%2?`translateX(${x}px)`:`translateX(${1080-x}px) scaleX(-1)`);});"
       "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale(.88)';"
       "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
       "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"
