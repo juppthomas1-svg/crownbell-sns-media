@@ -729,6 +729,7 @@ def dream(v):
     SH = v.get("dur", 15000) <= 10000
     T_S, T_D, T_E = (2300, 4900, 8000) if SH else (3400, 7000, 11800)
     LG, DG, HD, SD, FD = (330, 430, 1650, 2050, 650) if SH else (450, 750, 2850, 3400, 900)
+    DG = v.get("dg", DG); HD = v.get("hd", HD); SD = v.get("sd", SD)
     chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["悩み","答え","未来","無料お試し"])) + '</div>')
     lines = ''.join(f'<div class="pline a" data-in="{-1000 if j==0 else 150+j*LG}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
     prob = (f'<div class="sc" data-in="-1000" data-out="{T_S}" data-d="250"><div class="prob">'
@@ -773,6 +774,7 @@ def dream2(v):
     SH = v.get("dur", 15000) <= 10000
     T1, T2, T3 = (2700, 5200, 8000) if SH else (3800, 7400, 11300)
     DG, HD, TD_, LG, FD = (420, 1350, 1800, 330, 650) if SH else (650, 1900, 2500, 450, 900)
+    DG = v.get("dg", DG); HD = v.get("hd", HD); TD_ = v.get("td", TD_)
     chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["未来","現実","答え","無料お試し"])) + '</div>')
     dl = ''.join(f'<div class="dline a" data-in="{-1000 if j==0 else 200+j*DG}" data-d="450"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
     fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="dream">'
@@ -798,7 +800,7 @@ def dream2(v):
       "const c=t<T1?0:t<T2?1:t<T3?2:3;document.querySelectorAll('#chap span').forEach(s=>s.classList.toggle('on',+s.dataset.c==c));"
       "let op=1;if(t>T1-260&&t<T1)op=(T1-t)/260;else if(t>=T1&&t<T1+150)op=0;else if(t>=T1+150)op=ease(cl((t-T1-150)/450));if(t>T3-280)op=Math.min(op,cl((T3-t)/280));w.style.opacity=op;"
       "document.querySelectorAll('.sky .w').forEach(e=>{const p=+e.dataset.p;e.style.opacity=.35+.6*(.5+.5*Math.sin(t/700+p));});"
-      "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale(.8)';"
+      "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale(.88)';"
       "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
       "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"
       "$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
