@@ -136,13 +136,54 @@ def epic_music(seed):
         tt = t_(1.6); add(buf, hp(np.random.randn(len(tt)), 5000) * np.exp(-tt*2.5) * 0.12, tc)
     return buf
 
+def hype_music(seed):
+    """テンションが上がるBGM：4つ打ち＋手拍子＋オフビートのベース＋明るいピアノ（C G Am F, 126BPM）"""
+    rng = np.random.RandomState(seed + 11); buf = np.zeros(N)
+    bpm = 126; beat = 60 / bpm; bar = beat * 4
+    prog = [(36, [60, 64, 67, 72]), (43, [59, 62, 67, 71]), (45, [60, 64, 69, 72]), (41, [60, 65, 69, 72])]
+    def kick():
+        t = t_(0.32); return np.sin(2*np.pi*(50 + 110*np.exp(-t*35))*t) * np.exp(-t*8) * 0.95
+    def clap():
+        t = t_(0.22); n = bp(np.random.randn(len(t)), 900, 5500)
+        env = np.exp(-t*28) + 0.6*np.exp(-np.maximum(0, t-0.012)*30)*(t>0.012) + 0.4*np.exp(-np.maximum(0, t-0.024)*30)*(t>0.024)
+        return n * env * 0.32
+    def hat():
+        t = t_(0.06); return hp(np.random.randn(len(t)), 7000) * np.exp(-t*70) * 0.16
+    def sbass(f, d):
+        t = t_(d); y = 2*((f*t) % 1) - 1
+        return lp(y, 500) * np.minimum(1, t/0.005) * np.exp(-t*6) * 0.42
+    def pluck(f, d=0.3):
+        t = t_(d); y = sum((2*((f*k*t + rng.rand()) % 1) - 1) / k for k in (1, 2, 3))
+        return lp(y, 3200) * np.exp(-t*9) * 0.06
+    t = 0.0
+    while t < DUR:
+        k = int(round(t / (beat/4)))
+        root, ch = prog[int(t // bar) % 4]
+        if k % 4 == 0: add(buf, kick(), t)
+        if k % 8 == 4: add(buf, clap(), t)
+        if k % 4 == 2:
+            add(buf, hat() * 1.3, t); add(buf, sbass(midi(root), beat/2*0.9), t)
+        elif k % 2 == 1: add(buf, hat() * 0.6, t)
+        arp = [ch[0], ch[1], ch[2], ch[3], ch[2], ch[1], ch[2], ch[3]]
+        if k % 2 == 0: add(buf, pluck(midi(arp[(k//2) % 8] + 12)), t)
+        if k % 16 == 0:
+            add(buf, pad([n_ for n_ in ch], bar) * 1.1, t)
+            for n_ in ch[:3]: add(buf, piano(n_, 1.6, 0.8), t)
+        t += beat / 4
+    return buf
+
 def build(kind, seed):
     np.random.seed(seed)
     epic = kind.endswith('_epic'); kind = kind.replace('_epic', '')
+    HY = kind.endswith('_hype'); kind = kind.replace('_hype', '')
     if kind == 'dream2':
         T1, T2, T3 = (2.7, 5.2, 8.0) if DUR <= 10.5 else (3.8, 7.4, 11.3)
-        soft = music('promo', seed); big = epic_music(seed); tt = np.arange(N) / SR
-        dark = lp(soft, 800) * 0.5
+        if HY:
+            hm = hype_music(seed); soft = hm * 0.9; big = hm + epic_music(seed) * 0.45; tt = np.arange(N) / SR
+            dark = lp(hm, 650) * 0.75 + hp(hm, 6000) * 0.15
+        else:
+            soft = music('promo', seed); big = epic_music(seed); tt = np.arange(N) / SR
+            dark = lp(soft, 800) * 0.5
         eb = np.clip((T1 + 0.05 - tt) / 0.25, 0, 1)                 # 未来：最初から盛り上がる→現実で切れる
         ed = np.clip((tt - T1) / 0.4, 0, 1) * np.clip((T2 + 0.1 - tt) / 0.3, 0, 1)
         es = np.clip((tt - (T2 - 0.15)) / 0.3, 0, 1)
@@ -161,9 +202,14 @@ def build(kind, seed):
         return st
     if kind == 'dream':
         TS, TD, TE = (2.3, 4.9, 8.0) if DUR <= 10.5 else (3.4, 7.0, 11.8)
-        soft = music('promo', seed); big = epic_music(seed)
-        tt = np.arange(N) / SR
-        dark = lp(soft, 900) * 0.55                      # 悩み：こもった暗い音
+        if HY:
+            hm = hype_music(seed); soft = hm * 0.9; big = hm + epic_music(seed) * 0.45
+            tt = np.arange(N) / SR
+            dark = lp(hm, 650) * 0.75 + hp(hm, 6000) * 0.15
+        else:
+            soft = music('promo', seed); big = epic_music(seed)
+            tt = np.arange(N) / SR
+            dark = lp(soft, 900) * 0.55                      # 悩み：こもった暗い音
         e1 = np.clip((tt - (TS - 0.15)) / 0.3, 0, 1)      # 答え：ひらける
         e2 = np.clip((tt - (TD - 0.1)) / 0.25, 0, 1)      # 未来：太鼓とストリングス
         m = dark * (1 - e1) + soft * e1 * (1 - 0.75 * e2) + big * e2 * 1.15
