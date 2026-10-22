@@ -172,14 +172,56 @@ def hype_music(seed):
         t += beat / 4
     return buf
 
+def party_music(seed):
+    """世界を飛び回るパーティー系のダンスBGM（オリジナル）：128BPMの4つ打ち、裏拍で刻む分厚いシンセ和音、うねるベース"""
+    rng = np.random.RandomState(seed + 21); buf = np.zeros(N)
+    bpm = 128; beat = 60 / bpm; bar = beat * 4
+    prog = [(45, [57, 60, 64, 69]), (41, [57, 60, 65, 69]), (43, [55, 59, 62, 67]), (40, [55, 59, 64, 67])]  # Am F G Em
+    pump = np.ones(N); tb = np.arange(N) / SR
+    ph = (tb % beat) / beat; pump = 0.35 + 0.65 * np.clip(ph / 0.45, 0, 1) ** 1.6  # キックに合わせて音が「うねる」
+    def kick():
+        t = t_(0.3); return np.sin(2*np.pi*(48 + 120*np.exp(-t*38))*t) * np.exp(-t*8.5) * 1.0
+    def clap():
+        t = t_(0.25); n = bp(np.random.randn(len(t)), 1000, 6000)
+        return n * (np.exp(-t*25) + 0.5*np.exp(-np.maximum(0, t-0.015)*25)*(t>0.015)) * 0.34
+    def ohat():
+        t = t_(0.16); return hp(np.random.randn(len(t)), 6500) * np.exp(-t*20) * 0.13
+    def saws(notes, d):
+        t = t_(d); y = np.zeros(len(t))
+        for m in notes:
+            f = midi(m)
+            for dt in (-0.12, -0.05, 0, 0.05, 0.12):
+                y += 2*((f*2**(dt/12)*t + rng.rand()) % 1) - 1
+        y /= (len(notes) * 5)
+        return lp(y, 5200) * np.minimum(1, t/0.004) * np.exp(-t*5.5)
+    def bassn(f, d):
+        t = t_(d); y = np.sin(2*np.pi*f*t) + 0.5*(2*((f*t) % 1) - 1)
+        return lp(y, 380) * np.minimum(1, t/0.004) * np.exp(-t*3) * 0.5
+    syn = np.zeros(N); low = np.zeros(N)
+    t = 0.0
+    while t < DUR:
+        k = int(round(t / (beat/4)))
+        root, ch = prog[int(t // bar) % 4]
+        if k % 4 == 0: add(buf, kick(), t)
+        if k % 8 == 4: add(buf, clap(), t)
+        if k % 4 == 2:
+            add(buf, ohat(), t)
+            add(syn, saws([n_ + 12 for n_ in ch], beat * 0.45), t)   # 裏拍の和音
+        if k % 2 == 0: add(low, bassn(midi(root), beat/2 * 0.95), t)
+        if k % 16 == 14: add(syn, saws([ch[-1] + 24], beat*0.2) * 0.6, t)
+        t += beat / 4
+    buf += (syn * 0.9 + low) * pump
+    return buf
+
 def build(kind, seed):
     np.random.seed(seed)
     epic = kind.endswith('_epic'); kind = kind.replace('_epic', '')
-    HY = kind.endswith('_hype'); kind = kind.replace('_hype', '')
+    PT = kind.endswith('_party'); kind = kind.replace('_party', '')
+    HY = PT or kind.endswith('_hype'); kind = kind.replace('_hype', '')
     if kind == 'dream2':
         T1, T2, T3 = (2.7, 5.2, 8.0) if DUR <= 10.5 else (3.8, 7.4, 11.3)
         if HY:
-            hm = hype_music(seed); soft = hm * 0.9; big = hm + epic_music(seed) * 0.45; tt = np.arange(N) / SR
+            hm = party_music(seed) if PT else hype_music(seed); soft = hm * 0.9; big = hm + epic_music(seed) * 0.45; tt = np.arange(N) / SR
             dark = lp(hm, 650) * 0.75 + hp(hm, 6000) * 0.15
         else:
             soft = music('promo', seed); big = epic_music(seed); tt = np.arange(N) / SR
@@ -203,7 +245,7 @@ def build(kind, seed):
     if kind == 'dream':
         TS, TD, TE = (2.3, 4.9, 8.0) if DUR <= 10.5 else (3.4, 7.0, 11.8)
         if HY:
-            hm = hype_music(seed); soft = hm * 0.9; big = hm + epic_music(seed) * 0.45
+            hm = party_music(seed) if PT else hype_music(seed); soft = hm * 0.9; big = hm + epic_music(seed) * 0.45
             tt = np.arange(N) / SR
             dark = lp(hm, 650) * 0.75 + hp(hm, 6000) * 0.15
         else:
