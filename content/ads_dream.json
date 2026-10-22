@@ -217,7 +217,8 @@
   "dg": 1000,
   "hd": 2600,
   "sd": 3200,
-  "now": false
+  "now": false,
+  "halo": 1.0
  },
  {
   "id": "ad10_ig_story_future_first_15s",
@@ -263,6 +264,7 @@
   "dg": 1000,
   "hd": 1900,
   "td": 2600,
-  "now": false
+  "now": false,
+  "halo": 1.0
  }
 ]

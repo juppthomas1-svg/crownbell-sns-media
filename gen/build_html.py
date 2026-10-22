@@ -759,7 +759,7 @@ def dream(v):
       "if(t>=TD){const k=ease(cl((t-TD-120)/700));w.style.transformOrigin='50%% 100%%';w.style.transform=`translateY(${(1-k)*40}px)`;"
       "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
       "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"
-      "$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
+      "$('fig').style.filter='none';$('figglow').setAttribute('opacity',(window.HALO||0)*(.85+.15*Math.sin(t/900)));$('gl').style.display='block';"
       "const ty=q=>Math.max(0,Math.sin(t/q))*10;$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(48)})`);"
       "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(0 ${2+bob}) rotate(${Math.sin(t/900)*1.5} 300 330)`);$('body').setAttribute('transform',`translate(0 ${bob*.5}) scale(1.03 1.02)`);"
       "$('bl').setAttribute('d','M242 190 L266 193 L288 201');$('br').setAttribute('d','M358 190 L334 193 L312 201');"
@@ -803,7 +803,7 @@ def dream2(v):
       "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale(.88)';"
       "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
       "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"
-      "$('fig').style.filter='none';$('figglow').setAttribute('opacity',0);$('gl').style.display='block';"
+      "$('fig').style.filter='none';$('figglow').setAttribute('opacity',(window.HALO||0)*(.85+.15*Math.sin(t/900)));$('gl').style.display='block';"
       "const ty=q=>Math.max(0,Math.sin(t/q))*10;$('hl').setAttribute('transform',`translate(0 ${-ty(52)})`);$('hr').setAttribute('transform',`translate(0 ${-ty(48)})`);"
       "const bob=Math.sin(t/600)*2;$('head').setAttribute('transform',`translate(0 ${2+bob}) rotate(${Math.sin(t/900)*1.5} 300 330)`);$('body').setAttribute('transform',`translate(0 ${bob*.5}) scale(1.03 1.02)`);"
       "$('bl').setAttribute('d','M242 190 L266 193 L288 201');$('br').setAttribute('d','M358 190 L334 193 L312 201');"
@@ -822,7 +822,7 @@ def build(v, outdir):
     doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}{" dreamad" if v["kind"] in ("dream","dream2") else ""}">'
            f'<canvas id="cv"></canvas><div class="beams"></div><div class="vig"></div><div id="pulse"></div><div class="frame"></div>{body}'
            f'<div class="foot"><span>国際ビジネス言語認定協会</span><span>ONLINE EXAMINATION</span></div>'
-           f'<script>const SEED={seed};{JS}{hooks}</script></body></html>')
+           f'<script>const SEED={seed};window.HALO={v.get("halo",0)};{JS}{hooks}</script></body></html>')
     os.makedirs(outdir, exist_ok=True)
     p = os.path.join(outdir, v["id"] + ".html")
     open(p, "w").write(doc)
