@@ -767,7 +767,7 @@ def dream(v):
       "const bk=((t+500)%%1600)<110?.6:4.2;$('el').setAttribute('ry',bk);$('er').setAttribute('ry',bk);['q1','q2','q3'].forEach(q=>$(q).setAttribute('opacity',0));}"
       "else{w.style.transform='none';$('lapw').style.opacity=0;$('gl').style.display='none';}"
       "}})();") % (T_S, T_D, T_E)
-    return chap + '<div class="figp">' + prob + sol + drm + fig + '</div>' + end_screen("igad", T_E, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
+    return (chap if v.get("chap", True) else '') + '<div class="figp">' + prob + sol + drm + fig + '</div>' + end_screen("igad", T_E, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
 def dream2(v):
     """未来 → 現実（悩み） → 答え → 無料お試し"""
@@ -814,7 +814,7 @@ def dream2(v):
       "['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e.dataset.f0!==undefined)e.setAttribute('fill',e.dataset.f0);});if($('tie').dataset.s0!==undefined)$('tie').setAttribute('stroke',$('tie').dataset.s0);$('mo').removeAttribute('fill');}"
       "}})();"
       "(function(){const $=i=>document.getElementById(i);['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e)e.dataset.f0=e.getAttribute('fill')||'';});const tt=$('tie');if(tt)tt.dataset.s0=tt.getAttribute('stroke')||'';})();") % (T1, T2, T3)
-    return chap + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen("igad", T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
+    return (chap if v.get("chap", True) else '') + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen("igad", T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
 def build(v, outdir):
     body, hooks = dream2(v) if v["kind"] == "dream2" else dream(v) if v["kind"] == "dream" else quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)

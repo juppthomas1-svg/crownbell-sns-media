@@ -218,7 +218,8 @@
   "hd": 2600,
   "sd": 3200,
   "now": false,
-  "halo": 1.0
+  "halo": 1.0,
+  "chap": false
  },
  {
   "id": "ad10_ig_story_future_first_15s",
@@ -265,6 +266,7 @@
   "hd": 1900,
   "td": 2600,
   "now": false,
-  "halo": 1.0
+  "halo": 1.0,
+  "chap": false
  }
 ]
