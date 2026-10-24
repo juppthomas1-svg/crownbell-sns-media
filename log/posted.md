@@ -38,3 +38,6 @@
 - 2026-10-22 手動｜X｜x_nyc_15s（眠らない街ニューヨーク版・X用終了画面）
 - 2026-10-23 08:00｜Instagram｜ig09_swamped（I'm swamped・燃える系）
 - 2026-10-23 手動｜X｜x09_swamped（I'm swamped・燃える系）
+- 2026-10-26 07:30｜Instagram｜w3_01_ig_maemuki｜「前向きに検討します」英語で言えますか（give it serious consideration）｜型：power クイズ
+- 2026-10-28 07:30｜TikTok｜w3_02_tt_promo_toikake｜世界で働きたい人へ「その英語力、証明できますか。」（朝の前向き宣伝）｜型：問いかけ型宣伝（power・人物入り・新しい型）
+- 2026-10-25 実行メモ｜10月の Metricool 予約・公開はテスト2本込みで18本 → 残り2本（10/30・10/31 用）
