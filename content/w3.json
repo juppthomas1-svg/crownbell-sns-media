@@ -1,0 +1,61 @@
+[
+ {
+  "id": "w3_01_ig_maemuki",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-10-26T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "「前向きに検討<br>します」英語で<br><em>言えますか？</em>",
+  "q": "取引先からの提案に。<br>いちばん自然なのは？",
+  "opts": [
+   "We'll think about it positively.",
+   "We'll give it serious consideration.",
+   "We'll look forward to it."
+  ],
+  "ans": 1,
+  "ex": "<b>give it serious consideration</b> ＝ 真剣に検討する。<br><b>think positively</b> は「楽観的に考える」に聞こえます。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「前向きに検討します」、英語で言えますか。直訳すると、思わぬ意味に聞こえてしまいます。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）はプロフィールのリンクから。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #グローバル人材 #就活"
+ },
+ {
+  "id": "w3_02_tt_promo_toikake",
+  "kind": "promo",
+  "audio": "promo_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-10-28T07:30:00",
+  "target": "世界で働きたい人へ",
+  "kicker": "その英語力、証明できますか。",
+  "problems": [
+   "英文メール、書けますか。",
+   "英語で、商談できますか。",
+   "その力、示せますか。"
+  ],
+  "sol_kicker": "世界に轟く人材を",
+  "sol": "その第一歩を、<br><em>資格で示す。</em>",
+  "sol_note": "※民間資格。合格した場合、合格証は最短で受験当日に発行",
+  "facts": [
+   [
+    "LEVELS",
+    "3級〜1級<small>3つのレベル</small>"
+   ],
+   [
+    "ONLINE",
+    "24時間<small>PC・スマホ</small>"
+   ],
+   [
+    "RESULT",
+    "最短当日<small>合格証PDF</small>"
+   ]
+  ],
+  "end_lead": "世界に轟く人材を、<br>ここから目指そう。",
+  "caption": "世界で働きたい人へ。\nその英語力、証明できますか。\nビジネス英語実務検定は、24時間いつでもオンラインで受験できる民間資格です。合格すれば、合格証は最短で受験当日に発行されます。世界に轟く人材への第一歩に。\n無料お試し（登録なし・10問・約5分）は、「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会",
+  "tags": "#ビジネス英語 #就活 #27卒 #グローバル人材 #資格",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ }
+]
