@@ -76,6 +76,8 @@ canvas{position:absolute;inset:0}
 .slap em{font-style:normal;color:#ffe7a6}
 .slap .sl-k{font-size:34px;letter-spacing:.18em;color:#ffe7a6;margin-bottom:10px}
 .end .slap{font-size:86px;text-align:center;margin:-18px 0 72px}
+.oslap{position:absolute;left:64px;top:282px;margin:0;font-size:96px;line-height:1.15;padding:22px 44px 26px;z-index:7}
+.oslap .sl-k{font-size:30px;letter-spacing:.08em;margin-bottom:8px}
 .rco{position:absolute;left:0;right:0;top:975px;z-index:6}
 .rcw{position:relative;width:1200px;left:50%;margin-left:-600px;transform:scale(.8);transform-origin:50% 0}
 .rc{position:relative;width:1200px;height:680px;background:#fbf8f0;border:16px solid #0f2a5c;box-shadow:0 30px 70px rgba(0,0,0,.55);color:#0f2a5c;font-family:"Noto Serif CJK JP",serif;text-align:center;overflow:hidden;letter-spacing:0}
@@ -836,7 +838,9 @@ def dream2(v):
         lanes = [(1,1708,360,0,1,'#e7b528'),(1,1708,360,470,1,'#c3352f'),(1,1708,360,940,1,'#2d7fd0'),(0,1664,300,200,.85,'#e9e6dd'),(0,1664,300,680,.85,'#e7b528'),(0,1664,300,1150,.85,'#2a9a7c')]
         streaks = ''.join(f'<i class="stk car" data-k="{d}" data-sp="{sp}" data-o="{o}" style="top:{y}px;opacity:{op};transform-origin:100px 18px">'
                           f'<span style="display:block;transform:scale({.82 if d else .68});transform-origin:0 50%">{CAR(col)}</span></i>' for d, y, sp, o, op, col in lanes)
-    fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="stks">{streaks}</div><div class="dream">'
+    os_ = v.get("open_slap")
+    oslap = (f'<div class="slap oslap" data-in="{os_.get("t",200)}" data-d="300"><div class="sl-k">{E(os_["k"])}</div>{os_["h"]}</div>' if os_ else '')
+    fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="stks">{streaks}</div>{oslap}<div class="dream">'
            f'<div class="a" data-in="-1000">{brand()}</div>'
            f'<div class="kicker a" data-in="-1000" style="margin-top:26px;{v.get("dream_kicker_style","")}">{E(v["dream_kicker"])}</div>{nyc}{dl}'
            f'<h2 class="a" data-in="{HD}" data-d="550">{v["dream_h"]}</h2>'
