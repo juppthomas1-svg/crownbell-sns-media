@@ -504,7 +504,8 @@ window.render=function(ms){const t=ms;document.querySelectorAll('[data-in]').for
 def brand(sub="24時間いつでもオンライン受験"):
     return f'<div class="brand"><img src="logo.png"><div class="n">ビジネス英語実務検定<small>{E(sub)}</small></div></div>'
 
-def end_screen(platform, t0, lead, now=True):
+def end_screen(platform, t0, lead, now=True, camp=None):
+    if camp is None: camp = CAMP
     fine = ('本番は合格すれば合格証を最短で受験当日に発行｜3級 3,500円〜（税込）<br>'
             '※お試し問題は本番とは異なり、合格証は発行されません<br>'
             '※国際ビジネス言語認定協会が認定する民間資格です')
@@ -525,9 +526,10 @@ def end_screen(platform, t0, lead, now=True):
             f'<div class="a" data-in="{t0}">{brand()}</div>'
             f'<div class="lead a" data-in="{t0+100}">{lead}</div>'
             + (f'<div class="now a" data-in="{t0+200}">NOW OPEN</div>' if now else '<div style="height:26px"></div>') +
-            f'<h3 class="a" data-in="{t0+250}">無料お試し<br><em>実施中</em></h3>'
-            f'<div class="chips a" data-in="{t0+350}"><span>登録なし</span><span>10問</span><span>約5分</span><span>スマホでOK</span></div>'
-            f'{how}<div class="fine a" data-in="{t0+600}">{fine}</div></div></div>')
+            (f'<h3 class="a" data-in="{t0+250}">{camp["h3"]}</h3>' if camp else f'<h3 class="a" data-in="{t0+250}">無料お試し<br><em>実施中</em></h3>')
+            + (f'<div class="chips a" data-in="{t0+350}">' + ''.join(f'<span>{E(c)}</span>' for c in camp["chips"]) + '</div>' if camp else
+               f'<div class="chips a" data-in="{t0+350}"><span>登録なし</span><span>10問</span><span>約5分</span><span>スマホでOK</span></div>') +
+            f'{how}<div class="fine a" data-in="{t0+600}">{camp["fine"] if camp else fine}</div></div></div>')
 
 def quiz(v):
     T_Q, T_A, T_E = 2100, 5600, 7700
@@ -826,7 +828,10 @@ def dream2(v):
       "(function(){const $=i=>document.getElementById(i);['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e)e.dataset.f0=e.getAttribute('fill')||'';});const tt=$('tie');if(tt)tt.dataset.s0=tt.getAttribute('stroke')||'';})();") % (T1, T2, T3)
     return (chap if v.get("chap", True) else '') + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen(v["platform"], T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
+CAMP = None  # キャンペーン用の最後の画面（JSON の "camp"）。無ければ従来の「無料お試し」画面
+
 def build(v, outdir):
+    global CAMP; CAMP = v.get("camp")
     body, hooks = dream2(v) if v["kind"] == "dream2" else dream(v) if v["kind"] == "dream" else quiz(v) if v["kind"] == "quiz" else ad(v) if v["kind"] == "ad" else rank(v) if v["kind"] == "rank" else rankjk(v) if v["kind"] == "rankjk" else promo(v)
     seed = sum(ord(c) for c in v["id"]) % 9000 + 11
     doc = (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body class="{"story" if v["platform"]=="igad" else "safe reelad" if v["platform"]=="igreel" else "safe" if v["platform"] in ("tt","ig") else ""}{" light" if v.get("theme")=="light" else ""}{" jk" if v["kind"]=="rankjk" else ""}{" power" if v.get("theme")=="power" else ""}{" dreamad" if v["kind"] in ("dream","dream2") else ""}">'
