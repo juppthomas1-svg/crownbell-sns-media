@@ -75,7 +75,7 @@ canvas{position:absolute;inset:0}
 .slap{display:inline-block;background:linear-gradient(160deg,#c42a42,#9e1c31);color:#fff;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:76px;line-height:1.32;padding:30px 46px 34px;border:3px solid rgba(244,239,226,.92);box-shadow:0 0 0 9px #a81f35,0 22px 50px rgba(0,0,0,.5);transform:rotate(-6deg);margin:46px 0 46px 14px;text-align:left}
 .slap em{font-style:normal;color:#ffe7a6}
 .slap .sl-k{font-size:34px;letter-spacing:.18em;color:#ffe7a6;margin-bottom:10px}
-.end .slap{font-size:86px;text-align:center;margin:40px 0 44px}
+.end .slap{font-size:86px;text-align:center;margin:-18px 0 72px}
 .chips{display:flex;gap:16px;margin-bottom:44px}
 .chips span{border:1.5px solid #c9a85c;color:#f4efe2;font-weight:700;font-size:34px;padding:10px 22px}
 .card{display:flex;align-items:center;gap:40px;background:#fbf8f0;color:#0a1a3d;padding:36px 44px;text-align:left;box-shadow:0 30px 80px rgba(0,0,0,.45)}
