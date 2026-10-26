@@ -76,6 +76,24 @@ canvas{position:absolute;inset:0}
 .slap em{font-style:normal;color:#ffe7a6}
 .slap .sl-k{font-size:34px;letter-spacing:.18em;color:#ffe7a6;margin-bottom:10px}
 .end .slap{font-size:86px;text-align:center;margin:-18px 0 72px}
+.rco{position:absolute;left:0;right:0;top:975px;z-index:6}
+.rcw{position:relative;width:1200px;left:50%;margin-left:-600px;transform:scale(.8);transform-origin:50% 0}
+.rc{position:relative;width:1200px;height:680px;background:#fbf8f0;border:16px solid #0f2a5c;box-shadow:0 30px 70px rgba(0,0,0,.55);color:#0f2a5c;font-family:"Noto Serif CJK JP",serif;text-align:center;overflow:hidden;letter-spacing:0}
+.rc:before{content:"";position:absolute;inset:10px;border:1.5px solid #b08d4a}.rc:after{content:"";position:absolute;inset:18px;border:1px solid #b08d4a}
+.rc-d{position:absolute;width:16px;height:16px;background:#b08d4a;transform:rotate(45deg)}.rc-d1{left:3px;top:3px}.rc-d2{right:3px;top:3px}.rc-d3{left:3px;bottom:3px}.rc-d4{right:3px;bottom:3px}
+.rc-en{margin-top:52px;font-size:15px;letter-spacing:.32em;color:#b08d4a}
+.rc-h{font-size:54px;font-weight:900;letter-spacing:.1em;margin:12px 0 16px;line-height:1.2}
+.rc-band{display:inline-block;background:#0f2a5c;color:#fff;font-size:28px;font-weight:700;padding:8px 120px;letter-spacing:.04em;line-height:1.4}
+.rc-en2{font-size:15px;color:#6b7280;margin-top:10px}
+.rc-nm{display:inline-block;font-size:40px;font-weight:500;letter-spacing:.06em;margin-top:24px;padding:0 90px 4px;border-bottom:2px solid #b08d4a;color:#1f2a44;line-height:1.3}
+.rc-tx{font-size:19px;line-height:1.75;margin-top:22px;color:#2b3448}
+.rc-meta{position:absolute;left:96px;top:480px;text-align:left;font-family:"Noto Sans CJK JP",sans-serif;font-size:16px;line-height:1.9;color:#1f2a44}
+.rc-org{position:absolute;left:560px;top:494px;width:400px;font-size:27px;font-weight:900;line-height:1.3}.rc-org small{display:block;font-size:11px;font-weight:400;color:#6b7280;margin-top:8px}
+.rc-seal{position:absolute;right:88px;top:470px;width:110px;height:110px;border-radius:50%}
+.rc-mihon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-22deg);font-size:330px;font-weight:900;color:rgba(201,168,92,.28);line-height:1}
+.rc-ft{position:absolute;left:0;right:0;bottom:30px;font-family:"Noto Sans CJK JP",sans-serif;font-size:11px;color:#4b5563}
+.rccap{font-family:"Noto Sans CJK JP",sans-serif;font-size:26px;color:rgba(244,239,226,.7);text-align:center;margin-top:-110px}
+.rc-hand{position:absolute;top:612px;width:120px;height:84px;border-radius:50%;background:#c9a07d;box-shadow:inset 0 -8px 0 rgba(0,0,0,.12)}.rc-hl{left:-34px}.rc-hr{right:-34px}
 .chips{display:flex;gap:16px;margin-bottom:44px}
 .chips span{border:1.5px solid #c9a85c;color:#f4efe2;font-weight:700;font-size:34px;padding:10px 22px}
 .card{display:flex;align-items:center;gap:40px;background:#fbf8f0;color:#0a1a3d;padding:36px 44px;text-align:left;box-shadow:0 30px 80px rgba(0,0,0,.45)}
@@ -785,6 +803,19 @@ def dream(v):
       "}})();") % (T_S, T_D, T_E)
     return (chap if v.get("chap", True) else '') + '<div class="figp">' + prob + sol + drm + fig + '</div>' + end_screen("igad", T_E, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
+def realcert(t_in, t_out):
+    """実際の合格証（見本）。級は入れない"""
+    return (f'<div class="rco" data-in="{t_in+700}" data-out="{t_out}" data-d="600"><div class="rcw"><div class="rc"><i class="rc-d rc-d1"></i><i class="rc-d rc-d2"></i><i class="rc-d rc-d3"></i><i class="rc-d rc-d4"></i>'
+            '<div class="rc-en">CERTIFICATE OF PROFICIENCY</div><div class="rc-h">合 格 証 書</div>'
+            '<div class="rc-band">ビジネス英語実務検定</div><div class="rc-en2">Business English Practical Proficiency Certification</div>'
+            '<div class="rc-nm">山田　花子　殿</div>'
+            '<div class="rc-tx">あなたは当協会が実施したビジネス英語実務検定に合格し、<br>職場で求められる基礎的なビジネス英語の理解力を有することを認定します。</div>'
+            '<div class="rc-meta">認定番号　BEC-2026-000128<br>合 格 日　2026年11月14日</div>'
+            '<div class="rc-org">国際ビジネス言語認定協会<small>International Business Language Certification Association</small></div>'
+            '<img class="rc-seal" src="logo.png"><div class="rc-mihon">見本</div>'
+            '<div class="rc-ft">ビジネス英語実務検定は、国際ビジネス言語認定協会が認定する民間資格です。合格の事実は、ご本人の同意がある場合に限り、認定番号で確認できます。</div>'
+            '</div><i class="rc-hand rc-hl"></i><i class="rc-hand rc-hr"></i></div><div class="rccap">※画像は見本です</div></div>')
+
 def dream2(v):
     """未来 → 現実（悩み） → 答え → 無料お試し"""
     SH = v.get("dur", 15000) <= 10000
@@ -844,7 +875,7 @@ def dream2(v):
       "['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e.dataset.f0!==undefined)e.setAttribute('fill',e.dataset.f0);});if($('tie').dataset.s0!==undefined)$('tie').setAttribute('stroke',$('tie').dataset.s0);$('mo').removeAttribute('fill');}"
       "}})();"
       "(function(){const $=i=>document.getElementById(i);['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e)e.dataset.f0=e.getAttribute('fill')||'';});const tt=$('tie');if(tt)tt.dataset.s0=tt.getAttribute('stroke')||'';})();") % (T1, T2, T3)
-    return (chap if v.get("chap", True) else '') + '<div class="figp">' + fut + prob + sol + fig + '</div>' + end_screen(v["platform"], T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
+    return (chap if v.get("chap", True) else '') + '<div class="figp">' + fut + prob + sol + fig + (realcert(T2, T3) if v.get("realcert") else '') + '</div>' + end_screen(v["platform"], T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
 CAMP = None  # キャンペーン用の最後の画面（JSON の "camp"）。無ければ従来の「無料お試し」画面
 
