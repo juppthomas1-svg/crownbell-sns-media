@@ -241,6 +241,7 @@ canvas{position:absolute;inset:0}
 .safe.dreamad .dline{font-size:40px}
 .safe.dreamad .dream h2{font-size:76px}
 .stks{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.stk.car{height:auto;background:none;filter:none;box-shadow:none;border-radius:0}
 .stk{position:absolute;left:0;height:3px;border-radius:3px;background:linear-gradient(90deg,rgba(255,236,190,0),rgba(255,236,190,.9));filter:blur(.6px);box-shadow:0 0 10px rgba(255,220,160,.6)}
 .dreamad .nyen{font-family:"Noto Serif CJK JP",serif;font-size:22px;letter-spacing:.42em;color:rgba(227,196,124,.75);margin:6px 0 8px}
 .dreamad .dream .cap{margin-top:14px;font-size:20px;color:rgba(244,239,226,.5)}
@@ -794,6 +795,16 @@ def dream2(v):
     dl = ''.join(f'<div class="dline a" data-in="{-1000 if j==0 else 200+j*DG}" data-d="450"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
     streaks = ''.join(f'<i class="stk" data-k="{k}" style="top:{1612+(k%4)*38}px;width:{180+(k*37)%160}px;{"background:linear-gradient(90deg,rgba(255,90,70,0),rgba(255,120,90,.85))" if k%3==0 else ""}"></i>' for k in range(10)) if v.get('nyc') else ''
     nyc = '<div class="nyen a" data-in="-1000">THE CITY THAT NEVER SLEEPS</div>' if v.get('nyc') and v.get('nyen', True) else ''
+    if v.get('cars'):
+        CAR = ('<svg width="200" height="36" viewBox="0 0 200 36"><defs><linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#fff3d2" stop-opacity=".55"/><stop offset="1" stop-color="#fff3d2" stop-opacity="0"/></linearGradient></defs>'
+               '<polygon points="114,19 200,10 200,32 114,23" fill="url(#beam)"/>'
+               '<path d="M4 22 Q4 16 12 15 L30 14 L42 5 Q46 3 52 3 L78 3 Q84 3 88 7 L98 14 L110 16 Q116 17 116 22 L116 27 Q116 29 113 29 L7 29 Q4 29 4 27 Z" fill="#0c1834" stroke="rgba(201,168,92,.6)" stroke-width="1.2"/>'
+               '<path d="M45 7 L52 6 L63 6 L63 13 L39 13 Z M67 6 L78 6 Q82 6 85 9 L89 13 L67 13 Z" fill="rgba(227,196,124,.38)"/>'
+               '<circle cx="28" cy="29" r="6" fill="#050a18" stroke="rgba(201,168,92,.45)"/><circle cx="92" cy="29" r="6" fill="#050a18" stroke="rgba(201,168,92,.45)"/>'
+               '<ellipse cx="113" cy="20.5" rx="3" ry="2" fill="#fff6dc"/><rect x="4" y="18" width="3.5" height="4" rx="1" fill="#b4233a"/></svg>')
+        lanes = [(1,1708,360,0,1),(1,1708,360,470,1),(1,1708,360,940,1),(0,1664,300,200,.8),(0,1664,300,680,.8),(0,1664,300,1150,.8)]
+        streaks = ''.join(f'<i class="stk car" data-k="{d}" data-sp="{sp}" data-o="{o}" style="top:{y}px;opacity:{op};transform-origin:100px 18px">'
+                          f'<span style="display:block;transform:scale({.82 if d else .68});transform-origin:0 50%">{CAR}</span></i>' for d, y, sp, o, op in lanes)
     fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="stks">{streaks}</div><div class="dream">'
            f'<div class="a" data-in="-1000">{brand()}</div>'
            f'<div class="kicker a" data-in="-1000" style="margin-top:26px;{v.get("dream_kicker_style","")}">{E(v["dream_kicker"])}</div>{nyc}{dl}'
@@ -818,7 +829,7 @@ def dream2(v):
       "const c=t<T1?0:t<T2?1:t<T3?2:3;document.querySelectorAll('#chap span').forEach(s=>s.classList.toggle('on',+s.dataset.c==c));"
       "let op=1;if(t>T1-260&&t<T1)op=(T1-t)/260;else if(t>=T1&&t<T1+150)op=0;else if(t>=T1+150)op=ease(cl((t-T1-150)/450));if(t>T3-280)op=Math.min(op,cl((T3-t)/280));w.style.opacity=op;"
       "const NY=document.querySelector('.stks .stk')!=null;document.querySelectorAll('.sky .w').forEach(e=>{const p=+e.dataset.p;e.style.opacity=NY?(.3+.7*(.5+.5*Math.sin(t/260+p*3.1))):(.35+.6*(.5+.5*Math.sin(t/700+p)));});"
-      "document.querySelectorAll('.stks .stk').forEach(e=>{const k=+e.dataset.k,sp=900+(k*173)%%700,L=1400,x=((t*sp/1000+k*311)%%L)-300;e.style.transform=(k%%2?`translateX(${x}px)`:`translateX(${1080-x}px) scaleX(-1)`);});"
+      "document.querySelectorAll('.stks .stk').forEach(e=>{const k=+e.dataset.k,sp=e.dataset.sp?+e.dataset.sp:900+(k*173)%%700,L=1400,x=((t*sp/1000+(e.dataset.o?+e.dataset.o:k*311))%%L)-300;e.style.transform=(k%%2?`translateX(${x}px)`:`translateX(${1080-x}px) scaleX(-1)`);});"
       "if(t<T1){w.style.transformOrigin='50%% 100%%';w.style.transform='scale('+(window.FSCALE||.88)+')';"
       "$('lapw').style.opacity=1;$('cert').setAttribute('opacity',0);$('ccur').setAttribute('opacity',0);"
       "$('jacket').setAttribute('fill','url(#pin)');$('tie').setAttribute('fill','url(#tieR)');$('tie').setAttribute('stroke','#7a0a1c');$('knot').setAttribute('fill','#9e0b22');"

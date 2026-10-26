@@ -175,6 +175,7 @@
   "nyc": true,
   "slap": true,
   "nyen": false,
-  "dream_kicker_style": "font-size:60px;letter-spacing:.06em;font-weight:900;margin-bottom:10px"
+  "dream_kicker_style": "font-size:60px;letter-spacing:.06em;font-weight:900;margin-bottom:10px",
+  "cars": true
  }
 ]
