@@ -793,10 +793,10 @@ def dream2(v):
     chap = ('<div class="chap" id="chap">' + '<i></i>'.join(f'<span data-c="{k}"><b>0{k+1}</b>{n}</span>' for k, n in enumerate(["未来","現実","答え","無料お試し"])) + '</div>')
     dl = ''.join(f'<div class="dline a" data-in="{-1000 if j==0 else 200+j*DG}" data-d="450"><i></i><span>{E(x)}</span></div>' for j, x in enumerate(v["dreams"]))
     streaks = ''.join(f'<i class="stk" data-k="{k}" style="top:{1612+(k%4)*38}px;width:{180+(k*37)%160}px;{"background:linear-gradient(90deg,rgba(255,90,70,0),rgba(255,120,90,.85))" if k%3==0 else ""}"></i>' for k in range(10)) if v.get('nyc') else ''
-    nyc = '<div class="nyen a" data-in="-1000">THE CITY THAT NEVER SLEEPS</div>' if v.get('nyc') else ''
+    nyc = '<div class="nyen a" data-in="-1000">THE CITY THAT NEVER SLEEPS</div>' if v.get('nyc') and v.get('nyen', True) else ''
     fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="stks">{streaks}</div><div class="dream">'
            f'<div class="a" data-in="-1000">{brand()}</div>'
-           f'<div class="kicker a" data-in="-1000" style="margin-top:26px">{E(v["dream_kicker"])}</div>{nyc}{dl}'
+           f'<div class="kicker a" data-in="-1000" style="margin-top:26px;{v.get("dream_kicker_style","")}">{E(v["dream_kicker"])}</div>{nyc}{dl}'
            f'<h2 class="a" data-in="{HD}" data-d="550">{v["dream_h"]}</h2>'
            f'<div class="teaser a" data-in="{TD_}">{E(v["teaser"])}</div>'
            f'<div class="cap a" data-in="{TD_}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
