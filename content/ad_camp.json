@@ -177,7 +177,8 @@
   "nyen": false,
   "dream_kicker_style": "font-size:60px;letter-spacing:.06em;font-weight:900;margin-bottom:10px",
   "cars": true,
-  "no_cap": true
+  "no_cap": true,
+  "css": ".story .figp .prob{top:250px}"
  },
  {
   "id": "ad15a_souzou_15s",
@@ -498,5 +499,71 @@
   "dream_kicker_style": "font-size:60px;letter-spacing:.06em;font-weight:900;margin-bottom:10px",
   "cars": true,
   "no_cap": true
+ },
+ {
+  "id": "ad14r_ig_reel_camp_global_slap_15s",
+  "kind": "dream2",
+  "platform": "igreel",
+  "figure": true,
+  "theme": "power",
+  "audio": "dream2_party",
+  "dur": 15000,
+  "dream_kicker": "世界の最前線で、活躍を。",
+  "dreams": [
+   "海外の取引先と、英語で交渉する。",
+   "世界の会議で、堂々と意見を伝える。"
+  ],
+  "dream_h": "世界で戦う、<br><em>ビジネスパーソン。</em>",
+  "teaser": "",
+  "target": "27卒・28卒の就活生へ",
+  "prob_h": "グローバル化が<br>加速する今——",
+  "problems": [
+   "日常英会話だけでは、ついていけない。",
+   "求められるのは、実践の英語。",
+   "メール・会議・交渉で、使える力。"
+  ],
+  "sol_kicker": "今なら、就活生応援キャンペーン",
+  "sol": "初級の受験料、<br><em>12月25日まで無料。</em>",
+  "sol_note": "※合格すると認定番号つきの合格証を発行。民間資格です",
+  "facts": [
+   [
+    "EXAM",
+    "20問・20分<small>初級</small>"
+   ],
+   [
+    "ONLINE",
+    "24時間<small>PC・スマホ</small>"
+   ],
+   [
+    "CERTIFICATE",
+    "合格証<small>認定番号つき</small>"
+   ]
+  ],
+  "end_lead": "世界で戦う第一歩を、<br>無料で。",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": [
+    "就活生応援",
+    "20問",
+    "20分",
+    "合格証つき"
+   ],
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※12月26日以降、初級は有料になります<br>※映像はイメージです<br>※国際ビジネス言語認定協会が認定する民間資格です",
+   "slap": true
+  },
+  "dg": 1000,
+  "hd": 1900,
+  "td": 2600,
+  "now": false,
+  "halo": 1.0,
+  "chap": false,
+  "nyc": true,
+  "slap": true,
+  "nyen": false,
+  "dream_kicker_style": "font-size:50px;letter-spacing:.04em;font-weight:900;margin-bottom:10px",
+  "cars": true,
+  "no_cap": true,
+  "css": ".power.reelad.dreamad .figwrap{left:180px!important;right:300px!important;bottom:410px!important}.reelad .sol .facts{display:none}",
+  "fscale": 0.8
  }
 ]
