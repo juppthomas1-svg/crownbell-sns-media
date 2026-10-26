@@ -796,21 +796,21 @@ def dream2(v):
     streaks = ''.join(f'<i class="stk" data-k="{k}" style="top:{1612+(k%4)*38}px;width:{180+(k*37)%160}px;{"background:linear-gradient(90deg,rgba(255,90,70,0),rgba(255,120,90,.85))" if k%3==0 else ""}"></i>' for k in range(10)) if v.get('nyc') else ''
     nyc = '<div class="nyen a" data-in="-1000">THE CITY THAT NEVER SLEEPS</div>' if v.get('nyc') and v.get('nyen', True) else ''
     if v.get('cars'):
-        CAR = ('<svg width="200" height="36" viewBox="0 0 200 36"><defs><linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#fff3d2" stop-opacity=".55"/><stop offset="1" stop-color="#fff3d2" stop-opacity="0"/></linearGradient></defs>'
+        CAR = lambda col: ('<svg width="200" height="36" viewBox="0 0 200 36"><defs><linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#fff3d2" stop-opacity=".55"/><stop offset="1" stop-color="#fff3d2" stop-opacity="0"/></linearGradient></defs>'
                '<polygon points="114,19 200,10 200,32 114,23" fill="url(#beam)"/>'
-               '<path d="M4 22 Q4 16 12 15 L30 14 L42 5 Q46 3 52 3 L78 3 Q84 3 88 7 L98 14 L110 16 Q116 17 116 22 L116 27 Q116 29 113 29 L7 29 Q4 29 4 27 Z" fill="#0c1834" stroke="rgba(201,168,92,.6)" stroke-width="1.2"/>'
-               '<path d="M45 7 L52 6 L63 6 L63 13 L39 13 Z M67 6 L78 6 Q82 6 85 9 L89 13 L67 13 Z" fill="rgba(227,196,124,.38)"/>'
+               '<path d="M4 22 Q4 16 12 15 L30 14 L42 5 Q46 3 52 3 L78 3 Q84 3 88 7 L98 14 L110 16 Q116 17 116 22 L116 27 Q116 29 113 29 L7 29 Q4 29 4 27 Z" fill="'+col+'" stroke="rgba(10,16,34,.55)" stroke-width="1.2"/>'
+               '<path d="M45 7 L52 6 L63 6 L63 13 L39 13 Z M67 6 L78 6 Q82 6 85 9 L89 13 L67 13 Z" fill="rgba(20,32,60,.75)"/>'
                '<circle cx="28" cy="29" r="6" fill="#050a18" stroke="rgba(201,168,92,.45)"/><circle cx="92" cy="29" r="6" fill="#050a18" stroke="rgba(201,168,92,.45)"/>'
                '<ellipse cx="113" cy="20.5" rx="3" ry="2" fill="#fff6dc"/><rect x="4" y="18" width="3.5" height="4" rx="1" fill="#b4233a"/></svg>')
-        lanes = [(1,1708,360,0,1),(1,1708,360,470,1),(1,1708,360,940,1),(0,1664,300,200,.8),(0,1664,300,680,.8),(0,1664,300,1150,.8)]
+        lanes = [(1,1708,360,0,1,'#e7b528'),(1,1708,360,470,1,'#c3352f'),(1,1708,360,940,1,'#2d7fd0'),(0,1664,300,200,.85,'#e9e6dd'),(0,1664,300,680,.85,'#e7b528'),(0,1664,300,1150,.85,'#2a9a7c')]
         streaks = ''.join(f'<i class="stk car" data-k="{d}" data-sp="{sp}" data-o="{o}" style="top:{y}px;opacity:{op};transform-origin:100px 18px">'
-                          f'<span style="display:block;transform:scale({.82 if d else .68});transform-origin:0 50%">{CAR}</span></i>' for d, y, sp, o, op in lanes)
+                          f'<span style="display:block;transform:scale({.82 if d else .68});transform-origin:0 50%">{CAR(col)}</span></i>' for d, y, sp, o, op, col in lanes)
     fut = (f'<div class="sc" data-in="-1000" data-out="{T1}" data-d="300">{SKY}<div class="stks">{streaks}</div><div class="dream">'
            f'<div class="a" data-in="-1000">{brand()}</div>'
            f'<div class="kicker a" data-in="-1000" style="margin-top:26px;{v.get("dream_kicker_style","")}">{E(v["dream_kicker"])}</div>{nyc}{dl}'
            f'<h2 class="a" data-in="{HD}" data-d="550">{v["dream_h"]}</h2>'
-           f'<div class="teaser a" data-in="{TD_}">{E(v["teaser"])}</div>'
-           f'<div class="cap a" data-in="{TD_}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div></div></div>')
+           + (f'<div class="teaser a" data-in="{TD_}">{E(v["teaser"])}</div>' if v.get("teaser") else '')
+           + ('' if v.get("no_cap") else f'<div class="cap a" data-in="{TD_}">※イメージです。資格の取得で特定の職や結果を約束するものではありません</div>') + '</div></div>')
     lines = ''.join(f'<div class="pline a" data-in="{T1+350+j*LG}"><i></i><span>{E(p)}</span></div>' for j, p in enumerate(v["problems"]))
     prob = (f'<div class="sc" data-in="{T1}" data-out="{T2}" data-d="300"><div class="prob">'
             f'<div class="tgt a" data-in="{T1+50}">{E(v["target"])}</div>'
