@@ -72,6 +72,10 @@ canvas{position:absolute;inset:0}
 .end .now{font-family:"Inter";font-weight:600;font-size:28px;letter-spacing:.5em;color:#c9a85c}
 .end h3{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:120px;line-height:1.22;margin:16px 0 30px}
 .end h3 em{font-style:normal;color:#e3c47c}
+.slap{display:inline-block;background:linear-gradient(160deg,#c42a42,#9e1c31);color:#fff;font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:76px;line-height:1.32;padding:30px 46px 34px;border:3px solid rgba(244,239,226,.92);box-shadow:0 0 0 9px #a81f35,0 22px 50px rgba(0,0,0,.5);transform:rotate(-6deg);margin:46px 0 46px 14px;text-align:left}
+.slap em{font-style:normal;color:#ffe7a6}
+.slap .sl-k{font-size:34px;letter-spacing:.18em;color:#ffe7a6;margin-bottom:10px}
+.end .slap{font-size:86px;text-align:center;margin:40px 0 44px}
 .chips{display:flex;gap:16px;margin-bottom:44px}
 .chips span{border:1.5px solid #c9a85c;color:#f4efe2;font-weight:700;font-size:34px;padding:10px 22px}
 .card{display:flex;align-items:center;gap:40px;background:#fbf8f0;color:#0a1a3d;padding:36px 44px;text-align:left;box-shadow:0 30px 80px rgba(0,0,0,.45)}
@@ -489,7 +493,8 @@ const RB=rnd(SEED+7);const burst=[...Array(110)].map(()=>{const a=RB()*6.283,v=3
 const cl=x=>Math.max(0,Math.min(1,x)),ease=x=>1-Math.pow(1-x,3);
 function vis(el,t){const i=+el.dataset.in,o=el.dataset.out?+el.dataset.out:1e9,d=+(el.dataset.d||450);
  const a=ease(cl((t-i)/d)),b=cl((o-t)/280);const v=Math.min(a,b);el.style.opacity=v;
- if(el.classList.contains('a'))el.style.transform=`translateY(${(1-a)*34}px)`;}
+ if(el.classList.contains('a'))el.style.transform=`translateY(${(1-a)*34}px)`;
+ if(el.classList.contains('slap')){const p=cl((t-i)/d),sc=p<.7?2.3-1.42*Math.pow(p/.7,2):.88+.12*ease((p-.7)/.3);el.style.opacity=Math.min(cl((t-i)/(d*.35)),b);el.style.transform=`rotate(-6deg) scale(${sc})`;}}
 window.render=function(ms){const t=ms;document.querySelectorAll('[data-in]').forEach(e=>vis(e,t));
  cx.clearRect(0,0,W,H);
  for(const d of dust){const y=((d.y-t/1000*d.s)%H+H)%H,o=.18+.32*(.5+.5*Math.sin(t/1000*d.f*2+d.p));
@@ -526,7 +531,8 @@ def end_screen(platform, t0, lead, now=True, camp=None):
             f'<div class="a" data-in="{t0}">{brand()}</div>'
             f'<div class="lead a" data-in="{t0+100}">{lead}</div>'
             + (f'<div class="now a" data-in="{t0+200}">NOW OPEN</div>' if now else '<div style="height:26px"></div>') +
-            (f'<h3 class="a" data-in="{t0+250}">{camp["h3"]}</h3>' if camp else f'<h3 class="a" data-in="{t0+250}">無料お試し<br><em>実施中</em></h3>')
+            (f'<div class="slap" data-in="{t0+250}" data-d="300">{camp["h3"]}</div>' if camp and camp.get("slap") else
+             f'<h3 class="a" data-in="{t0+250}">{camp["h3"]}</h3>' if camp else f'<h3 class="a" data-in="{t0+250}">無料お試し<br><em>実施中</em></h3>')
             + (f'<div class="chips a" data-in="{t0+350}">' + ''.join(f'<span>{E(c)}</span>' for c in camp["chips"]) + '</div>' if camp else
                f'<div class="chips a" data-in="{t0+350}"><span>登録なし</span><span>10問</span><span>約5分</span><span>スマホでOK</span></div>') +
             f'{how}<div class="fine a" data-in="{t0+600}">{camp["fine"] if camp else fine}</div></div></div>')
@@ -801,7 +807,8 @@ def dream2(v):
     facts = ''.join(f'<div class="fact a" data-in="{T2+FD+j*130}"><div class="k">{k}</div><div class="v">{val}</div></div>' for j, (k, val) in enumerate(v["facts"]))
     sol = (f'<div class="sc" data-in="{T2}" data-out="{T3}" data-d="300"><div class="sol">'
            f'<div class="kicker a" data-in="{T2+50}">{E(v["sol_kicker"])}</div>'
-           f'<h2 class="a" data-in="{T2+150}" data-d="550">{v["sol"]}</h2>'
+           + (f'<div><div class="slap" data-in="{T2+200}" data-d="300">{v["sol"]}</div></div>' if v.get("slap") else
+              f'<h2 class="a" data-in="{T2+150}" data-d="550">{v["sol"]}</h2>') +
            f'<div class="note a" data-in="{T2+500}">{v["sol_note"]}</div><div class="facts">{facts}</div></div></div>')
     fig = f'<div class="figwrap" id="dfw">{FIG}<div id="lapw" style="position:absolute;inset:0;opacity:0">{LAP}</div></div>'
     _, ph = promo(dict(v, figure=True, t_s=T2, t_e=T3, kicker=v.get("kicker", "")))
