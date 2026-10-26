@@ -805,7 +805,7 @@ def dream(v):
 
 def realcert(t_in, t_out):
     """実際の合格証（見本）。級は入れない"""
-    return (f'<div class="rco" data-in="{t_in+700}" data-out="{t_out}" data-d="600"><div class="rcw"><div class="rc"><i class="rc-d rc-d1"></i><i class="rc-d rc-d2"></i><i class="rc-d rc-d3"></i><i class="rc-d rc-d4"></i>'
+    return (f'<div class="rco a" data-in="{t_in+700}" data-out="{t_out}" data-d="600"><div class="rcw"><div class="rc"><i class="rc-d rc-d1"></i><i class="rc-d rc-d2"></i><i class="rc-d rc-d3"></i><i class="rc-d rc-d4"></i>'
             '<div class="rc-en">CERTIFICATE OF PROFICIENCY</div><div class="rc-h">合 格 証 書</div>'
             '<div class="rc-band">ビジネス英語実務検定</div><div class="rc-en2">Business English Practical Proficiency Certification</div>'
             '<div class="rc-nm">山田　花子　殿</div>'
@@ -875,6 +875,7 @@ def dream2(v):
       "['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e.dataset.f0!==undefined)e.setAttribute('fill',e.dataset.f0);});if($('tie').dataset.s0!==undefined)$('tie').setAttribute('stroke',$('tie').dataset.s0);$('mo').removeAttribute('fill');}"
       "}})();"
       "(function(){const $=i=>document.getElementById(i);['jacket','tie','knot'].forEach(i=>{const e=$(i);if(e)e.dataset.f0=e.getAttribute('fill')||'';});const tt=$('tie');if(tt)tt.dataset.s0=tt.getAttribute('stroke')||'';})();") % (T1, T2, T3)
+    if v.get("realcert"): hooks += "(function(){const H=window.HOOKS;window.HOOKS=function(t){H(t);document.body.classList.toggle('insol',t>=%d&&t<%d)}})();" % (T2, T3)
     return (chap if v.get("chap", True) else '') + '<div class="figp">' + fut + prob + sol + fig + (realcert(T2, T3) if v.get("realcert") else '') + '</div>' + end_screen(v["platform"], T3, v.get("end_lead", "まずは、無料お試しから。"), now=v.get("now", True)), hooks
 
 CAMP = None  # キャンペーン用の最後の画面（JSON の "camp"）。無ければ従来の「無料お試し」画面
