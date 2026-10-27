@@ -50,3 +50,4 @@
 - 2026-10-26 作成｜Instagram ストーリー広告｜ad17_ig_story_camp_realcert_shukatsu_15s（ad16 の悩みを就活生向けに：資格欄が空・資格を取る時間がない を先頭に）｜最高画質・BGMありのみ
 - 2026-10-26 作成｜Instagram リール広告｜ad17r_ig_reel_camp_realcert_shukatsu_15s（ad17 のリール版）。ad17 の音なし版も追加。オーナーが「無茶苦茶いい」と評価した型
 - 2026-10-26 作成｜Instagram ストーリー広告｜ad18_ig_story_camp_hikken_15s（ad17 の最初に赤い斜めの札「就活生応援キャンペーン実施中／就活生必見」を左上にドンと貼る）｜最高画質・BGMあり
+- 2026-10-27 作成｜X（手動投稿用）｜x10_camp_hikken（ad18 の X 版。最後の画面は「プロフィールのリンク／返信のリンク」）｜返信に https://crownbell-kentei.netlify.app/x
