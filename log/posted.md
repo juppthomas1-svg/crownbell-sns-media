@@ -57,3 +57,6 @@
 - 2026-10-27 作成｜X 用ポスター（縦 4:5）｜assets/images/X_ポスター_キャンペーン.png（就活生必見の札・初級の受験料「無料」を大きく・サイトの写真・3つの特長・無料で受験するボタン）
 - 2026-10-27 作成｜X 固定投稿用画像 v4｜assets/images/X_固定投稿_キャンペーン_v4.png（今の固定投稿と同じ形・サイトの写真・キャンペーン内容）
 - 2026-10-27 作成｜X 固定投稿用画像 v5｜assets/images/X_固定投稿_キャンペーン_v5.png（v4 に左側の人たちを薄く入れた版）
+- 2026-10-30 07:30｜Instagram｜w4_01_ig_ikichigai｜「行き違い」のおわび、英語で言えますか（If you've already sent it, please disregard this.）｜型：power クイズ
+- 2026-10-31 08:30｜TikTok｜w4_02_tt_park_this｜Let's park this for now（基本中の基本系フック）｜型：power クイズ
+- 2026-10-29 実行メモ｜10月の Metricool 予約・公開はテスト2本込みで20本＝上限。11月は 11/1 から20本に戻る
