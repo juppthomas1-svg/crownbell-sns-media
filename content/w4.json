@@ -1,0 +1,47 @@
+[
+ {
+  "id": "w4_01_ig_ikichigai",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-10-30T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "「行き違い」の<br>おわび、英語で<br><em>言えますか？</em>",
+  "q": "催促メールの結びに。<br>いちばん自然なのは？",
+  "opts": [
+   "If we passed each other, please forgive us.",
+   "In case of crossing, please excuse this email.",
+   "If you've already sent it, please disregard this."
+  ],
+  "ans": 2,
+  "ex": "<b>please disregard this</b><br>＝ 本メールは破棄してください。<br>「行き違い」は直訳せず、こう伝えます。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「行き違いでしたら、ご容赦ください」、英語で言えますか。直訳すると、意味が伝わりません。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）はプロフィールのリンクから。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #英文メール #就活"
+ },
+ {
+  "id": "w4_02_tt_park_this",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-10-31T08:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "ビジネス英語の<br>基本中の基本。<br><em>即答できますか？</em>",
+  "q": "会議でのひと言。<span class=\"en\">“Let's park this for now.”</span>意味として正しいのは？",
+  "opts": [
+   "この件は、いったん保留にしよう",
+   "この件は、もう終わりにしよう",
+   "この件は、外で話そう"
+  ],
+  "ans": 0,
+  "ex": "<b>park</b> ＝ （議題を）いったん脇に置く。<br>「あとで改めて話そう」という意味です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nビジネス英語の基本中の基本。「Let's park this for now.」の意味、即答できますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）は、「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジネス英語 #英語クイズ #英語学習 #グローバル人材 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ }
+]
