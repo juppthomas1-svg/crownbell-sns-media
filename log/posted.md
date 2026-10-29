@@ -80,3 +80,4 @@
 - 例題ネタ使用：Let's get the ball rolling（固定投稿 v3B）→ 今後のクイズでは使わない
 - 2026-10-29 作成｜Instagram 固定投稿用 v4 クイズ型（GPT の B 案）｜assets/images/IG_固定投稿_v4_クイズ型.jpg（見出し「このビジネス英語、意味わかる？」＋例題 “Let's play it by ear.” ＋10問チャレンジ）｜未投稿（オーナーが自分で投稿）
 - 例題ネタ使用：Let's play it by ear（固定投稿 v4）→ 今後のクイズでは使わない
+- 2026-10-29 作成｜Instagram 固定投稿用 v5（GPT との議論を反映：メッセージは1つ・ボタンも1つ・ケンなし）｜assets/images/IG_固定投稿_v5_クイズ一本.jpg｜未投稿（オーナーが自分で投稿）
