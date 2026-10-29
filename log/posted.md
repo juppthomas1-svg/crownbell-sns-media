@@ -60,3 +60,4 @@
 - 2026-10-30 07:30｜Instagram｜w4_01_ig_ikichigai｜「行き違い」のおわび、英語で言えますか（If you've already sent it, please disregard this.）｜型：power クイズ
 - 2026-10-31 08:30｜TikTok｜w4_02_tt_park_this｜Let's park this for now（基本中の基本系フック）｜型：power クイズ
 - 2026-10-29 実行メモ｜10月の Metricool 予約・公開はテスト2本込みで20本＝上限。11月は 11/1 から20本に戻る
+- 2026-10-29 作成（未予約・オーナー確認用）｜TikTok｜poster01_tt_camp｜就活生応援キャンペーンのポスター型（初級 受験料無料 12/25まで・2秒）｜型：ポスター型（新しい型）
