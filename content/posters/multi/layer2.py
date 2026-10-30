@@ -6,7 +6,7 @@ def build(srcp,out,CW,CH,L,T,s0,box,paper,K=3,yoff=0,fadeb=1040):
     src=Image.open(srcp).convert('RGBA');W,H=src.size
     s=s0*K;L*=K;T*=K
     yy=np.arange(H)[:,None];xx=np.arange(W)[None,:]
-    left=np.clip(xx/60,0,1)*np.ones((H,1));left[py0-10:py1+10,:]=1
+    left=np.clip(xx/220,0,1)**1.5*np.ones((H,1));left[py0-10:py1+10,px0-4:]=1
     a=left*np.clip((W-1-xx)/20,0,1)*np.clip((yy-30)/60,0,1)*np.clip((fadeb-yy)/90,0,1)
     b=np.array(src);b[...,3]=(a*255).astype(np.uint8)
     big=Image.fromarray(b).resize((int(W*s),int(H*s)),Image.LANCZOS)
