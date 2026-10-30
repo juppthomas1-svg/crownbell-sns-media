@@ -1,6 +1,7 @@
 import sys
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import numpy as np
+CUT=False
 def build(srcp,out,CW,CH,L,T,s0,box,paper,K=3,yoff=0,fadeb=1040):
     gx0,gy0,gx1,gy1=box;px0,py0,px1,py1=paper
     src=Image.open(srcp).convert('RGBA');W,H=src.size
@@ -8,7 +9,7 @@ def build(srcp,out,CW,CH,L,T,s0,box,paper,K=3,yoff=0,fadeb=1040):
     yy=np.arange(H)[:,None];xx=np.arange(W)[None,:]
     left=np.clip(xx/220,0,1)**1.5*np.ones((H,1));left[py0-10:py1+10,px0-4:]=1
     a=left*np.clip((W-1-xx)/20,0,1)*np.clip((yy-30)/60,0,1)*np.clip((fadeb-yy)/90,0,1)
-    b=np.array(src);b[...,3]=(a*255).astype(np.uint8)
+    b=np.array(src);a=np.ones_like(a)*np.clip((fadeb-yy)/90,0,1) if CUT else a;b[...,3]=(a*b[...,3]).astype(np.uint8)
     big=Image.fromarray(b).resize((int(W*s),int(H*s)),Image.LANCZOS)
     rgb=big.convert('RGB').filter(ImageFilter.UnsharpMask(radius=2,percent=50,threshold=2));big=Image.merge('RGBA',(*rgb.split(),big.split()[3]))
     P=Image.new('RGBA',(CW*K,CH*K),(0,0,0,0));P.alpha_composite(big,(int(L),int(T)))
