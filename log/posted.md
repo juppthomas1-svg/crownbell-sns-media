@@ -174,3 +174,4 @@
 - 2026-11-02 作成｜1枚目「強み」の書体候補6案（A Yuji Syuku／B Yuji Mai／C Potta One／D Yuji Boku 太く傾け／E Zen Antique／F Dela Gothic One 斜体、すべて Google Fonts・OFL）｜assets/images/ad_carousel_madamaniau/強み_書体候補/
 - 2026-11-02 決定｜2枚広告の1枚目は E（強み＝Zen Antique の金、中央寄せ・赤ベタ）に決定｜1枚目_決定_まだ間に合う_強み明朝_1080x1350.jpg
 - 2026-11-02 修正｜1枚目（決定版 E）：強みに筆のかすれ・ふちの荒れを少し足した
+- 2026-11-02 作成｜1枚目の「強み」→「武器」版（就活で語れる武器を。）
