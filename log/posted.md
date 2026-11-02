@@ -171,3 +171,4 @@
 - 2026-11-02 作成｜2枚広告1枚目の中央寄せ・筆文字版（強み＝Yuji Boku〈Google Fonts・OFL〉を太らせて金）｜assets/images/ad_carousel_madamaniau/1枚目_まだ間に合う_中央_筆文字_1080x1350.jpg｜フォントは raw.githubusercontent.com/google/fonts の ofl/yujiboku から取得
 - 2026-11-02 作成｜1枚目かっこよく版（まだ間に合う。は左上、強みは筆文字を特大・少し傾け・影、背景は赤の濃淡、金の短い線）
 - 2026-11-02 決定｜1枚目は中央寄せ・赤ベタ・金の筆文字の版が「色・文字のバランスがベスト」（オーナー）。強みの筆文字を太く荒くした版も作成（1枚目_まだ間に合う_中央_筆文字太め）
+- 2026-11-02 作成｜1枚目「強み」の書体候補6案（A Yuji Syuku／B Yuji Mai／C Potta One／D Yuji Boku 太く傾け／E Zen Antique／F Dela Gothic One 斜体、すべて Google Fonts・OFL）｜assets/images/ad_carousel_madamaniau/強み_書体候補/
