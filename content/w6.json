@@ -1,0 +1,47 @@
+[
+ {
+  "id": "w6_01_ig_kigen",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-06T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "「締切の延長」<br>英語で<br><em>頼めますか？</em>",
+  "q": "取引先へのお願いのメールで。<br>いちばん自然で丁寧なのは？",
+  "opts": [
+   "Would it be possible to extend the deadline?",
+   "Could you make the deadline longer?",
+   "Please delay the deadline for me."
+  ],
+  "ans": 0,
+  "ex": "<b>extend the deadline</b> ＝ 期限を延ばす。<br><b>Would it be possible to ~?</b> で<br>相手に選択の余地を残すのが丁寧です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「締め切りを延ばしてほしい」、英語で丁寧に頼めますか。言い方ひとつで、相手への印象が変わります。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）はプロフィールのリンクから。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英文メール #就活"
+ },
+ {
+  "id": "w6_02_tt_ball_court",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-07T08:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "この英語が<br>分からないなら、<br><em>正直まずいです。</em>",
+  "q": "メールの最後のひと言。<span class=\"en\">“The ball is in your court.”</span>意味として正しいのは？",
+  "opts": [
+   "この件はあなたの責任です",
+   "担当はあなたに決まりました",
+   "次はあなたが動く番です"
+  ],
+  "ans": 2,
+  "ex": "<b>The ball is in your court.</b><br>＝ こちらはやることをやったので、<br>次の一手は相手から、という意味です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこの英語が分からないなら、正直まずいです。「The ball is in your court.」の意味、即答できますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）は、「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英語学習 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ }
+]
