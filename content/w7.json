@@ -1,0 +1,48 @@
+[
+ {
+  "id": "w7_01_tt_up_in_the_air",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-09T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "これが<br>分からないと、<br><em>話になりません。</em>",
+  "q": "日程を聞かれて、ひと言。<span class=\"en\">“It's still up in the air.”</span>意味として正しいのは？",
+  "opts": [
+   "社内で話題になっている",
+   "まだ決まっていない",
+   "予定どおりに進んでいる"
+  ],
+  "ans": 1,
+  "ex": "<b>up in the air</b> ＝ 宙に浮いたまま、<br>つまり「まだ決まっていない」。<br>結論が出ていないときの定番表現です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこれが分からないと、会議で話になりません。「It's still up in the air.」の意味、即答できますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）は、「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英語学習 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ },
+ {
+  "id": "w7_02_tt_low_hanging",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-11T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "これに<br>即答できたら、<br><em>実力は本物です。</em>",
+  "q": "打ち合わせでのひと言。<span class=\"en\">“Let's go for the low-hanging fruit first.”</span>意味として正しいのは？",
+  "opts": [
+   "すぐ成果が出るものから片付けよう",
+   "いちばん安い案から試そう",
+   "若手の意見から先に聞こう"
+  ],
+  "ans": 0,
+  "ex": "<b>low-hanging fruit</b> ＝ 低い枝の果物、<br>つまり「手間をかけずに取れる成果」です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこれに即答できたら、ビジネス英語の実力は本物です。「Let's go for the low-hanging fruit first.」の意味、分かりますか。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）は、「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英語学習 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ }
+]
