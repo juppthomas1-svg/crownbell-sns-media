@@ -21,3 +21,26 @@
 - 最後の画面：初級の受験料 12/25 申込まで無料、検索＋QR（TT）／プロフィールのリンク（IG）、民間資格・合格や就職を約束しない・AIで作成したイメージ
 - 投稿時は AI 生成の申告をオン（TikTok isAigc、インスタ isAiGenerated）
 - ナレーションを入れるかは、オーナーの返事待ち
+
+## 後半の指示文（2026-11-09 作成・Flow にそのまま貼る）
+ケンの顔をそろえるため、work/ken_ref_standing.jpg（場面2の最後のケン）を「画像から動画」の参照画像に使う。
+
+### 4a ハッとする
+```
+Extreme close-up on KEN's face in the same dark apartment room at night, rain on the window behind him. KEN: a 23-year-old Japanese young man, original stylized 3D animated character, short neat black hair, light gray suit, white shirt, gray tie, round friendly face, big expressive eyes, does not resemble any real person. Warm golden light from a ticket below glows on his face. Slow push-in to his eyes; his eyes widen, he takes a small breath, and his expression shifts from tired sadness to sudden realization and quiet determination. Style: premium stylized 3D animated film look, cinematic lighting, shallow depth of field, deep navy and warm gold color palette, vertical 9:16, no on-screen text, no logos, no brand names.
+```
+
+### 4b 扉を開けて光の中へ
+```
+The same dark apartment room at night. KEN, the same character (a 23-year-old Japanese young man, original stylized 3D animated character, short neat black hair, light gray suit, white shirt, gray tie, does not resemble any real person), holding a glowing blank golden ticket, walks to the front door and pushes it open. Brilliant warm golden light floods in through the doorway, gold sparkles swirl around him, and he steps forward into the light. Camera follows from behind, then the light fills the frame. Style: premium stylized 3D animated film look, cinematic lighting, deep navy and warm gold color palette, vertical 9:16, no on-screen text, no logos, no brand names.
+```
+
+### 5 NY の高層ビル（変身したケン）
+```
+Golden light fades to reveal a grand avenue of glass skyscrapers in a global city at dusk, city lights turning on. KEN, the same character, now transformed: a 23-year-old Japanese young man, original stylized 3D animated character, black hair neatly slicked back, tailored navy suit, crisp white shirt, red tie, does not resemble any real person. He walks forward with calm confidence, seen from the side in a smooth tracking shot, skyline glowing behind him. Style: premium stylized 3D animated film look, cinematic lighting, shallow depth of field, deep navy and warm gold color palette, vertical 9:16, no on-screen text, no logos, no brand names.
+```
+
+### 6 夜景のオフィスで打ち合わせ
+```
+A modern high-rise office meeting room at night with floor-to-ceiling windows and a glittering city skyline. KEN, the same character (a 23-year-old Japanese young man, original stylized 3D animated character, slicked-back black hair, navy suit, white shirt, red tie, does not resemble any real person), leads a friendly discussion around a table with three international colleagues: a Caucasian man, a Black woman and a Latina woman, all original stylized 3D animated characters in business attire, none resembling any real person. They smile, nod and point at a tablet together; warm, energetic teamwork. Slow orbiting shot. Style: premium stylized 3D animated film look, cinematic lighting, shallow depth of field, deep navy and warm gold color palette, vertical 9:16, no on-screen text, no logos, no brand names.
+```
