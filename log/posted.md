@@ -188,3 +188,6 @@
 - 2026-11-09 07:30｜TikTok｜w7_01_tt_up_in_the_air｜It's still up in the air（話にならない系フック・正解B）｜型：power クイズ
 - 2026-11-11 07:30｜TikTok｜w7_02_tt_low_hanging｜Let's go for the low-hanging fruit first（実力は本物系フック・正解A）｜型：power クイズ
 - 2026-11-08 実行メモ｜11/6 インスタ（w6_01_ig_kigen）は Metricool で「Instagram was disconnected」のエラーで未公開。インスタがつながるまで TikTok だけ予約。11月の Metricool 予約は失敗分も数えて7本 → 残り13本（11/12〜11/30）。先週（10/30〜11/7）TikTok：オーナー手動「まだ間に合う。就活で語れる強みを。」187回が最高、run it by 93回、対比型宣伝 87回、park this 84回（11/7 ball is in your court はまだ数字なし）。インスタは分析が空
+- 2026-11-10 メモ｜オーナーが Metricool のインスタをつなぎ直した（ブランドに instagramData: crownbell_nintei_official が戻ったのを確認）
+- 2026-11-12 07:30｜Instagram｜w6_01_ig_kigen（11/6 に切断で出なかった分の入れ直し・同じ動画）｜「締切の延長」英語で頼めますか｜型：power クイズ
+- 2026-11-10 実行メモ｜11月の Metricool 予約は失敗分も数えて8本 → 残り12本（11/13〜11/30）。次の自動実行からは TikTok とインスタを交互に戻す
