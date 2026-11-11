@@ -1,0 +1,31 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<!-- 書体：Yuji Boku（npm pack @fontsource/yuji-boku で取得し boku/ に展開） --><link rel="stylesheet" href="boku/400.css">
+<style>
+:root{--red:#d3121b;--gold:#ffcc12}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1240px;height:1754px;background:var(--red);font-family:"Noto Sans CJK JP",sans-serif;color:#fff;position:relative;overflow:hidden}
+.brand{position:absolute;left:70px;top:64px;display:flex;align-items:center;gap:18px}
+.brand img{width:92px;background:#fff;border-radius:50%}
+.brand b{display:block;font-family:"Noto Serif CJK JP",serif;font-size:46px;font-weight:900;letter-spacing:.02em}
+.brand small{display:block;font-size:20px;font-weight:700;opacity:.92;margin-top:4px}
+.main{position:absolute;left:0;right:0;top:425px;text-align:center}
+.l1{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:140px;letter-spacing:.02em}
+.l2{margin-top:-110px;display:flex;justify-content:center;align-items:flex-end;padding-left:60px}
+.l2 .w{display:block}
+.l2 .o{font-family:"Noto Serif CJK JP",serif;font-weight:900;font-size:120px;margin-left:0;margin-bottom:70px}
+.box{position:absolute;left:70px;right:70px;bottom:70px;display:flex;align-items:center;gap:40px;background:#fff;color:#1d1d1f;border-radius:18px;padding:30px 40px}
+.box img{width:230px;height:230px}
+.box .tag{display:inline-block;background:var(--red);color:#fff;font-weight:900;font-size:26px;padding:6px 16px;letter-spacing:.06em}
+.box b{display:block;margin-top:12px;font-family:"Noto Serif CJK JP",serif;font-size:50px;font-weight:900;line-height:1.25}
+.box b em{font-style:normal;color:var(--red)}
+.box p{margin-top:10px;font-size:24px;color:#4b5563;line-height:1.55}
+.qrbox{position:absolute;left:50%;bottom:120px;transform:translateX(-50%)}
+.qrbox img{display:block;width:340px;height:340px;image-rendering:pixelated}
+</style></head><body><svg width="0" height="0" style="position:absolute"><filter id="brush" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+<div class="brand"><img src="logo-seal.png"><div><b>ビジネス英語実務検定</b><small>国際ビジネス言語認定協会　｜　民間資格</small></div></div>
+<div class="main"><div class="l1">就活で語れる</div><div class="l2"><svg class="w" width="820" height="470" viewBox="0 0 820 470" style="overflow:visible;transform:rotate(-3deg)"><defs><linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe7a1"/><stop offset=".35" stop-color="#ecc457"/><stop offset=".7" stop-color="#d4a032"/><stop offset="1" stop-color="#b98a2b"/></linearGradient></defs><g id="grp" filter="url(#brush)"><text x="0" y="400" font-family="Yuji Boku" font-size="430" fill="#f7c860" stroke="#f7c860" stroke-width="16" stroke-linejoin="round">強</text><image id="mi" href="mi_gold.png" x="455" y="104" width="340" height="335"/></g></svg><span class="o">を。</span></div></div>
+<div class="qrbox"><img src="qr_clear.png"></div>
+<script>
+document.fonts.ready.then(()=>{const svg=document.querySelector('svg.w');const t=svg.querySelector('#grp');const b=t.getBBox();
+svg.setAttribute('viewBox',[b.x-12,b.y-12,b.width+24,b.height+24].join(' '));svg.setAttribute('width',b.width+24);svg.setAttribute('height',b.height+24);document.body.dataset.ok=1;});
+</script></body></html>
