@@ -1,0 +1,72 @@
+[
+ {
+  "id": "w8_01_tt_promo_camp",
+  "kind": "promo",
+  "audio": "promo_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-13T07:30:00",
+  "target": "就活生必見",
+  "kicker": "就活生応援キャンペーン",
+  "problems": [
+   "資格欄、空白のまま？",
+   "今から、何を書けばいい？",
+   "英語の資格、今からでも？"
+  ],
+  "sol_kicker": "就活で語れる、もうひとつの強みを",
+  "sol": "初級の受験料、<br><em>12/25まで無料。</em>",
+  "sol_note": "※民間資格。無料は初級のみ・12/25のお申し込み分まで",
+  "facts": [
+   [
+    "LEVEL",
+    "初級<small>20問・20分</small>"
+   ],
+   [
+    "ONLINE",
+    "24時間<small>スマホで受験</small>"
+   ],
+   [
+    "FREE",
+    "無料<small>12/25まで</small>"
+   ]
+  ],
+  "end_lead": "履歴書を、より強く。<br>武器を、より多く。",
+  "caption": "就活生必見。就活生応援キャンペーン実施中です。\n履歴書の資格欄、まだ空白のままでも間に合います。ビジネス英語実務検定〈初級〉は20問・20分、スマホで24時間いつでも受験できる民間資格です。12月25日のお申し込み分まで、初級の受験料が無料です。合格した場合は、認定番号つきの合格証が発行されます。\n受験は「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会が認定する民間資格です",
+  "tags": "#ビジ検 #就活 #27卒 #28卒 #ビジネス英語",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok",
+  "css": ".sol .kicker{letter-spacing:.12em;font-size:34px}.sol .kicker:before{width:40px}.prob .kicker{font-size:46px;letter-spacing:.12em}",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": [
+    "就活生応援",
+    "20問",
+    "20分",
+    "合格証つき"
+   ],
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  }
+ },
+ {
+  "id": "w8_02_ig_tsugou",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-14T08:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "「ご都合のよい<br>時間」英語で<br><em>言えますか？</em>",
+  "q": "日程調整のメールで。<br>いちばん自然で丁寧なのは？",
+  "opts": [
+   "Please tell me your convenient time.",
+   "Please inform me of your free time.",
+   "Could you let me know what time works best for you?"
+  ],
+  "ans": 2,
+  "ex": "<b>works for you</b> ＝「ご都合がよい」。<br><b>your convenient time</b> は<br>英語として不自然です。",
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「ご都合のよい時間を教えてください」、英語で言えますか。直訳すると、不自然な英語になりがちです。答えは動画の後半で。\n無料お試し（登録なし・10問・約5分）はプロフィールのリンクから。\n国際ビジネス言語認定協会（ビジネス英語実務検定は民間資格です）",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英文メール #就活"
+ }
+]
