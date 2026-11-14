@@ -1,0 +1,60 @@
+[
+ {
+  "id": "w9_01_tt_circle_back",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-16T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "この英語が<br>分からないなら、<br><em>正直まずいです。</em>",
+  "q": "会議の終わりに。<span class=\"en\">“Let's circle back on this.”</span>意味として正しいのは？",
+  "opts": [
+    "この件は、最初からやり直そう",
+    "この件は、あとで改めて話そう",
+    "この件は、全員に回覧しよう"
+  ],
+  "ans": 1,
+  "ex": "<b>circle back</b> ＝ ぐるっと戻ってくる、<br>つまり「あとで改めて取り上げる」です。",
+  "end_lead": "履歴書を、より強く。<br>強みを、より多く。",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": ["就活生応援", "20問", "20分", "合格証つき"],
+   "how": "<div class=\"card\"><img src=\"qr.png\"><div class=\"t\">受験は<br><b>「ビジネス英語実務検定」</b><br>で検索<br><span class=\"s\">またはQRをスクショ → 長押し</span><br><span class=\"url\">crownbell-kentei.netlify.app/tiktok</span></div></div>",
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  },
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこの英語が分からないなら、正直まずいです。「Let's circle back on this.」の意味、即答できますか。答えは動画の後半で。\nいま就活生応援キャンペーンで、ビジネス英語実務検定〈初級〉（20問・20分）の受験料が12月25日のお申し込み分まで無料です。受験は「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会が認定する民間資格です",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英語学習 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ },
+ {
+  "id": "w9_02_ig_otesuu",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-18T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "「お手数ですが」<br>英語で<br><em>言えますか？</em>",
+  "q": "依頼のメールで。<br>いちばん自然で丁寧なのは？",
+  "opts": [
+    "Sorry to trouble you, but could you take a look at this?",
+    "Sorry for your trouble, but could you take a look at this?",
+    "I'm sorry for troubling, but please take a look at this."
+  ],
+  "ans": 0,
+  "ex": "<b>Sorry to trouble you</b> ＝「お手数ですが」。<br><b>Sorry for your trouble</b> は<br>相手の災難へのお見舞いに聞こえます。",
+  "end_lead": "履歴書を、より強く。<br>強みを、より多く。",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": ["就活生応援", "20問", "20分", "合格証つき"],
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  },
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「お手数をおかけしますが」、英語で言えますか。直訳すると、思わぬ意味に聞こえてしまいます。答えは動画の後半で。\nいま就活生応援キャンペーンで、ビジネス英語実務検定〈初級〉（20問・20分）の受験料が12月25日のお申し込み分まで無料です。受験はプロフィールのリンクから。\n国際ビジネス言語認定協会が認定する民間資格です",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英文メール #就活"
+ }
+]
