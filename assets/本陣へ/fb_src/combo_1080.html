@@ -29,13 +29,16 @@ body{width:1080px;height:1080px;position:relative;overflow:hidden;font-family:"N
 .qrw span{display:block;color:var(--navy);font-size:13px;font-weight:700;margin-top:2px}
 .note{position:absolute;left:64px;bottom:26px;font-size:14px;opacity:.85}
 .line{position:absolute;left:0;right:0;bottom:0;height:8px;background:#c9a24a}
-.pr{background:#fff !important;border:none !important;color:#1d3566 !important;font-weight:700;position:relative;padding-left:24px !important;box-shadow:0 2px 6px rgba(0,0,0,.25)}
-.pr:before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(180deg,#b8183f 0 50%,#1d3566 50% 100%)}
-.pr:after{content:"";position:absolute;left:10px;right:0;bottom:0;height:3px;background:#f2c230}
-.pr b{color:#b8183f}
-</style></head><body>
+.pr{position:relative;background:none !important;border:none !important;box-shadow:none !important;color:#fff !important;font-weight:900 !important;padding:10px 26px !important;z-index:1}
+.pr:before,.pr:after{content:none !important}
+.pr .s1,.pr .s2{position:absolute;inset:0;z-index:-1;filter:url(#paint)}
+.pr .s1{background:#1d3566;transform:rotate(-2deg) translate(6px,5px)}
+.pr .s2{background:#b8183f;transform:rotate(1deg)}
+.pr .dot{position:absolute;border-radius:50%;z-index:-1;filter:url(#paint)}
+.pr b{color:#f2c230 !important}
+</style></head><body><svg width="0" height="0" style="position:absolute"><filter id="paint" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.035 0.12" numOctaves="3" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="16" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <div class="photo"></div><div class="fade"></div>
-<div class="top"><div class="org"><img src="logo.png"><b>国際ビジネス言語認定協会</b></div><div class="pr"><b>Wild English</b> からのご紹介</div></div>
+<div class="top"><div class="org"><img src="logo.png"><b>国際ビジネス言語認定協会</b></div><div class="pr"><span class="s1"></span><span class="s2"></span><span class="dot" style="width:14px;height:14px;background:#f2c230;left:-14px;top:-8px"></span><span class="dot" style="width:9px;height:9px;background:#5aa0d8;right:-12px;bottom:-6px"></span><span class="dot" style="width:7px;height:7px;background:#f2c230;right:22px;top:-12px"></span><b>Wild English</b> からのご紹介</div></div>
 <div class="main">
 <span class="tag">就活生応援キャンペーン</span>
 <div class="kentei">ビジネス英語実務検定 初級</div>
