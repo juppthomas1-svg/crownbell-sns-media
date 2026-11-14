@@ -548,6 +548,8 @@ def end_screen(platform, t0, lead, now=True, camp=None):
     else:
         how = ('<div class="a" data-in="%d"><div class="btn">プロフィールのリンクから</div>'
                '<div class="srch">または <b>「ビジネス英語実務検定」</b> で検索</div></div>') % (t0 + 450)
+    if camp and camp.get("how"):  # 最後の画面の案内文を JSON で差し替え（例：X は投稿のリンクから）
+        how = '<div class="a" data-in="%d">%s</div>' % (t0 + 450, camp["how"])
     return (f'<div class="sc" data-in="{t0}" data-d="350"><div class="end">'
             f'<div class="a" data-in="{t0}">{brand()}</div>'
             f'<div class="lead a" data-in="{t0+100}">{lead}</div>'
