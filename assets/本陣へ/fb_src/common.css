@@ -14,7 +14,7 @@ body{background:#fff;font-family:"Noto Sans CJK JP",sans-serif;color:var(--ink);
 .flag{font-family:"Noto Serif CJK JP",serif;font-weight:700;color:var(--navy);line-height:1.55}
 .flag em{font-style:normal;color:var(--gold)}
 .parent{color:var(--gray)}
-.photo{position:absolute;background:url(photo.png) center/cover;border-left:6px solid var(--gold)}
+.photo{position:absolute;background:url(photo.jpg) 72% center/cover;border-left:6px solid var(--gold)}
 .cap{position:absolute;font-size:12px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .fact{background:#fff;border:1px solid #e3ded3;border-radius:6px;text-align:center}
 .fact b{display:block;color:var(--gold);font-size:15px;letter-spacing:.14em;font-weight:700}
