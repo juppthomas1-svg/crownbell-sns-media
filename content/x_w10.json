@@ -1,0 +1,52 @@
+[
+ {
+  "id": "x06_promo_camp_shikakuran",
+  "kind": "promo",
+  "audio": "promo_epic",
+  "platform": "x",
+  "figure": true,
+  "theme": "power",
+  "dur": 10000,
+  "t_s": 2000,
+  "t_e": 5000,
+  "date": "2026-11-16",
+  "target": "就活生必見",
+  "kicker": "就活生応援キャンペーン",
+  "problems": [
+   "資格欄、空白のままESを出す？",
+   "英語の勉強、形に残せていない？",
+   "ガクチカ、決め手が足りない？"
+  ],
+  "sol_kicker": "その実力、資格欄で見せよう。",
+  "sol": "初級の受験料、<br><em>12/25まで無料。</em>",
+  "sol_note": "※民間資格。無料は初級のみ・12/25のお申し込み分まで",
+  "facts": [
+   [
+    "LEVEL",
+    "初級<small>20問・20分</small>"
+   ],
+   [
+    "ONLINE",
+    "24時間<small>スマホで受験</small>"
+   ],
+   [
+    "FREE",
+    "無料<small>12/25まで</small>"
+   ]
+  ],
+  "end_lead": "履歴書を、より<em>強く</em>。<br>強みを、より<em>多く</em>。",
+  "css": ".sol .kicker{letter-spacing:.12em;font-size:40px}.sol .kicker:before{width:40px}.prob .kicker{font-size:46px;letter-spacing:.12em}.end h3{font-size:92px!important;white-space:nowrap}.end .lead{font-size:52px;line-height:1.5}.end .lead em{font-style:normal;color:#e3c47c}",
+  "camp": {
+   "h3": "初級 受験料無料<br><em>12/25まで</em>",
+   "chips": [
+    "就活生応援",
+    "20問",
+    "20分",
+    "合格証つき"
+   ],
+   "how": "<div class=\"btn\">投稿のリンクから受験</div><div class=\"srch\">または <b>「ビジネス英語実務検定」</b> で検索</div>",
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  },
+  "caption": "資格欄、空白のままESを出す？\nビジネス英語実務検定〈初級〉は20問20分のスマホ受験。就活生応援キャンペーンで12/25まで無料。\n国際ビジネス言語認定協会が認定する民間資格です。\n#ビジ検 #就活\nhttps://crownbell-kentei.netlify.app/x"
+ }
+]
