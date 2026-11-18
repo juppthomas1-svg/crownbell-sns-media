@@ -1,0 +1,35 @@
+[
+ {
+  "id": "w10_02_ig_yoroshiku",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-21T08:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "<span style=\"font-size:.86em\">「よろしく<br>お伝えください」<br>英語で<em>言えますか？</em></span>",
+  "q": "取引先との電話の最後に。<br>いちばん自然で丁寧なのは？",
+  "opts": [
+   "Please tell Mr. Brown to take care of me.",
+   "Please say hello to Mr. Brown about me.",
+   "Please give my best regards to Mr. Brown."
+  ],
+  "ans": 2,
+  "ex": "<b>give my best regards to 〜</b><br>＝「〜によろしくお伝えください」。<br><b>take care of me</b> は「面倒を見て」に。",
+  "end_lead": "履歴書を、より強く。<br>強みを、より多く。",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": [
+    "就活生応援",
+    "20問",
+    "20分",
+    "合格証つき"
+   ],
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  },
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「〇〇さんによろしくお伝えください」、英語で言えますか。「よろしく」を直訳すると、思わぬ意味に聞こえてしまいます。答えは動画の後半で。\nいま就活生応援キャンペーンで、ビジネス英語実務検定〈初級〉（20問・20分）の受験料が12月25日のお申し込み分まで無料です。受験はプロフィールのリンクから。\n国際ビジネス言語認定協会が認定する民間資格です",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英会話 #就活"
+ }
+]
