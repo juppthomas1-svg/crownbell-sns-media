@@ -208,3 +208,7 @@
 - 2026-11-20 07:30｜TikTok｜poster03_tt_madamaniau｜ポスター型2秒「まだ間に合う。就活で語れる強みを。」＋初級 受験料無料 12/25まで（紺×金・QR→/tiktok）｜型：ポスター型宣伝（手動204回に寄せた）
 - 2026-11-21 08:30｜Instagram｜w10_02_ig_yoroshiku｜「よろしくお伝えください」英語で言えますか（Please give my best regards to Mr. Brown.・正解C）｜型：power クイズ（直訳すると変になる型）
 - 2026-11-19 実行メモ｜11月の Metricool 予約は失敗分も数えて14本 → 残り6本（11/22〜11/30）。TikTok：手動キャンペーン 204 が最高、自動は low-hanging 114・circle back 110・告知 100。インスタ：お手数ですが 148（3秒以上 20.3%・平均2.5秒、自動で最高）。フォロワー TikTok 11・インスタ 4
+- 2026-11-23 07:30｜TikTok｜w11_01_tt_bandwidth｜I don't have the bandwidth right now（実力は本物系フック・正解C）｜型：power クイズ（QR→/tiktok に直した最初の回）
+- 2026-11-24 07:30｜Instagram｜w11_02_ig_sashitsukae｜「差し支えなければ」英語で言えますか（If you don't mind, could you tell me your email address?・正解B）｜型：power クイズ（直訳すると変になる型）
+- 2026-11-25 07:30｜TikTok｜w11_03_tt_keep_posted｜Keep me posted（正直まずい系フック・正解B）｜型：power クイズ
+- 2026-11-22 実行メモ｜11月の Metricool 予約は失敗分も数えて17本 → 残り3本（11/26〜11/30）。gen/build_html.py の QR を /practice → /tiktok に変更（11/19 大将決定）。さくら動画①は 11/19 にオーナーが手動で TikTok（137回）・インスタ（107回・3秒以上26.5%）に投稿済み（Metricool の枠は使っていない）。11/20 ポスター型 TikTok は Metricool 上 0回（TikTok の数字が 11/19 から更新されていない様子）
