@@ -5,7 +5,7 @@ import json, sys, os, html, base64, shutil
 
 E = html.escape
 HERE = os.path.dirname(os.path.abspath(__file__))
-SITE = "https://crownbell-kentei.netlify.app/practice"
+SITE = "https://crownbell-kentei.netlify.app/tiktok"  # 2026-11-19 大将決定：QRはホームページへ（TikTokは /tiktok）
 
 CSS = r'''
 *{box-sizing:border-box;margin:0;padding:0}

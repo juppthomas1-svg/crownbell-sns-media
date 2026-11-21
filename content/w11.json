@@ -1,0 +1,105 @@
+[
+ {
+  "id": "w11_01_tt_bandwidth",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-23T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "即答できたら、<br>ビジネス英語の<br><em>実力は本物です。</em>",
+  "q": "上司に頼まれて。<span class=\"en\">“I don't have the bandwidth right now.”</span>意味として正しいのは？",
+  "opts": [
+   "今は、通信環境が悪くてつながらない",
+   "今は、この件に使える予算がない",
+   "今は、この件に手が回らない"
+  ],
+  "ans": 2,
+  "ex": "<b>bandwidth</b> ＝ 本来は「通信の帯域」。<br>ビジネスでは「手の空き・余力」の意味です。",
+  "end_lead": "履歴書を、より強く。<br>強みを、より多く。",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": [
+    "就活生応援",
+    "20問",
+    "20分",
+    "合格証つき"
+   ],
+   "how": "<div class=\"card\"><img src=\"qr.png\"><div class=\"t\">受験は<br><b>「ビジネス英語実務検定」</b><br>で検索<br><span class=\"s\">またはQRをスクショ → 長押し</span><br><span class=\"url\">crownbell-kentei.netlify.app/tiktok</span></div></div>",
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  },
+  "caption": "世界のビジネスで活躍したいあなたへ。\n即答できたら、ビジネス英語の実力は本物です。「I don't have the bandwidth right now.」の意味、分かりますか。答えは動画の後半で。\nいま就活生応援キャンペーンで、ビジネス英語実務検定〈初級〉（20問・20分）の受験料が12月25日のお申し込み分まで無料です。受験は「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会が認定する民間資格です",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英語学習 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ },
+ {
+  "id": "w11_02_ig_sashitsukae",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "ig",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-24T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "<span style=\"font-size:.86em\">「差し支え<br>なければ」<br>英語で<em>言えますか？</em></span>",
+  "q": "初めての取引先に。<br>いちばん自然で丁寧なのは？",
+  "opts": [
+   "If you don't care, could you tell me your email address?",
+   "If you don't mind, could you tell me your email address?",
+   "If there is no problem, tell me your email address."
+  ],
+  "ans": 1,
+  "ex": "<b>If you don't mind</b> ＝「差し支えなければ」。<br><b>If you don't care</b> は<br>「どうでもよければ」に聞こえます。",
+  "end_lead": "履歴書を、より強く。<br>強みを、より多く。",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": [
+    "就活生応援",
+    "20問",
+    "20分",
+    "合格証つき"
+   ],
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  },
+  "caption": "世界のビジネスで活躍したいあなたへ。\n「差し支えなければ」、英語で言えますか。直訳すると、思わぬ意味に聞こえてしまいます。答えは動画の後半で。\nいま就活生応援キャンペーンで、ビジネス英語実務検定〈初級〉（20問・20分）の受験料が12月25日のお申し込み分まで無料です。受験はプロフィールのリンクから。\n国際ビジネス言語認定協会が認定する民間資格です",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英文メール #就活"
+ },
+ {
+  "id": "w11_03_tt_keep_posted",
+  "kind": "quiz",
+  "audio": "quiz_epic",
+  "platform": "tt",
+  "figure": true,
+  "theme": "power",
+  "date": "2026-11-25T07:30:00",
+  "kicker": "世界のビジネスで活躍したいあなたへ",
+  "kicker_html": "<span class=\"rd\">世界のビジネス</span>で<br>活躍したいあなたへ",
+  "hook": "この英語が<br>分からないなら、<br><em>正直まずいです。</em>",
+  "q": "打ち合わせの最後に。<span class=\"en\">“Keep me posted.”</span>意味として正しいのは？",
+  "opts": [
+   "この件は、掲示板に貼っておいて",
+   "進展があったら、随時知らせて",
+   "決まったら、書類を郵送して"
+  ],
+  "ans": 1,
+  "ex": "<b>keep 人 posted</b> ＝ 人に最新の情報を<br>知らせ続ける、つまり「随時知らせて」です。",
+  "end_lead": "履歴書を、より強く。<br>強みを、より多く。",
+  "camp": {
+   "h3": "初級の受験料<br><em>12月25日まで無料</em>",
+   "chips": [
+    "就活生応援",
+    "20問",
+    "20分",
+    "合格証つき"
+   ],
+   "how": "<div class=\"card\"><img src=\"qr.png\"><div class=\"t\">受験は<br><b>「ビジネス英語実務検定」</b><br>で検索<br><span class=\"s\">またはQRをスクショ → 長押し</span><br><span class=\"url\">crownbell-kentei.netlify.app/tiktok</span></div></div>",
+   "fine": "合格すると、認定番号つきの合格証を発行します<br>※無料は初級のみ・12月25日のお申し込み分まで<br>※国際ビジネス言語認定協会が認定する民間資格です"
+  },
+  "caption": "世界のビジネスで活躍したいあなたへ。\nこの英語が分からないなら、正直まずいです。「Keep me posted.」の意味、即答できますか。答えは動画の後半で。\nいま就活生応援キャンペーンで、ビジネス英語実務検定〈初級〉（20問・20分）の受験料が12月25日のお申し込み分まで無料です。受験は「ビジネス英語実務検定」で検索するか、最後の画面のQRをスクショしてください。\n国際ビジネス言語認定協会が認定する民間資格です",
+  "tags": "#ビジ検 #ビジネス英語 #英語クイズ #英語学習 #就活",
+  "caption_tail": "https://crownbell-kentei.netlify.app/tiktok"
+ }
+]
