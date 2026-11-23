@@ -212,3 +212,5 @@
 - 2026-11-24 07:30｜Instagram｜w11_02_ig_sashitsukae｜「差し支えなければ」英語で言えますか（If you don't mind, could you tell me your email address?・正解B）｜型：power クイズ（直訳すると変になる型）
 - 2026-11-25 07:30｜TikTok｜w11_03_tt_keep_posted｜Keep me posted（正直まずい系フック・正解B）｜型：power クイズ
 - 2026-11-22 実行メモ｜11月の Metricool 予約は失敗分も数えて17本 → 残り3本（11/26〜11/30）。gen/build_html.py の QR を /practice → /tiktok に変更（11/19 大将決定）。さくら動画①は 11/19 にオーナーが手動で TikTok（137回）・インスタ（107回・3秒以上26.5%）に投稿済み（Metricool の枠は使っていない）。11/20 ポスター型 TikTok は Metricool 上 0回（TikTok の数字が 11/19 から更新されていない様子）
+- 2026-11-26 07:30｜Instagram｜w12_01_ig_shouchi｜「承知しました」英語で言えますか（Certainly. I'll take care of it right away.・正解A／I know は「知ってます」に聞こえる）｜型：power クイズ（直訳すると変になる型）＋新：帯「初級 12/25まで無料｜20問・20分」・タイマーの下にキャンペーンの一言（下半分の空白なくし）
+- 2026-11-24 実行メモ｜11月の Metricool 予約は失敗分も数えて18本 → 残り2本（11/27〜11/30）。gen/build_html.py：クイズの帯を JSON "band"（既定「初級 12/25まで無料｜20問・20分」）に、タイマーの下に「ビジネス英語実務検定〈初級〉受験料 12月25日まで無料／民間資格」の枠（答えの解説と入れ替わる、qfoot。JSON "qfoot": false で消せる）、safe の問題を少し下げて大きく。TikTok の数字が Metricool で再び更新（bandwidth 89・ポスター型 1・さくら①新 69）。インスタ よろしく 12（4日目）と低い
