@@ -561,7 +561,10 @@ def end_screen(platform, t0, lead, now=True, camp=None):
             f'{how}<div class="fine a" data-in="{t0+600}">{camp["fine"] if camp else fine}</div></div></div>')
 
 def quiz(v):
-    T_Q, T_A, T_E = 2100, 5600, 7700
+    # 2026-11-24 大将の決定：問題が出てから答えが出るまで5秒（JSON "qwait" ミリ秒で変更可）。カウントダウンは 5→1
+    QW = int(v.get("qwait", 5000)); T_Q = 2100; T_A = T_Q + QW; T_E = T_A + 2100
+    C0, CD = (T_Q, QW) if QW >= 4000 else (T_Q + 500, QW - 500)
+    NC = max(1, round(CD / 1000))
     L = "ABC"
     # 上の帯（2026-11-23 大将決定：「初級 12/25まで無料」に揃える。12/26以降は JSON の "band" で差し替え）
     BAND = v.get("band", ["初級 12/25まで無料", "20問・20分"])
@@ -575,15 +578,15 @@ def quiz(v):
          f'<div class="band a" data-in="{T_Q}"><span>{BAND[0]}</span><span>{BAND[1]}</span></div>'
          f'<div class="qtext a" data-in="{T_Q+80}">{v["q"]}</div>'
          f'<div id="opts">{opts_q}</div>'
-         f'<div id="tm" data-in="{T_Q+450}" data-out="{T_A}" data-d="250"><div class="timer"><div class="bar"><i id="bar"></i></div><div class="ring"><svg viewBox="0 0 200 200"><circle class="rbg" cx="100" cy="100" r="86"/><circle id="rfg" cx="100" cy="100" r="86"/></svg><div class="cnum" id="cn">3</div></div></div>'
+         f'<div id="tm" data-in="{T_Q+150 if QW>=4000 else T_Q+450}" data-out="{T_A}" data-d="250"><div class="timer"><div class="bar"><i id="bar"></i></div><div class="ring"><svg viewBox="0 0 200 200"><circle class="rbg" cx="100" cy="100" r="86"/><circle id="rfg" cx="100" cy="100" r="86"/></svg><div class="cnum" id="cn">{NC}</div></div></div>'
          f'<div class="tlab">TIME LIMIT ― 回答まで</div></div>'
          + (f'<div class="qslot"><div class="qfoot a" data-in="{T_Q+600}" data-out="{T_A}" data-d="250">'
             f'<div class="qf-l">ビジネス英語実務検定〈初級〉</div><div class="qf-m">受験料 <em>12月25日まで無料</em></div>'
             f'<div class="qf-s">国際ビジネス言語認定協会が認定する民間資格です</div></div>'
             f'<div class="ex a" data-in="{T_A+350}">{v["ex"]}</div></div></div></div>' if v.get("qfoot", True) else
             f'<div class="ex a" data-in="{T_A+350}">{v["ex"]}</div></div></div>'))
-    hooks = (f'window.HOOKS=function(t){{const tb=document.getElementById("bar");tb.style.width=(100*(1-cl((t-{T_Q+500})/3000)))+"%";'
-             f'document.getElementById("cn").textContent=t<{T_Q+1500}?"3":t<{T_Q+2500}?"2":"1";const tt=t-{T_Q+500},f=((tt%1000)+1000)%1000/1000,on=tt>=0&&t<{T_A},last=tt>=2000;const cn=document.getElementById("cn");const hb=f<.12?Math.sin(f/.12*Math.PI):(f>.22&&f<.34?.6*Math.sin((f-.22)/.12*Math.PI):0);cn.style.transform=on?`scale(${{1+(last?.6:.42)*hb}})`:"none";cn.style.transformOrigin="50% 50%";const qw=document.querySelector(".qwrap");qw.style.transform="none";const pl=document.getElementById("pulse");if(pl)pl.style.opacity=on?Math.min(1,.18+.5*cl(tt/3000)+(last?.4:.22)*Math.pow(1-f,2)):0;const rf=document.getElementById("rfg");if(rf){{rf.style.strokeDashoffset=540.4*cl(tt/3000);rf.style.strokeWidth=last?16:12;}}const bn=document.getElementById("bignum");if(bn){{bn.textContent=on?cn.textContent:"";bn.style.transform=on?`scale(${{1.18-.18*ease(f)}})`:"none";bn.style.opacity=on?(last?1.8:1)*(.6+.4*Math.pow(1-f,2)):0;}}tb.style.boxShadow=on?`0 0 ${{14+26*Math.pow(1-f,2)}}px rgba(227,196,124,${{.5+.4*Math.pow(1-f,2)}})`:"none";'
+    hooks = (f'window.HOOKS=function(t){{const tb=document.getElementById("bar");tb.style.width=(100*(1-cl((t-{C0})/{CD})))+"%";'
+             f'document.getElementById("cn").textContent=String(Math.max(1,Math.min({NC},Math.ceil(({C0+CD}-t)/{CD/NC}))));const tt=t-{C0},f=((tt%1000)+1000)%1000/1000,on=tt>=0&&t<{T_A},last=tt>={CD-CD/NC};const cn=document.getElementById("cn");const hb=f<.12?Math.sin(f/.12*Math.PI):(f>.22&&f<.34?.6*Math.sin((f-.22)/.12*Math.PI):0);cn.style.transform=on?`scale(${{1+(last?.6:.42)*hb}})`:"none";cn.style.transformOrigin="50% 50%";const qw=document.querySelector(".qwrap");qw.style.transform="none";const pl=document.getElementById("pulse");if(pl)pl.style.opacity=on?Math.min(1,.18+.5*cl(tt/{CD})+(last?.4:.22)*Math.pow(1-f,2)):0;const rf=document.getElementById("rfg");if(rf){{rf.style.strokeDashoffset=540.4*cl(tt/{CD});rf.style.strokeWidth=last?16:12;}}const bn=document.getElementById("bignum");if(bn){{bn.textContent=on?cn.textContent:"";bn.style.transform=on?`scale(${{1.18-.18*ease(f)}})`:"none";bn.style.opacity=on?(last?1.8:1)*(.6+.4*Math.pow(1-f,2)):0;}}tb.style.boxShadow=on?`0 0 ${{14+26*Math.pow(1-f,2)}}px rgba(227,196,124,${{.5+.4*Math.pow(1-f,2)}})`:"none";'
              f'const os=document.querySelectorAll("#opts .opt");os.forEach((o,j)=>{{o.classList.toggle("ok",t>={T_A}&&j=={v["ans"]});o.classList.toggle("ng",t>={T_A}&&j!={v["ans"]});}});'
              f'if(t>={T_A}&&!window.BURST){{const r=os[{v["ans"]}].getBoundingClientRect();window.BURST={{t:{T_A},x:r.left+r.width/2,y:r.top+r.height/2}};}}}};')
     lead = v.get("end_lead", "書類選考で苦戦していませんか？<br>資格欄、空白のままになっていませんか？")  # クイズも最後の画面の一言を JSON で差し替え可（2026-11-15）

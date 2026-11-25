@@ -277,26 +277,28 @@ def build(kind, seed):
             add(m, clk * 6, tk); tk += 0.07 + rk.rand() * 0.09
     fx = np.zeros(N); dry = np.zeros(N); duck = np.ones(N)
     if kind == 'quiz':
-        TQ, TA, TE = 2.1, 5.6, 7.7
+        QW = float(os.environ.get('QWAIT_S', '5'))   # 2026-11-24 大将：問題→答えを5秒
+        TQ = 2.1; TA = TQ + QW; TE = TA + 2.1
+        C0 = TQ if QW >= 4 else TQ + 0.5; NC = max(1, round(TA - C0))
         add(fx, whoosh(), TQ - 0.2)
-        t = TQ + 0.5; k = 0
+        t = C0; k = 0
         # 焦らせる：チクタクを速く、最後の1秒はさらに倍速
         while t < TA - 0.02:
             add(dry, tick(k % 2 == 0), t); k += 1
             t += 0.25 if t < TA - 1.0 else 0.125
-        for c in range(3): add(dry, beep(1175 + 220 * c, 0.3) * 2.2, TQ + 0.5 + c * 1.0)
+        for c in range(NC): add(dry, beep(1175 + 220 * max(0, c - (NC - 3)), 0.3) * (2.2 if c >= NC - 3 else 1.5), C0 + c * (TA - C0) / NC)
         # 心臓の鼓動（ドクン、ドクン）。だんだん速く・強く
-        hb = TQ + 0.5; gap = 0.5
+        hb = C0; gap = 0.6 if QW >= 4 else 0.5
         while hb < TA - 0.05:
             for off, g in ((0, 1.0), (0.16, 0.65)):
                 tt = t_(0.22); f0 = 58
-                add(fx, np.sin(2*np.pi*f0*tt*(1-0.25*tt)) * np.exp(-tt*16) * 0.55 * g * (0.7 + 0.3*(hb-TQ)/3.5), hb + off)
+                add(fx, np.sin(2*np.pi*f0*tt*(1-0.25*tt)) * np.exp(-tt*16) * 0.55 * g * (0.7 + 0.3*(hb-TQ)/(TA-TQ)), hb + off)
             gap = max(0.3, gap - 0.04); hb += gap
         # だんだん高く大きくなる音
-        rd = TA - (TQ + 0.5); rt = t_(rd)
+        rd = TA - C0; rt = t_(rd)
         freq = 380 * (2.4 ** (rt / rd)); ph = 2*np.pi*np.cumsum(freq)/SR
         riser = (np.sin(ph) + 0.4*np.sin(2*ph)) * (rt/rd)**2 * 0.07
-        add(fx, riser * np.minimum(1, (rd - rt)/0.03), TQ + 0.5)
+        add(fx, riser * np.minimum(1, (rd - rt)/0.03), C0)
         add(fx, bell(1568), TA); add(fx, bell(2349, 2.0, 0.09), TA + 0.02); add(fx, sparkle(), TA + 0.03)
         add(fx, whoosh(0.5), TE - 0.25); add(fx, bell(1175, 2.2, 0.08), TE + 0.1)
         a, b = int((TQ + 0.4) * SR), int(TA * SR)

@@ -12,8 +12,9 @@ for id in $IDS; do
   kind=$(python3 -I -c "import json,sys;print([v.get('audio', v['kind']) for v in json.load(open(sys.argv[1])) if v['id']==sys.argv[2]][0])" "$JSON" "$id")
   seed=$(python3 -I -c "import sys;print(sum(map(ord,sys.argv[1]))%997)" "$id")
   dur=$(python3 -I -c "import json,sys;print([v.get('dur',10000) for v in json.load(open(sys.argv[1])) if v['id']==sys.argv[2]][0])" "$JSON" "$id")
+  qw=$(python3 -I -c "import json,sys;print([v.get('qwait',5000) for v in json.load(open(sys.argv[1])) if v['id']==sys.argv[2]][0]/1000)" "$JSON" "$id")
   (cd "$ROOT/gen" && node render.js "$WORK" "$id" 60 $dur)
-  DUR_S=$(python3 -I -c "print($dur/1000)") python3 -I "$ROOT/gen/audio.py" "$kind" "$seed" "$WORK/$id.wav"
+  QWAIT_S=$qw DUR_S=$(python3 -I -c "print($dur/1000)") python3 -I "$ROOT/gen/audio.py" "$kind" "$seed" "$WORK/$id.wav"
   ffmpeg -v error -y -i "$WORK/${id}_v.mp4" -i "$WORK/$id.wav" -c:v copy -c:a aac -b:a ${ABR:-192k} \
     -af "loudnorm=I=-14:TP=-1.5:LRA=11" -ar 48000 -movflags +faststart -shortest "$ROOT/videos/$id.mp4"
   ffmpeg -v error -y -ss 1.6 -i "$ROOT/videos/$id.mp4" -frames:v 1 -q:v 2 "$ROOT/videos/${id}_cover.jpg"
